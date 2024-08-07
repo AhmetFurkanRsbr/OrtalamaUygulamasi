@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="JP_Menu" layout-manager="GridLayoutManager" row-count="13" column-count="16" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="22" width="1123" height="627"/>
+      <xy x="20" y="22" width="1123" height="629"/>
     </constraints>
     <properties>
       <background color="-1715050"/>
@@ -31,7 +31,7 @@
               <tabbedpane title="Kayıtlı Notlar"/>
             </constraints>
             <properties>
-              <visible value="true"/>
+              <visible value="false"/>
             </properties>
             <border type="none"/>
             <children>
@@ -504,6 +504,7 @@
                 </constraints>
                 <properties>
                   <horizontalAlignment value="0"/>
+                  <text value=""/>
                 </properties>
               </component>
             </children>

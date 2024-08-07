@@ -54,19 +54,11 @@ public class GirisEkrani  extends JFrame{
         chckbx_ParolaGoster.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chckbx_ParolaGoster.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-
-                        if (chckbx_ParolaGoster.isSelected()) {
-                            fld_parolaGiris.setEchoChar((char) 0);
-                        } else {
-                            fld_parolaGiris.setEchoChar('•');
-                        }
-
-
-                    }
-                });
+                if (!chckbx_ParolaGoster.isSelected()) {
+                    fld_parolaGiris.setEchoChar('•');
+                } else {
+                    fld_parolaGiris.setEchoChar((char)0);
+                }
             }
         });
         btn_girisYap.addActionListener(new ActionListener() {

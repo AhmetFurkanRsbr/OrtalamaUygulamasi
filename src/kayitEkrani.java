@@ -68,11 +68,12 @@ public class kayitEkrani extends JFrame {
                    // veriTabaniIslemleri1.veriGirmeDurumu = veriTabaniIslemleri1.veriyiParametreIleGir((veriTabaniIslemleri1.enYuksekKisiId()+1), fld_isim.getText().toString(), fld_soyad.getText(), fld_parola.getText(), cmbx_okul.getSelectedItem().toString(), fld_bolum.getText(), cmbx_sinif.getSelectedItem().toString());
                     veriTabaniIslemleri1.veriGirmeDurumu = veriTabaniIslemleri1.veriyiParametreIleGir((veriTabaniIslemleri1.enYuksekKisiId+1),fld_isim.getText(), fld_soyad.getText(),fld_kullaniciAdi.getText() ,fld_parola.getText(), cmbx_sinif.getSelectedItem().toString(), fld_bolum.getText(), cmbx_okul.getSelectedItem().toString() );
 
-                    if (veriTabaniIslemleri1.veriGirmeDurumu == false) {
+                    if (!veriTabaniIslemleri1.veriGirmeDurumu) {
                         JOptionPane.showMessageDialog(null, "Veri Aktarımı başarısız,\n\tTekrar deneyiniz.");
                     }else{
                         JOptionPane.showMessageDialog(null,"Kayıt İşleminiz Başarılı Şekilde Gerçekleşmiştir");
-
+                         dispose();
+                         new GirisEkrani();
                     }
 
                 }

@@ -181,32 +181,42 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
      }
     void ortalamaSonucuGorunurYap(boolean aktifBilgiGirmeDevam){
         if(!aktifBilgiGirmeDevam){
+            /*
+            fld_yno.setVisible(false);
+            fld_gno.setVisible(false);
+            fld_yno.setVisible(false);
+            fld_gno.setVisible(false);
+            lbl_yno.setVisible(false);
+            lbl_gno.setVisible(false);
+           */
             fld_yno.setVisible(true);
             fld_gno.setVisible(true);
             fld_yno.setVisible(true);
             fld_gno.setVisible(true);
             lbl_yno.setVisible(true);
             lbl_gno.setVisible(true);
+            lbl_eskigno.setVisible(true);
+            lbl_eskiyno.setVisible(true);
+            fld_Eskigno.setVisible(true);
+            fld_EskiYno.setVisible(true);
+
+
+            fld_dersGecme100.setVisible(true);
+            fld_dersGecme4.setVisible(true);
+
+            lbl_dersGecme4.setVisible(true);
+            lbl_dersGecme100.setVisible(true);
         }
-        fld_yno.setVisible(true);
-        fld_gno.setVisible(true);
-        fld_yno.setVisible(true);
-        fld_gno.setVisible(true);
-        lbl_yno.setVisible(true);
-        lbl_gno.setVisible(true);
-        lbl_eskigno.setVisible(true);
-        lbl_eskiyno.setVisible(true);
-        fld_Eskigno.setVisible(true);
-        fld_EskiYno.setVisible(true);
 
-
-        fld_dersGecme100.setVisible(true);
-        fld_dersGecme4.setVisible(true);
-
-        lbl_dersGecme4.setVisible(true);
-        lbl_dersGecme100.setVisible(true);
     }
+    void gecmisGnoGorunurluk(boolean gecmisGnoGizle){
+        if(gecmisGnoGizle){
+            fld_gecmisGno.setEditable(false);
+        }else {
+            fld_gecmisGno.setEditable(true);
+        }
 
+    }
     void ortalamaSonucuGizle(){
         lbl_eskigno.setVisible(false);
         lbl_eskiyno.setVisible(false);
@@ -475,11 +485,11 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
                 if( vizeNotu <0 || vizeNotu >100){
                     JOptionPane.showInternalMessageDialog(null,"!! Vize Notunuz 0-100 Aralığında Olmalılıdır !!");
-                } else if (finalNotu < 0 || finalNotu > 100) {
+                }  if (finalNotu < 0 || finalNotu > 100) {
                     JOptionPane.showInternalMessageDialog(null,"!! Final Notunuz 0-100 Aralığında Olmalılıdır !!");
-                }else if ( (vizeEtkiOrani + finalEtkiOrani ) != 100) {
+                } if ( (vizeEtkiOrani + finalEtkiOrani ) != 100) {
                     JOptionPane.showInternalMessageDialog(null,"!! Vize ve Final Etki Oranları Toplamı 100 'ü Vermelidir !!");
-                } else if (akts > 30 || akts <= 0) {
+                }  if (akts > 30 || akts <= 0) {
                     JOptionPane.showInternalMessageDialog(null,"!! Akts Değeriniz 30 'dan Büyük, 0 'dan Küçük Olamaz !!");
                 }else{
 
@@ -661,7 +671,11 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
 
                     fld_yeniDrsIsim.setText(fld_eskiDrsIsim.getText());
-
+                    fld_yeniDrsVize.setText(""+GuncellenicekBilgiler.guncellenicekVizeNotu);
+                    fld_yeniDrsFinal.setText(""+GuncellenicekBilgiler.guncellenicekFinalNotu);
+                    fld_yeniVizeEtkiO.setText(""+GuncellenicekBilgiler.guncellenicekVizeEtkiO);
+                    fld_yeniFinalEtkiO.setText(""+GuncellenicekBilgiler.guncellenicekFinalEtkiO);
+                    spn_yeniAkts.setValue(GuncellenicekBilgiler.guncellenicekDersAkts);
 
                 }
             }
