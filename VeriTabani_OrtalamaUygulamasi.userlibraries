@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="mssql-jdbc-12.6.1.jre8">
+    <archive path="C:/Users/HP/Desktop/Veri Tabanı Bğlantılar/sqljdbc_12.6.1.0_enu/sqljdbc_12.6/enu/jars/mssql-jdbc-12.6.1.jre8.jar" />
+  </library>
+</eclipse-userlibraries>
+

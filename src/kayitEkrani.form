@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="kayitEkrani">
+  <grid id="27dc6" binding="giris_ekran" layout-manager="GridLayoutManager" row-count="17" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="719" height="629"/>
+    </constraints>
+    <properties>
+      <background color="-13626589"/>
+      <opaque value="true"/>
+      <requestFocusEnabled value="true"/>
+      <visible value="true"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <vspacer id="8e438">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="8" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="66d71">
+        <constraints>
+          <grid row="5" column="8" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="2140a">
+        <constraints>
+          <grid row="12" column="9" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="517a1">
+        <constraints>
+          <grid row="13" column="9" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="8f5b">
+        <constraints>
+          <grid row="14" column="9" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="f9553">
+        <constraints>
+          <grid row="15" column="9" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="1cba2">
+        <constraints>
+          <grid row="16" column="9" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="19874">
+        <constraints>
+          <grid row="5" column="7" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="e59eb">
+        <constraints>
+          <grid row="5" column="1" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="3cf0f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="8" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <font name="Constantia" size="36" style="1"/>
+          <foreground color="-1744640"/>
+          <horizontalAlignment value="10"/>
+          <horizontalTextPosition value="11"/>
+          <text value="Kayıt Ekranına Hoşgeldiniz"/>
+          <verticalAlignment value="0"/>
+          <verticalTextPosition value="0"/>
+        </properties>
+      </component>
+      <hspacer id="9b2fd">
+        <constraints>
+          <grid row="5" column="6" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="fbdfb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Bahnschrift" size="18" style="0"/>
+          <foreground color="-4202267"/>
+          <text value="Soyisminiz :"/>
+        </properties>
+      </component>
+      <component id="acdb" class="javax.swing.JTextField" binding="fld_soyad">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="135" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="c5cb7" class="javax.swing.JTextField" binding="fld_isim">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="135" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="fbd56" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Bahnschrift" size="16" style="0"/>
+          <foreground color="-4202267"/>
+          <text value="Okulunuz :"/>
+        </properties>
+      </component>
+      <component id="feb72" class="javax.swing.JComboBox" binding="cmbx_okul">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="220" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <autoscrolls value="true"/>
+          <background color="-1713226"/>
+          <editable value="false"/>
+          <enabled value="true"/>
+          <focusable value="true"/>
+          <inheritsPopupMenu value="false"/>
+          <lightWeightPopupEnabled value="true"/>
+          <model>
+            <item value="Tekirdağ Namık Kemal Üniversitesi"/>
+            <item value="İstanbul Topkapı Üniversitesi"/>
+          </model>
+          <name value=""/>
+          <opaque value="true"/>
+          <requestFocusEnabled value="true"/>
+          <selectedIndex value="-1"/>
+          <toolTipText value=""/>
+          <visible value="true"/>
+        </properties>
+      </component>
+      <component id="ce53e" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Bahnschrift" size="17" style="0"/>
+          <foreground color="-4202267"/>
+          <text value="Bölümünüz :"/>
+        </properties>
+      </component>
+      <component id="d474a" class="javax.swing.JTextField" binding="fld_bolum">
+        <constraints>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="135" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="3a85" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Bahnschrift" size="17" style="0"/>
+          <foreground color="-4202267"/>
+          <text value="Sınıfınız :"/>
+        </properties>
+      </component>
+      <component id="5f2d6" class="javax.swing.JComboBox" binding="cmbx_sinif">
+        <constraints>
+          <grid row="11" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="220" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1713226"/>
+          <model>
+            <item value="Hazırlık"/>
+            <item value="1.Sınıf"/>
+            <item value="2.Sınıf"/>
+            <item value="3.Sınıf"/>
+            <item value="4.Sınıf"/>
+          </model>
+          <selectedIndex value="-1"/>
+        </properties>
+      </component>
+      <component id="abafb" class="javax.swing.JRadioButton" binding="listedeYokRadioButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12090"/>
+          <foreground color="-1769430"/>
+          <hideActionText value="true"/>
+          <horizontalAlignment value="2"/>
+          <horizontalTextPosition value="4"/>
+          <text value="Listede Yok"/>
+        </properties>
+      </component>
+      <component id="2b95e" class="javax.swing.JButton" binding="kayitOlButton">
+        <constraints>
+          <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-5315155"/>
+          <text value="Kayıt Ol"/>
+        </properties>
+      </component>
+      <vspacer id="d3fa9">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="5ddf4" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Bahnschrift" size="18" style="0"/>
+          <foreground color="-4202267"/>
+          <text value="İsminiz :"/>
+        </properties>
+      </component>
+      <hspacer id="c8717">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="37353">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="95e18">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="81987" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Bahnschrift" size="16" style="0"/>
+          <foreground color="-4202267"/>
+          <text value="Parolanız :"/>
+        </properties>
+      </component>
+      <component id="2f856" class="javax.swing.JPasswordField" binding="fld_parola">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="135" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <dragEnabled value="false"/>
+          <dropMode value="USE_SELECTION"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="90974" class="javax.swing.JCheckBox" binding="chkbx_sifreGoster">
+        <constraints>
+          <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12090"/>
+          <foreground color="-1769430"/>
+          <hideActionText value="false"/>
+          <label value="Parolayı Göster"/>
+          <text value="Parolayı Göster"/>
+        </properties>
+      </component>
+      <component id="a7000" class="javax.swing.JButton" binding="btn_GeriDon">
+        <constraints>
+          <grid row="2" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1714930"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Geri Dön"/>
+        </properties>
+      </component>
+      <component id="2844e" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Bahnschrift" size="18" style="0"/>
+          <foreground color="-4202267"/>
+          <text value="Kullanıcı Adınız :"/>
+        </properties>
+      </component>
+      <component id="80e6b" class="javax.swing.JTextField" binding="fld_kullaniciAdi">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="135" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
