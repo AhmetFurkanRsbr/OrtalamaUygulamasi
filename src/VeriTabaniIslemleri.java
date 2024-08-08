@@ -356,9 +356,7 @@ public class VeriTabaniIslemleri {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("hhh");
             try {
-                System.out.println("fsm");
                 Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 String sqlDersIDiAlma ="select ders_id from ders_bilgileri where ders_isim ='"+anlikDersIsim+"' and " +
                         "kisi_idf = (SELECT kisi_idf FROM kullanici_bilgileri WHERE kullanici_ad = '"+AktifKullanici.aktifKullaniciKullaniciAdi+"'); ";
@@ -419,7 +417,7 @@ public class VeriTabaniIslemleri {
             if (resultSetCekilenDersSayisi.next()) {
                 int kisininKayitliDersSayisi = resultSetCekilenDersSayisi.getInt(1);
                 AktifKullanici.aktifKullaniciDersSayi = kisininKayitliDersSayisi;
-                System.out.println("Ders sayınız: " + kisininKayitliDersSayisi);
+              //  System.out.println("Ders sayınız: " + kisininKayitliDersSayisi);
 
 
                 String sqlKullaniciKayitliDersAlma = "SELECT ders_isim FROM ders_bilgileri WHERE kisi_idf = '" + AktifKullanici.aktifKullaniciID + "'";
@@ -711,7 +709,7 @@ public class VeriTabaniIslemleri {
             resultSetGCekilenDersAkts.close();
 
             String sqlGuncellenicekDersVize = "SELECT vize_notu from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select TOP 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"');";
+                    "ders_idf = (select TOP 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
 
             ResultSet resultSetGCekilenDersVize = statement.executeQuery(sqlGuncellenicekDersVize);
@@ -723,7 +721,7 @@ public class VeriTabaniIslemleri {
             resultSetGCekilenDersVize.close();
 
             String sqlGuncellenicekDersFinal = "SELECT final_notu from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"');";
+                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
             ResultSet resultSetGCekilenDersFinal = statement.executeQuery(sqlGuncellenicekDersFinal);
 
@@ -734,7 +732,7 @@ public class VeriTabaniIslemleri {
             resultSetGCekilenDersFinal.close();
 
             String sqlGuncellenicekDersVizeEtkiO = "SELECT vize_etkiO from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"');";
+                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
             ResultSet resultSetGCekilenDersVizeEtkiO = statement.executeQuery(sqlGuncellenicekDersVizeEtkiO);
 
@@ -745,7 +743,7 @@ public class VeriTabaniIslemleri {
             resultSetGCekilenDersVizeEtkiO.close();
 
             String sqlGuncellenicekDersFinalEtkiO = "SELECT final_etkiO from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"');";
+                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+dersIsim+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
             ResultSet resultSetGCekilenDersFinalEtkiO = statement.executeQuery(sqlGuncellenicekDersFinalEtkiO);
 
@@ -787,9 +785,10 @@ public class VeriTabaniIslemleri {
             resultSetCekilenDersAkts.close();
 
             String sqlSilinecekDersVize = "SELECT vize_notu from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"');";
+                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
             ResultSet resultSetCekilenDersVize = statement.executeQuery(sqlSilinecekDersVize);
+
 
             if(resultSetCekilenDersVize.next()) {
                 SilinecekBilgiler.silinecekVizeNotu = resultSetCekilenDersVize.getInt(1);
@@ -798,7 +797,7 @@ public class VeriTabaniIslemleri {
             resultSetCekilenDersVize.close();
 
             String sqlSilinecekDersFinal = "SELECT final_notu from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"');";
+                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
             ResultSet resultSetCekilenDersFinal = statement.executeQuery(sqlSilinecekDersFinal);
 
@@ -809,7 +808,7 @@ public class VeriTabaniIslemleri {
             resultSetCekilenDersFinal.close();
 
             String sqlSilinecekDersVizeEtkiO = "SELECT vize_etkiO from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"');";
+                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
             ResultSet resultSetCekilenDersVizeEtkiO = statement.executeQuery(sqlSilinecekDersVizeEtkiO);
 
@@ -820,7 +819,7 @@ public class VeriTabaniIslemleri {
             resultSetCekilenDersVizeEtkiO.close();
 
             String sqlSilinecekDersFinalEtkiO = "SELECT final_etkiO from not_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and " +
-                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"');";
+                    "ders_idf = (select top 1 ders_id from ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"' and kisi_idf="+AktifKullanici.aktifKullaniciID +");";
 
             ResultSet resultSetCekilenDersFinalEtkiO = statement.executeQuery(sqlSilinecekDersFinalEtkiO);
 
@@ -854,6 +853,12 @@ public class VeriTabaniIslemleri {
                     "AND kisi_idf = "+AktifKullanici.aktifKullaniciID+");";
             PreparedStatement parametreliStatNotSilme   = baglan.prepareStatement(sqlNotSilme);
             parametreliStatNotSilme.executeUpdate();
+
+            String sqlDersOrtlamaBilgileriSilme ="DELETE FROM ders_ortalama_bilgileri where ders_idf = " +
+                    " "+dersIdBul(SilinecekBilgiler.silinecekDersIsmi)+";";
+
+            PreparedStatement parametreliStatOrtalamaBilgisiSilme   = baglan.prepareStatement(sqlDersOrtlamaBilgileriSilme);
+            parametreliStatOrtalamaBilgisiSilme.executeUpdate();
 
             String sqlDersSilme1 ="DELETE FROM ders_bilgileri where ders_isim = '"+SilinecekBilgiler.silinecekDersIsmi+"' and ders_id = " +
                     " "+dersIdBul(SilinecekBilgiler.silinecekDersIsmi)+";";

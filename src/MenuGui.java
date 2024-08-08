@@ -117,6 +117,9 @@ public class MenuGui extends  JFrame{
     private JTextField fld_gnoGercerliDonem;
     private JLabel txt_gnoGecerliDonem;
     private JButton btn_gnoDegis;
+    private JPanel tab_ortalamaDene;
+    private JPanel tab_enyuksekAlinanNot;
+    private JPanel tab_dersSil;
     static int dersSayisi = 0;
     static String dersSayisiString="";
    static int finalNotu=0;
@@ -126,6 +129,7 @@ public class MenuGui extends  JFrame{
     static int akts=0;
    static int donem=0;
     boolean ilkgiris=true;
+    boolean isNotGirisindeHata=false;
     String cmbxSilinecekDersIsim;
     String cmbxguncellenicekDersIsim;
     String cmbxEnyuksekDersIsim;
@@ -285,7 +289,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         cmbx_silinecekDers.removeAll();
         DefaultComboBoxModel<String> silinecekModel = new DefaultComboBoxModel<>();
         cmbx_silinecekDers.setModel(silinecekModel);
-
         for (int k=0;k<AktifKullanici.aktifKullaniciDersSayi;k++){
             cmbxSilinecekDersIsim = vt.cekilenDers[k];
             silinecekModel.addElement(cmbxSilinecekDersIsim);
@@ -478,27 +481,31 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
                     akts = (int) spn_Akts.getValue();
                     donem=(int) spn_donem.getValue();
-
+                    isNotGirisindeHata=false;
                 } catch (NumberFormatException ex) {
                     System.out.println(ex.getMessage());
                 }
 
                 if( vizeNotu <0 || vizeNotu >100){
+                    isNotGirisindeHata=true;
                     JOptionPane.showInternalMessageDialog(null,"!! Vize Notunuz 0-100 Aralığında Olmalılıdır !!");
                 }  if (finalNotu < 0 || finalNotu > 100) {
+                    isNotGirisindeHata=true;
                     JOptionPane.showInternalMessageDialog(null,"!! Final Notunuz 0-100 Aralığında Olmalılıdır !!");
                 } if ( (vizeEtkiOrani + finalEtkiOrani ) != 100) {
+                    isNotGirisindeHata=true;
                     JOptionPane.showInternalMessageDialog(null,"!! Vize ve Final Etki Oranları Toplamı 100 'ü Vermelidir !!");
                 }  if (akts > 30 || akts <= 0) {
+                    isNotGirisindeHata=true;
                     JOptionPane.showInternalMessageDialog(null,"!! Akts Değeriniz 30 'dan Büyük, 0 'dan Küçük Olamaz !!");
-                }else{
+                }if(!isNotGirisindeHata){
 
                      ortalamaHesapla1.dersOrtalamasiHesapla(vizeNotu,finalNotu,akts,vizeEtkiOrani,finalEtkiOrani);
                     //ortalamaHesapla1.anlikDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem,Integer.parseInt(fld_kalanDersSayisi.getText()));
                      ortalamaHesapla1.donemOrtalamaHesapla(AktifKullanici.aktifKullaniciID,donem);
                      ortalamaHesapla1.yeniDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem);
                      fld_Eskigno.setText(String.valueOf(vt.eskiGnoGetir(AktifKullanici.aktifKullaniciID,donem)));
-                    vt.yeniGnoHesapla(AktifKullanici.aktifKullaniciID,donem,OrtalamaHesapla.yeniDonemOrtalamasi4,OrtalamaHesapla.donemOrtalamasi4);
+                     vt.yeniGnoHesapla(AktifKullanici.aktifKullaniciID,donem,OrtalamaHesapla.yeniDonemOrtalamasi4,OrtalamaHesapla.donemOrtalamasi4);
 
                     JOptionPane.showMessageDialog(null,"DERS:"+ fld_dersIsim.getText() + "\ndersten geçme notunuz(4lük) : "+ortalamaHesapla1.dortlukDersGecmeNotu+"\ndersten geçme notunuz(100 lük) : "+ortalamaHesapla1.derstenGecmeNotu100+"\n\tDERSTEN GEÇME DURUMUNUZ-->> "+ortalamaHesapla1.dersGecmeDurumuString);
                     fld_yno.setText(String.valueOf(OrtalamaHesapla.yeniDonemOrtalamasi4));
@@ -508,7 +515,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     fld_gno.setText(String.valueOf(VeriTabaniIslemleri.yeniGno));
                     btn_sistemeKayitEt.setVisible(true);
                         if(fld_kalanDersSayisi.getText().equals("1")) {
-                            System.out.println("ortalama görr");
                          ortalamaHesapla1.donemOrtalamaHesapla(AktifKullanici.aktifKullaniciID,donem);
                             ortalamaHesapla1.anlikDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem,Integer.parseInt(fld_kalanDersSayisi.getText()));
                             ortalamaSonucuGorunurYap(false);
@@ -533,7 +539,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             String secilenTabIsmi = tabbedPane1.getTitleAt(secilenIndex);
 
             switch (secilenTabIsmi){
-                case "Ortalama Hesapla":
+                case "Not Kaydet":
                     if(!ilkgiris){
                         String dersSayisiString = JOptionPane.showInputDialog(null,"Kaç ders için hesaplama işlemi yapıcaksınız.");
 
@@ -555,7 +561,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                         fld_kalanDersSayisi.setText(dersSayisiString);
                         ilkgiris=false;
                     }else {
-                        System.out.println("BURAYA GELDİM2");
+
                             String dersSayisiString = JOptionPane.showInputDialog(null,"Kaç ders için hesaplama işlemi yapıcaksınız.");
 
                             dersSayisi=Integer.parseInt(dersSayisiString);
@@ -563,17 +569,25 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                             fld_kalanDersSayisi.setText(dersSayisiString);
                             ilkgiris=false;
                         }
+                    cmbx_silinecekDersGonder();
+                    cmbx_guncellenicekDersGonder();
+                    cmbx_EnYuksekGonder();
                     break;
                 case "Kayıtlı Notlar":
                     break;
                 case "Ders Bilgisi Güncelle":
+                    cmbx_guncellenicekDersGonder();
                     guncellenicekSayfasindakileriGizle();
                     break;
                 case "Ders Sil":
+                    cmbx_silinecekDersGonder();
                     silinecekSayfasindakileriGizle();
                     break;
                 case "En Yüksek Alınan Not":
                     cmbx_EnYuksekGonder();
+                    break;
+                case "Ortalama Dene":
+                    //Yapılacak işlemler.
                     break;
                 default:
                     System.out.println("HATALI PENCERE DEĞİŞİMİ");
@@ -695,7 +709,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
                     vt.silinecekKullanicininBilgileriniCekme(SilinecekBilgiler.silinecekDersIsmi);
 
-
                         fld_silmeAkts.setText(String.valueOf(SilinecekBilgiler.silinecekDersAkts));
                         fld_silmeVizeNotu.setText(""+SilinecekBilgiler.silinecekVizeNotu);
                         fld_silmeFinalNotu.setText(""+SilinecekBilgiler.silinecekFinalNotu);
@@ -710,7 +723,16 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             @Override
             public void actionPerformed(ActionEvent e) {
 
-           vt.dersVeNotSil();
+           boolean isDersVeNotSil =vt.dersVeNotSil();
+           if (isDersVeNotSil){
+               JOptionPane.showMessageDialog(null,"Seçtiğiniz derse ait bilgiler sistemden silinmiştir.");
+               cmbx_EnYuksekGonder();
+               cmbx_guncellenicekDersGonder();
+               cmbx_silinecekDersGonder();
+
+               dispose();
+               new MenuGui();
+           }
 
             }
         });
@@ -759,7 +781,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             @Override
             public void componentResized(ComponentEvent e) {
                 super.componentResized(e);
-                System.out.println("naber");
 
                //kayitEkraniGoster();
             }
