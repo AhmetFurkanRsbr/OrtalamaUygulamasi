@@ -1055,5 +1055,351 @@ boolean dersVeNotguncelle(){
         }
 
     }
+    int kisiVizeFinalNotuGetir(String dersIsim,boolean isVize){
+          int gonderilcekNot=0;
+          if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        Statement statement;
+        try {
+            statement = baglan.createStatement();
+
+           if (isVize){
+               String sqlGosterilecekVizeNotu = "SELECT vize_notu from not_bilgileri where kisi_idf =" + AktifKullanici.aktifKullaniciID + " and " +
+                       "ders_idf = (select TOP 1 ders_id from ders_bilgileri where ders_isim = '" + dersIsim + "' and kisi_idf=" + AktifKullanici.aktifKullaniciID + ");";
+
+
+               ResultSet resultSetGCekilenDersVize = statement.executeQuery(sqlGosterilecekVizeNotu);
+
+               if (resultSetGCekilenDersVize.next()) {
+                   gonderilcekNot = resultSetGCekilenDersVize.getInt(1);
+
+               }
+               resultSetGCekilenDersVize.close();
+           }else {
+               String sqlGosterilecekFinalNotu = "SELECT final_notu from not_bilgileri where kisi_idf =" + AktifKullanici.aktifKullaniciID + " and " +
+                       "ders_idf = (select TOP 1 ders_id from ders_bilgileri where ders_isim = '" + dersIsim + "' and kisi_idf=" + AktifKullanici.aktifKullaniciID + ");";
+
+
+               ResultSet resultSetGCekilenDersFinal = statement.executeQuery(sqlGosterilecekFinalNotu);
+
+               if (resultSetGCekilenDersFinal.next()) {
+                   gonderilcekNot=  resultSetGCekilenDersFinal.getInt(1);
+
+               }
+               resultSetGCekilenDersFinal.close();
+           }
+        }catch (SQLException e){
+            System.out.println("Kişinin vize notu , final notu çekilirken oluşan sql hatası + "+e.getMessage());
+        }
+        return gonderilcekNot;
+    }
+    int kisiVizeFinalBasariSirasiPaylastigiKisiSayisiGetirme(int kisininVizeVeyaFinalNotu,String dersIsim,boolean isVize){
+          int basariSirasiPaylasilanKisiSayisi=0;
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        Statement statement;
+        try {
+            statement = baglan.createStatement();
+
+            if (isVize) {
+                String sqlVizeBasariSirasiPaylasilanKisiSayisiHesapla ="SELECT COUNT(*) FROM not_bilgileri WHERE ders_idf IN ( SELECT ders_id FROM ders_bilgileri WHERE ders_isim = '"+dersIsim+"') AND vize_notu = "+kisininVizeVeyaFinalNotu+";";
+                ResultSet resultSetHesaplanaVizeBasarisiPaylasilanKisiSayisiHesapla = statement.executeQuery(sqlVizeBasariSirasiPaylasilanKisiSayisiHesapla);
+
+                if (resultSetHesaplanaVizeBasarisiPaylasilanKisiSayisiHesapla.next()) {
+                    basariSirasiPaylasilanKisiSayisi = resultSetHesaplanaVizeBasarisiPaylasilanKisiSayisiHesapla.getInt(1);
+
+                }
+                resultSetHesaplanaVizeBasarisiPaylasilanKisiSayisiHesapla.close();
+            }else{
+                String sqlFinalBasariSirasiPaylasilanKisiSayisiHesapla ="SELECT COUNT(*) FROM not_bilgileri WHERE ders_idf IN ( SELECT ders_id FROM ders_bilgileri WHERE ders_isim = '"+dersIsim+"') AND final_notu = "+kisininVizeVeyaFinalNotu+";";
+                ResultSet resultSetHesaplanaFinalBasarisiPaylasilanKisiSayisiHesapla = statement.executeQuery(sqlFinalBasariSirasiPaylasilanKisiSayisiHesapla);
+
+                if (resultSetHesaplanaFinalBasarisiPaylasilanKisiSayisiHesapla.next()) {
+                    basariSirasiPaylasilanKisiSayisi = resultSetHesaplanaFinalBasarisiPaylasilanKisiSayisiHesapla.getInt(1);
+
+                }
+                resultSetHesaplanaFinalBasarisiPaylasilanKisiSayisiHesapla.close();
+            }
+
+        }catch (SQLException e){
+            System.out.println("Kişinin vize,final başarı sırasını paylaştığı kiişi sayısı hesaplanırken oluşan sql hatası + "+e.getMessage());
+        }
+          return --basariSirasiPaylasilanKisiSayisi;
+    }
+
+
+    int kisiVizeFinalBasariSirasiOgrenme(int kisininVizeVeyaFinalNotu,String dersIsim,boolean isVize){
+          int basariSirasi=0;
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        Statement statement;
+        try {
+            statement = baglan.createStatement();
+
+            if (isVize) {
+                String sqlVizeBasariSirasiHesapla ="SELECT COUNT(*) FROM not_bilgileri WHERE ders_idf IN ( SELECT ders_id FROM ders_bilgileri WHERE ders_isim = '"+dersIsim+"') AND vize_notu > "+kisininVizeVeyaFinalNotu+";";
+                ResultSet resultSetHesaplanaVizeBasarisi = statement.executeQuery(sqlVizeBasariSirasiHesapla);
+
+                if (resultSetHesaplanaVizeBasarisi.next()) {
+                    basariSirasi = resultSetHesaplanaVizeBasarisi.getInt(1);
+
+                }
+                resultSetHesaplanaVizeBasarisi.close();
+            }else{
+                String sqlFinalBasariSirasiHesapla ="SELECT COUNT(*) FROM not_bilgileri WHERE ders_idf IN ( SELECT ders_id FROM ders_bilgileri WHERE ders_isim = '"+dersIsim+"') AND final_notu > "+kisininVizeVeyaFinalNotu+";";
+                ResultSet resultSetHesaplanaFinalBasarisi = statement.executeQuery(sqlFinalBasariSirasiHesapla);
+
+                if (resultSetHesaplanaFinalBasarisi.next()) {
+                    basariSirasi = resultSetHesaplanaFinalBasarisi.getInt(1);
+
+                }
+                resultSetHesaplanaFinalBasarisi.close();
+            }
+        }catch (SQLException e){
+            System.out.println("Kişinin vize,final başarı sırası hesaplanırken oluşan sql hatası + "+e.getMessage());
+        }
+          return ++basariSirasi;
+    }
+
+
+
+    int sinifVizeFinalNotOrtalamasiGonder(String dersIsim,boolean isVize){
+         int sinifVizeVeyaFinalOrtalama=0;
+
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        Statement statement;
+        try {
+            statement = baglan.createStatement();
+
+            if (isVize) {
+                String sqlVizeGenelOrtHesapla ="Select AVG(vize_notu) from not_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') ;";
+                ResultSet resultSetHesaplanaVizeGenelOrt = statement.executeQuery(sqlVizeGenelOrtHesapla);
+
+                if (resultSetHesaplanaVizeGenelOrt.next()) {
+                    sinifVizeVeyaFinalOrtalama = resultSetHesaplanaVizeGenelOrt.getInt(1);
+
+                }
+                resultSetHesaplanaVizeGenelOrt.close();
+            }else{
+                String sqlFinalGenelOrtHesapla ="Select AVG(final_notu) from not_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') ;";
+                ResultSet resultSetHesaplanaFinalGenelOrt = statement.executeQuery(sqlFinalGenelOrtHesapla);
+
+                if (resultSetHesaplanaFinalGenelOrt.next()) {
+                    sinifVizeVeyaFinalOrtalama = resultSetHesaplanaFinalGenelOrt.getInt(1);
+
+                }
+                resultSetHesaplanaFinalGenelOrt.close();
+            }
+        }catch (SQLException e){
+            System.out.println("Sınıfın vize,final genel ortalaması hesaplanırken oluşan sql hatası + "+e.getMessage());
+        }
+
+          return sinifVizeVeyaFinalOrtalama;
+    }
+
+
+
+    int sinifKisiGenelNotOrtalamasiGonder(String dersIsim,int kisiId,boolean isSinif){
+        int sinifVeyaKisiGenelOrtalama=0;
+
+
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        Statement statement;
+        try {
+            statement = baglan.createStatement();
+
+            if (isSinif) {
+                String sqlSinifGenelOrtGetir ="Select AVG(dersten_gecme_notu100) from ders_ortalama_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') ;";
+                ResultSet resultSetGetirilenSinifGenelOrt = statement.executeQuery(sqlSinifGenelOrtGetir);
+
+                if (resultSetGetirilenSinifGenelOrt.next()) {
+                    sinifVeyaKisiGenelOrtalama = resultSetGetirilenSinifGenelOrt.getInt(1);
+
+                }
+                resultSetGetirilenSinifGenelOrt.close();
+            }else{
+                String sqlKisiGenelOrtGetir ="Select dersten_gecme_notu100 from ders_ortalama_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') and kisi_idf= "+kisiId+" ;";
+                ResultSet resultSetGetirilenKisiGenelOrt = statement.executeQuery(sqlKisiGenelOrtGetir);
+
+                if (resultSetGetirilenKisiGenelOrt.next()) {
+                    sinifVeyaKisiGenelOrtalama = resultSetGetirilenKisiGenelOrt.getInt(1);
+
+                }
+                resultSetGetirilenKisiGenelOrt.close();
+            }
+        }catch (SQLException e){
+            System.out.println("Sınıfın, Kişinin genel ortalaması hesaplanırken oluşan sql hatası + "+e.getMessage());
+        }
+
+        return sinifVeyaKisiGenelOrtalama;
+    }
+
+
+       String dersGenelEnyuksekOrtalamaVeyaKisisiniGetir(String dersIsim,boolean isOrtalama){
+          int dersGenelEnyuksekOrtalama=0;
+          String enYuksekGenelOrtAlanKisi="";
+          String dondurulecekDeger="";
+
+           if (!baglanmaDurumu){
+               try {
+                   msqlBaglan();
+                   baglanmaDurumu=true;
+               } catch (SQLException e) {
+                   baglanmaDurumu=false;
+                   throw new RuntimeException(e);
+               }
+           }
+           Statement statement;
+           try {
+               statement = baglan.createStatement();
+
+               if (isOrtalama) {
+                   String sqlGenelEnyuksekOrtGetir ="Select Top 1 dersten_gecme_notu100 from ders_ortalama_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') ORDER BY dersten_gecme_notu100 DESC;";
+                   ResultSet resultSetGetirilenEnYuksekGenelOrt = statement.executeQuery(sqlGenelEnyuksekOrtGetir);
+
+                   if (resultSetGetirilenEnYuksekGenelOrt.next()) {
+                       dersGenelEnyuksekOrtalama = resultSetGetirilenEnYuksekGenelOrt.getInt(1);
+
+                   }
+                   resultSetGetirilenEnYuksekGenelOrt.close();
+               }else{
+                   String sqlKisiGenelOrtGetir ="  Select concat(kisi_isim,' ',kisi_soyisim) from kisi_bilgileri where kisi_id= (Select Top 1 kisi_idf from ders_ortalama_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') ORDER BY dersten_gecme_notu100 DESC);";
+                   ResultSet resultSetGetirilenKisiGenelOrt = statement.executeQuery(sqlKisiGenelOrtGetir);
+
+                   if (resultSetGetirilenKisiGenelOrt.next()) {
+                       enYuksekGenelOrtAlanKisi = resultSetGetirilenKisiGenelOrt.getString(1);
+
+                   }
+                   resultSetGetirilenKisiGenelOrt.close();
+               }
+           }catch (SQLException e){
+               System.out.println("En yüksek genel ortalaması,Kişi getirilirken oluşan sql hatası + "+e.getMessage());
+           }
+
+           if (dersGenelEnyuksekOrtalama!=0){
+               dondurulecekDeger=String.valueOf(dersGenelEnyuksekOrtalama);
+           }else {
+               dondurulecekDeger= enYuksekGenelOrtAlanKisi;
+           }
+          return dondurulecekDeger;
+       }
+
+       int dersGenelBasariSirasiGetir(String dersIsim,String kisiDersGenelOrt){
+          int dersGenelBasariSirasi=0;
+           if (!baglanmaDurumu){
+               try {
+                   msqlBaglan();
+                   baglanmaDurumu=true;
+               } catch (SQLException e) {
+                   baglanmaDurumu=false;
+                   throw new RuntimeException(e);
+               }
+           }
+           Statement statement;
+           try {
+               statement = baglan.createStatement();
+
+
+                   String sqlDersGenelBasariSirasiHesapla =" Select count(*) from ders_ortalama_bilgileri where dersten_gecme_notu100 > "+kisiDersGenelOrt+" and ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"');";
+                   ResultSet resultSetDersGenelBasariSirasi = statement.executeQuery(sqlDersGenelBasariSirasiHesapla);
+
+                   if (resultSetDersGenelBasariSirasi.next()) {
+                       dersGenelBasariSirasi = resultSetDersGenelBasariSirasi.getInt(1);
+
+                   }
+                   resultSetDersGenelBasariSirasi.close();
+
+
+           }catch (SQLException e){
+               System.out.println("Kişinin ders genel başarı sırası getirilirken oluşan sql hatası + "+e.getMessage());
+           }
+
+          return dersGenelBasariSirasi;
+       }
+
+
+       int []derstenGecenKalanKisiSayisiGetir(String dersIsim,String dersiToplamAlanKisiSayisiString){
+           int []dondurulenDeger={0,0};
+           int derstenKalanKisiSayisi=0,derstenGecenKisiSayisi=0,dersiAlanToplamKisiSayisi=0;
+           dersiAlanToplamKisiSayisi=Integer.parseInt(dersiToplamAlanKisiSayisiString);
+
+           if (!baglanmaDurumu){
+               try {
+                   msqlBaglan();
+                   baglanmaDurumu=true;
+               } catch (SQLException e) {
+                   baglanmaDurumu=false;
+                   throw new RuntimeException(e);
+               }
+           }
+           Statement statement;
+           try {
+               statement = baglan.createStatement();
+
+               //if (isGecenKisi) {
+                   String sqlGecenKisiSayisiGetir =" Select count(dersten_gecme_durumu) from ders_ortalama_bilgileri where dersten_gecme_durumu ='Geçti' and ders_idf  IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"');";
+                   ResultSet resultSetGecenKisiSayisiGetir = statement.executeQuery(sqlGecenKisiSayisiGetir);
+
+                   if (resultSetGecenKisiSayisiGetir.next()) {
+                       derstenGecenKisiSayisi = resultSetGecenKisiSayisiGetir.getInt(1);
+                       dondurulenDeger[0] = derstenGecenKisiSayisi;
+                       derstenKalanKisiSayisi = dersiAlanToplamKisiSayisi - derstenGecenKisiSayisi;
+                       dondurulenDeger[1] = derstenKalanKisiSayisi;
+                   }
+                   resultSetGecenKisiSayisiGetir.close();
+               /*
+               }else{
+                   String sqlKisiGenelOrtGetir ="Select dersten_gecme_notu100 from ders_ortalama_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') and kisi_idf= "+kisiId+" ;";
+                   ResultSet resultSetGetirilenKisiGenelOrt = statement.executeQuery(sqlKisiGenelOrtGetir);
+
+                   if (resultSetGetirilenKisiGenelOrt.next()) {
+                       sinifVeyaKisiGenelOrtalama = resultSetGetirilenKisiGenelOrt.getInt(1);
+
+                   }
+                   resultSetGetirilenKisiGenelOrt.close();
+               }*/
+           }catch (SQLException e){
+               System.out.println("Dersten geçen kalan kişi sayısı hesaplanırken oluşan sql hatası + "+e.getMessage());
+           }
+
+          return dondurulenDeger;
+       }
 
 }

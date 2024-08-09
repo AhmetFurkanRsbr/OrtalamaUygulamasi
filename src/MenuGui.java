@@ -85,7 +85,7 @@ public class MenuGui extends  JFrame{
     private JTextField fld_enyAlanKisi;
     private JTextField fld_enyNot;
     private JButton btn_sorgulaEnyksk;
-    private JTextField fld_enyFalanToplamKisi;
+    private JTextField fld_enyFalanToplamKisiSayisi;
     private JTextField fld_enyFalanKisi;
     private JTextField fld_enyFfinalNot;
     private JTextField fld_dersIsimKayit;
@@ -120,6 +120,37 @@ public class MenuGui extends  JFrame{
     private JPanel tab_ortalamaDene;
     private JPanel tab_enyuksekAlinanNot;
     private JPanel tab_dersSil;
+    private JTextField fld_vizeBasariSirasi;
+    private JTextField fld_finalBasariSirasi;
+    private JTextField fld_vizeNotun;
+    private JTextField fld_finalNotun;
+    private JLabel txt_vizeBasariSirasi;
+    private JLabel txt_finalBasariSirasi;
+    private JLabel txt_vizeNotun;
+    private JLabel txt_finalNotun;
+    private JLabel txt_vizeBasariSirasiPaylastigi;
+    private JTextField fld_vizeBasariSirasiPaylastigi;
+    private JLabel txt_finalBasariSirasiPaylastigi;
+    private JTextField fld_finalBasariSirasiPaylastigi;
+    private JLabel txt_sinifVizeOrt;
+    private JTextField fld_sinifVizeOrt;
+    private JLabel txt_sinifFinalOrt;
+    private JTextField fld_sinifFinalOrt;
+    private JTextField fld_sinifDersGenelOrt;
+    private JTextField fld_kisiDersGenelOrt;
+    private JLabel txt_sinifDersGenelOrt;
+    private JLabel txt_kisiDersGenelOrt;
+    private JTextField fld_dersGenelBirincisi;
+    private JTextField fld_dersGenelBasariSiralaman;
+    private JLabel txt_dersGenelBirinci;
+    private JLabel txt_dersGenelBasariSiran;
+    private JLabel txt_dersGenelEnYuksekOrt;
+    private JTextField fld_dersGenelEnyOrt;
+    private JLabel txt_dersiAlanKisiSayisi;
+    private JTextField fld_derstenGecenKisiSayisi;
+    private JTextField fld_derstenKalanKisiSayisi;
+    private JLabel txt_derstenGecenKisiSayis;
+    private JLabel txt_derstenKalanKisiSayis;
     static int dersSayisi = 0;
     static String dersSayisiString="";
    static int finalNotu=0;
@@ -769,8 +800,33 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                      fld_enyFalanKisi.setText(EnYuksekBilgileri.enYuksekFNotuAlan);
                      fld_enyNot.setText(""+EnYuksekBilgileri.enYuksekVizeNotu);
                      fld_enyFfinalNot.setText(""+EnYuksekBilgileri.enYuksekFinalNotu);
-                     fld_enyFalanToplamKisi.setText(""+EnYuksekBilgileri.enyFDersiAlanSayisi);
+                     fld_enyFalanToplamKisiSayisi.setText(""+EnYuksekBilgileri.enyFDersiAlanSayisi);
 
+                     int kisiVizeNotu=vt.kisiVizeFinalNotuGetir(EnYuksekBilgileri.enYuksekDersIsim,true);
+                     int kisiFinalNotu=vt.kisiVizeFinalNotuGetir(EnYuksekBilgileri.enYuksekDersIsim,false);
+
+                     fld_vizeNotun.setText(""+kisiVizeNotu);
+                     fld_finalNotun.setText(""+kisiFinalNotu);
+
+                     fld_vizeBasariSirasi.setText(""+vt.kisiVizeFinalBasariSirasiOgrenme(kisiVizeNotu,EnYuksekBilgileri.enYuksekDersIsim,true));
+                     fld_finalBasariSirasi.setText(""+vt.kisiVizeFinalBasariSirasiOgrenme(kisiFinalNotu,EnYuksekBilgileri.enYuksekDersIsim,false));
+
+                     fld_vizeBasariSirasiPaylastigi.setText(""+vt.kisiVizeFinalBasariSirasiPaylastigiKisiSayisiGetirme(kisiVizeNotu,EnYuksekBilgileri.enYuksekDersIsim,true));
+                     fld_finalBasariSirasiPaylastigi.setText(""+vt.kisiVizeFinalBasariSirasiPaylastigiKisiSayisiGetirme(kisiFinalNotu,EnYuksekBilgileri.enYuksekDersIsim,false));
+
+                     fld_sinifVizeOrt.setText(""+vt.sinifVizeFinalNotOrtalamasiGonder(EnYuksekBilgileri.enYuksekDersIsim,true));
+                     fld_sinifFinalOrt.setText(""+vt.sinifVizeFinalNotOrtalamasiGonder(EnYuksekBilgileri.enYuksekDersIsim,false));
+
+                     fld_sinifDersGenelOrt.setText(""+vt.sinifKisiGenelNotOrtalamasiGonder(EnYuksekBilgileri.enYuksekDersIsim,AktifKullanici.aktifKullaniciID,true));
+                     fld_kisiDersGenelOrt.setText(""+vt.sinifKisiGenelNotOrtalamasiGonder(EnYuksekBilgileri.enYuksekDersIsim,AktifKullanici.aktifKullaniciID,false));
+
+                     fld_dersGenelEnyOrt.setText(vt.dersGenelEnyuksekOrtalamaVeyaKisisiniGetir(EnYuksekBilgileri.enYuksekDersIsim,true));
+                     fld_dersGenelBirincisi.setText(vt.dersGenelEnyuksekOrtalamaVeyaKisisiniGetir(EnYuksekBilgileri.enYuksekDersIsim,false));
+
+                     fld_dersGenelBasariSiralaman.setText(""+vt.dersGenelBasariSirasiGetir(EnYuksekBilgileri.enYuksekDersIsim,fld_kisiDersGenelOrt.getText()));
+
+                     fld_derstenGecenKisiSayisi.setText(""+vt.derstenGecenKalanKisiSayisiGetir(EnYuksekBilgileri.enYuksekDersIsim,fld_enyFalanToplamKisiSayisi.getText())[0]);
+                     fld_derstenKalanKisiSayisi.setText(""+vt.derstenGecenKalanKisiSayisiGetir(EnYuksekBilgileri.enYuksekDersIsim,fld_enyFalanToplamKisiSayisi.getText())[1]);
 
                 }
 
