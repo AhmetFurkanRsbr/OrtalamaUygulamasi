@@ -105,8 +105,6 @@ public class MenuGui extends  JFrame{
     private JButton btn_hesabimiSil;
     private JSpinner spn_donem;
     private JLabel txt_donem;
-    private JTextField fld_gecmisGno;
-    private JLabel txt_gecmisGno;
     private JTextField fld_EskiYno;
     private JLabel lbl_eskiyno;
     private JTextField fld_Eskigno;
@@ -244,14 +242,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         }
 
     }
-    void gecmisGnoGorunurluk(boolean gecmisGnoGizle){
-        if(gecmisGnoGizle){
-            fld_gecmisGno.setEditable(false);
-        }else {
-            fld_gecmisGno.setEditable(true);
-        }
 
-    }
     void ortalamaSonucuGizle(){
         lbl_eskigno.setVisible(false);
         lbl_eskiyno.setVisible(false);
@@ -571,12 +562,32 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
             switch (secilenTabIsmi){
                 case "Not Kaydet":
-                    if(!ilkgiris){
-                        String dersSayisiString = JOptionPane.showInputDialog(null,"Kaç ders için hesaplama işlemi yapıcaksınız.");
 
-                        dersSayisi=Integer.parseInt(dersSayisiString);
+                        do {
+                            try {
+                                    String dersSayisiString = JOptionPane.showInputDialog(null, "Kaç ders için hesaplama işlemi yapıcaksınız.");
 
-                        ilkgiris=false;
+                                    dersSayisi = Integer.parseInt(dersSayisiString);
+                                    fld_kalanDersSayisi.setText(dersSayisiString);
+
+
+                            } catch (NumberFormatException e2) {
+                                if(dersSayisiString==null){
+
+                                    cmbx_silinecekDersGonder();
+                                    cmbx_guncellenicekDersGonder();
+                                    cmbx_EnYuksekGonder();
+
+                                    dispose();
+                                    new MenuGui();
+                                }else{
+                                    System.out.println("Kaç ders girelecği sorusuna cancel cevabı verildi : " + e2.getMessage());
+                                    dersSayisiString=null;
+                                    dersSayisi = 0;
+                                }
+                            }
+                        } while (dersSayisi <= 0);
+
 
                         fld_dersIsim.setEnabled(true);
                         fld_vize.setEnabled(true);
@@ -589,20 +600,10 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                         this.revalidate();
                         this.repaint();
 
-                        fld_kalanDersSayisi.setText(dersSayisiString);
-                        ilkgiris=false;
-                    }else {
+                        cmbx_silinecekDersGonder();
+                        cmbx_guncellenicekDersGonder();
+                        cmbx_EnYuksekGonder();
 
-                            String dersSayisiString = JOptionPane.showInputDialog(null,"Kaç ders için hesaplama işlemi yapıcaksınız.");
-
-                            dersSayisi=Integer.parseInt(dersSayisiString);
-
-                            fld_kalanDersSayisi.setText(dersSayisiString);
-                            ilkgiris=false;
-                        }
-                    cmbx_silinecekDersGonder();
-                    cmbx_guncellenicekDersGonder();
-                    cmbx_EnYuksekGonder();
                     break;
                 case "Kayıtlı Notlar":
                     break;

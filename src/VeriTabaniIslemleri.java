@@ -1373,7 +1373,7 @@ boolean dersVeNotguncelle(){
            try {
                statement = baglan.createStatement();
 
-               //if (isGecenKisi) {
+
                    String sqlGecenKisiSayisiGetir =" Select count(dersten_gecme_durumu) from ders_ortalama_bilgileri where dersten_gecme_durumu ='Geçti' and ders_idf  IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"');";
                    ResultSet resultSetGecenKisiSayisiGetir = statement.executeQuery(sqlGecenKisiSayisiGetir);
 
@@ -1384,17 +1384,6 @@ boolean dersVeNotguncelle(){
                        dondurulenDeger[1] = derstenKalanKisiSayisi;
                    }
                    resultSetGecenKisiSayisiGetir.close();
-               /*
-               }else{
-                   String sqlKisiGenelOrtGetir ="Select dersten_gecme_notu100 from ders_ortalama_bilgileri where ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"') and kisi_idf= "+kisiId+" ;";
-                   ResultSet resultSetGetirilenKisiGenelOrt = statement.executeQuery(sqlKisiGenelOrtGetir);
-
-                   if (resultSetGetirilenKisiGenelOrt.next()) {
-                       sinifVeyaKisiGenelOrtalama = resultSetGetirilenKisiGenelOrt.getInt(1);
-
-                   }
-                   resultSetGetirilenKisiGenelOrt.close();
-               }*/
            }catch (SQLException e){
                System.out.println("Dersten geçen kalan kişi sayısı hesaplanırken oluşan sql hatası + "+e.getMessage());
            }
