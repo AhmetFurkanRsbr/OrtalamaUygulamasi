@@ -157,7 +157,6 @@ public class MenuGui extends  JFrame{
     static int finalEtkiOrani=0;
     static int akts=0;
    static int donem=0;
-    boolean ilkgiris=true;
     boolean isNotGirisindeHata=false;
     String cmbxSilinecekDersIsim;
     String cmbxguncellenicekDersIsim;
@@ -563,16 +562,18 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             switch (secilenTabIsmi){
                 case "Not Kaydet":
 
-                        do {
-                            try {
-                                    String dersSayisiString = JOptionPane.showInputDialog(null, "Kaç ders için hesaplama işlemi yapıcaksınız.");
-
-                                    dersSayisi = Integer.parseInt(dersSayisiString);
-                                    fld_kalanDersSayisi.setText(dersSayisiString);
+                    do {
+                        try {
+                            String dersSayisiString = JOptionPane.showInputDialog(null, "Kaç ders için hesaplama işlemi yapıcaksınız.");
 
 
-                            } catch (NumberFormatException e2) {
-                                if(dersSayisiString==null){
+                            dersSayisi = Integer.parseInt(dersSayisiString);
+                               fld_kalanDersSayisi.setText(dersSayisiString);
+
+
+                        } catch (NumberFormatException e2) {
+
+                                if(dersSayisiString.isEmpty()){
 
                                     cmbx_silinecekDersGonder();
                                     cmbx_guncellenicekDersGonder();
@@ -580,13 +581,14 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
                                     dispose();
                                     new MenuGui();
+                                    break;
                                 }else{
                                     System.out.println("Kaç ders girelecği sorusuna cancel cevabı verildi : " + e2.getMessage());
                                     dersSayisiString=null;
                                     dersSayisi = 0;
                                 }
-                            }
-                        } while (dersSayisi <= 0);
+                        }
+                    } while (dersSayisi <= 0);
 
 
                         fld_dersIsim.setEnabled(true);
