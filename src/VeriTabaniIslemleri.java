@@ -375,7 +375,6 @@ public class VeriTabaniIslemleri {
         }
 
         try {
-            System.out.println("fsm");
             Statement stat3 = baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             String sqlDersIDiAlma = "select ders_id from ders_bilgileri where ders_isim ='" + anlikDersIsim + "' and " +
                     "kisi_idf = (SELECT kisi_idf FROM kullanici_bilgileri WHERE kullanici_ad = '" + AktifKullanici.aktifKullaniciKullaniciAdi + "'); ";
@@ -1341,7 +1340,7 @@ boolean dersVeNotguncelle(){
                    ResultSet resultSetDersGenelBasariSirasi = statement.executeQuery(sqlDersGenelBasariSirasiHesapla);
 
                    if (resultSetDersGenelBasariSirasi.next()) {
-                       dersGenelBasariSirasi = resultSetDersGenelBasariSirasi.getInt(1);
+                       dersGenelBasariSirasi = 1+resultSetDersGenelBasariSirasi.getInt(1);
 
                    }
                    resultSetDersGenelBasariSirasi.close();

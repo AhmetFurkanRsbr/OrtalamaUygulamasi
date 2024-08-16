@@ -1,9 +1,7 @@
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class GirisEkrani  extends JFrame{
     public JTextField fld_kullaniciAdiGiris;
@@ -14,7 +12,34 @@ public class GirisEkrani  extends JFrame{
     private JLabel fld_kayitOl;
     VeriTabaniIslemleri veriTabaniIslemleri2 =new VeriTabaniIslemleri();
 
+    private void girisIslemiYap(){
+        String kullaniciAdiGirisText = fld_kullaniciAdiGiris.getText();
+        String parolaGirisText =fld_parolaGiris.getText();
+
+        if(!kullaniciAdiGirisText.isEmpty() &&  !parolaGirisText.isEmpty() ){
+            // VeriTabaniIslemleri veriTabaniIslemleri2 =new VeriTabaniIslemleri();
+            veriTabaniIslemleri2.kullaniciGirisiDogruMu(kullaniciAdiGirisText,parolaGirisText);
+            if(!veriTabaniIslemleri2.isKullaniciGirisiDogruMu){
+                JOptionPane.showMessageDialog(null,"KULLANICI SİSTEMDE YOK");
+            }else {
+                JOptionPane.showMessageDialog(null,"KULLANICI GİRİŞİ BAŞARILI");
+                AktifKullanici.aktifKullaniciParola=fld_parolaGiris.getText();
+
+
+                veriTabaniIslemleri2.kullaniciBilgileriAktar();
+                dispose();
+                new MenuGui();
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(null,"!! Lütfen Boş Alan Bırakmayınız !!");
+        }
+    }
+
     GirisEkrani(){
+        // Kullanıcı adı ve parola alanlarına ActionListener ekliyoruz
+        fld_kullaniciAdiGiris.addActionListener(e -> handleLogin());
+        fld_parolaGiris.addActionListener(e -> handleLogin());
 
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -37,7 +62,6 @@ public class GirisEkrani  extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width )/2,(Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height )/2);
-
 
         fld_kayitOl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Fare işaretçisini el işareti yap
         fld_kayitOl.addMouseListener(new MouseAdapter() {
@@ -64,29 +88,19 @@ public class GirisEkrani  extends JFrame{
         btn_girisYap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String kullaniciAdiGirisText = fld_kullaniciAdiGiris.getText();
-                String parolaGirisText =fld_parolaGiris.getText();
-
-
-                if(!kullaniciAdiGirisText.isEmpty() &&  !parolaGirisText.isEmpty() ){
-                   // VeriTabaniIslemleri veriTabaniIslemleri2 =new VeriTabaniIslemleri();
-                    veriTabaniIslemleri2.kullaniciGirisiDogruMu(kullaniciAdiGirisText,parolaGirisText);
-                    if(!veriTabaniIslemleri2.isKullaniciGirisiDogruMu){
-                     JOptionPane.showMessageDialog(null,"KULLANICI SİSTEMDE YOK");
-                  }else {
-                        JOptionPane.showMessageDialog(null,"KULLANICI GİRİŞİ BAŞARILI");
-                       AktifKullanici.aktifKullaniciParola=fld_parolaGiris.getText();
-
-
-                        veriTabaniIslemleri2.kullaniciBilgileriAktar();
-                        dispose();
-                        new MenuGui();
-                    }
-
-                }else{
-                  JOptionPane.showMessageDialog(null,"!! Lütfen Boş Alan Bırakmayınız !!");
-                }
+                girisIslemiYap();
             }
         });
+
+    }
+    private void handleLogin() {
+        // Kullanıcı adı ve parola alanı dolu mu kontrol et
+        if (!fld_kullaniciAdiGiris.getText().isEmpty() && fld_parolaGiris.getPassword().length > 0) {
+            System.out.println("Kullanıcı bilgileri denetleniyor...");
+            girisIslemiYap();
+        } else {
+            JOptionPane.showMessageDialog(null,"Lütfen Kullanıcıadı ve parola alanlarını doldurun.");
+            System.out.println("Lütfen  adı ve parola alanlarını doldurun.");
+        }
     }
 }

@@ -764,8 +764,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                cmbx_guncellenicekDersGonder();
                cmbx_silinecekDersGonder();
 
-               dispose();
-               new MenuGui();
+               tabbedPane1.setSelectedIndex(3);
            }
 
             }
@@ -786,6 +785,10 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     vt.dersVeNotguncelle();
 
                    JOptionPane.showMessageDialog(null,"Güncelleme İşlemi Başarıyla Gerçekleşti");
+
+
+                   tabbedPane1.setSelectedIndex(4);
+                   tabbedPane1.setSelectedIndex(2);
                 }else {
                     JOptionPane.showMessageDialog(null,"Eksik Yeni Değerler Tespit Edildi !!");
                 }
