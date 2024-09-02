@@ -2,11 +2,10 @@ import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MenuGui extends  JFrame{
@@ -149,6 +148,89 @@ public class MenuGui extends  JFrame{
     private JTextField fld_derstenKalanKisiSayisi;
     private JLabel txt_derstenGecenKisiSayis;
     private JLabel txt_derstenKalanKisiSayis;
+    private JCheckBox chckbx_rastgeleDersler;
+    private JCheckBox chckbx_kayitliDersler;
+    private JSpinner spn_getirilecekDonem;
+    private JButton btn_hesapla;
+    private JTextField fld_vize1;
+    private JTextField fld_final1;
+    private JTextField fld_vizeEtki1;
+    private JButton btn_dersleriGetir;
+    private JTextField fld_vize2;
+    private JTextField fld_vize3;
+    private JTextField fld_vize4;
+    private JTextField fld_vize5;
+    private JTextField fld_vize6;
+    private JTextField fld_vize7;
+    private JTextField fld_vize8;
+    private JTextField fld_vize9;
+    private JTextField fld_vize10;
+    private JTextField fld_vize11;
+    private JTextField fld_final2;
+    private JTextField fld_final3;
+    private JTextField fld_final4;
+    private JTextField fld_final5;
+    private JTextField fld_final6;
+    private JTextField fld_final7;
+    private JTextField fld_final8;
+    private JTextField fld_final9;
+    private JTextField fld_final10;
+    private JTextField fld_final11;
+    private JTextField fld_vizeEtki2;
+    private JTextField fld_vizeEtki3;
+    private JTextField fld_vizeEtki4;
+    private JTextField fld_vizeEtki5;
+    private JTextField fld_vizeEtki6;
+    private JTextField fld_vizeEtki7;
+    private JTextField fld_vizeEtki8;
+    private JTextField fld_vizeEtki9;
+    private JTextField fld_vizeEtki10;
+    private JTextField fld_vizeEtki11;
+    private JTextField fld_finalEtki1;
+    private JTextField fld_finalEtki2;
+    private JTextField fld_finalEtki3;
+    private JTextField fld_finalEtki4;
+    private JTextField fld_finalEtki5;
+    private JTextField fld_finalEtki6;
+    private JTextField fld_finalEtki7;
+    private JTextField fld_finalEtki8;
+    private JTextField fld_finalEtki9;
+    private JTextField fld_finalEtki10;
+    private JTextField fld_finalEtki11;
+    private JLabel txt_hangiDonem;
+    private JSpinner spn_aktsDers1;
+    private JSpinner spn_aktsDers2;
+    private JSpinner spn_aktsDers3;
+    private JSpinner spn_aktsDers4;
+    private JSpinner spn_aktsDers5;
+    private JSpinner spn_aktsDers6;
+    private JSpinner spn_aktsDers7;
+    private JSpinner spn_aktsDers8;
+    private JSpinner spn_aktsDers9;
+    private JSpinner spn_aktsDers10;
+    private JSpinner spn_aktsDers11;
+    private JPanel jp_checkboxlar;
+    private JLabel txt_vizeEtkiOrani;
+    private JLabel txt_finalNotu;
+    private JLabel txt_vizeNotu;
+    private JLabel txt_akts;
+    private JLabel txt_dersIsim;
+    private JScrollPane scrool_ortalamaDene;
+    private JTextField txt_dersIsim1;
+    private JTextField txt_dersIsim3;
+    private JTextField txt_dersIsim4;
+    private JTextField txt_dersIsim2;
+    private JTextField txt_dersIsim5;
+    private JTextField txt_dersIsim6;
+    private JTextField txt_dersIsim7;
+    private JTextField txt_dersIsim8;
+    private JTextField txt_dersIsim9;
+    private JTextField txt_dersIsim10;
+    private JTextField txt_dersIsim11;
+    private JLabel txt_kacDersHesaplanicak;
+    private JSpinner spn_hesaplanicakDersSayisi;
+    private JLabel txt_finaltkiOrani;
+    ArrayList<Component> temizlenecekComponent = new ArrayList<>();
     static int dersSayisi = 0;
     static String dersSayisiString="";
    static int finalNotu=0;
@@ -156,7 +238,8 @@ public class MenuGui extends  JFrame{
     static int vizeEtkiOrani=0;
     static int finalEtkiOrani=0;
     static int akts=0;
-   static int donem=0;
+    static int donem=0;
+    static int dersSayisiIndex = 1;
     boolean isNotGirisindeHata=false;
     String cmbxSilinecekDersIsim;
     String cmbxguncellenicekDersIsim;
@@ -166,6 +249,29 @@ public class MenuGui extends  JFrame{
 
 VeriTabaniIslemleri vt= new  VeriTabaniIslemleri();
 SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
+
+    private static void addNumericKeyListenerToAllTextFields(Container container) {
+        for (Component component : container.getComponents()) {
+
+            if (component instanceof JTextField) {
+                ((JTextField) component).addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        char c = e.getKeyChar();
+                        // Eğer karakter rakam değilse, işlem yapma
+
+                        if (!Character.isDigit(c) && component.getName()!=null  &&component.getName().startsWith("number")) {
+                            e.consume(); // İşlemi iptal et
+                        }
+                    }
+                });
+            } else if (component instanceof Container) {
+                // Eğer bileşen başka bir Container ise, bu metod ile devam et
+                addNumericKeyListenerToAllTextFields((Container) component);
+            }
+        }
+    }
+
     void gnoKayitEkle(){
 
         if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().equals("0.0") ){
@@ -186,16 +292,56 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             JOptionPane.showMessageDialog(null,"Zaten Sistemde Gno Kaydınız Var.... Gno Güncelle Kısmını Kullanınınz !!");
         }
     }
+    void ortalamaDeneSyfDersleriGetir(boolean isRastgeleDersleriGetir,int DersSayisi){
+
+        if (isRastgeleDersleriGetir){
+
+            kayitliDersleriGizle();
+            kayitliDersleriGetir(DersSayisi);
+
+        }else {
+
+         }
+
+    }
     void spinnerLimitle(){
          int minDeger =1;
          int maxDeger =30;
          int minDeger2 =1;
          int maxDeger2 =20;
 
-         SpinnerModel spinnerModel1 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
-        SpinnerModel spinnerModel2 = new SpinnerNumberModel(minDeger2,minDeger2,maxDeger2,1);
-         spn_Akts.setModel(spinnerModel1);
+         SpinnerModel spinnerModelAktsNotKaydet = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+         SpinnerModel spinnerModel2 = new SpinnerNumberModel(minDeger2,minDeger2,maxDeger2,1);
+
+         spn_Akts.setModel(spinnerModelAktsNotKaydet);
          spn_donem.setModel(spinnerModel2);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers1 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers2 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers3 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers4 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers5 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers6 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers7 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers8 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers9 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers10 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelAktsOrtHesaplaDers11 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
+        SpinnerModel spinnerModelOrtHesaplaDonem = new SpinnerNumberModel(1,1,18,1);
+        SpinnerModel spinnerModelOrtHesaplaDersSayisi = new SpinnerNumberModel(1,1,11,1);
+
+         spn_aktsDers1.setModel(spinnerModelAktsOrtHesaplaDers1);
+         spn_aktsDers2.setModel(spinnerModelAktsOrtHesaplaDers2);
+         spn_aktsDers3.setModel(spinnerModelAktsOrtHesaplaDers3);
+         spn_aktsDers4.setModel(spinnerModelAktsOrtHesaplaDers4);
+         spn_aktsDers5.setModel(spinnerModelAktsOrtHesaplaDers5);
+         spn_aktsDers6.setModel(spinnerModelAktsOrtHesaplaDers6);
+         spn_aktsDers7.setModel(spinnerModelAktsOrtHesaplaDers7);
+         spn_aktsDers8.setModel(spinnerModelAktsOrtHesaplaDers8);
+         spn_aktsDers9.setModel(spinnerModelAktsOrtHesaplaDers9);
+         spn_aktsDers10.setModel(spinnerModelAktsOrtHesaplaDers10);
+         spn_aktsDers11.setModel(spinnerModelAktsOrtHesaplaDers11);
+         spn_getirilecekDonem.setModel(spinnerModelOrtHesaplaDonem);
+         spn_hesaplanicakDersSayisi.setModel(spinnerModelOrtHesaplaDersSayisi);
 
          //Spinner a text tipinden yazı yazılmasını engelleyen kısım(akts değerini sadece arttırma eksilme yapılmasına izin veriyor)
          JComponent editor = spn_Akts.getEditor();
@@ -206,6 +352,71 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         JComponent editor1 = spn_donem.getEditor();
         if (editor instanceof JSpinner.DefaultEditor) {
             JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editor1;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers1 = spn_aktsDers1.getEditor();
+        if (editorOrtKaydetAktsDers1 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers1;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers2 = spn_aktsDers2.getEditor();
+        if (editorOrtKaydetAktsDers2 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers2;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers3 = spn_aktsDers3.getEditor();
+        if (editorOrtKaydetAktsDers3 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers3;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers4 = spn_aktsDers4.getEditor();
+        if (editorOrtKaydetAktsDers4 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers4;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers5 = spn_aktsDers5.getEditor();
+        if (editorOrtKaydetAktsDers5 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers5;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers6 = spn_aktsDers6.getEditor();
+        if (editorOrtKaydetAktsDers6 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers6;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers7 = spn_aktsDers7.getEditor();
+        if (editorOrtKaydetAktsDers7 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers7;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers8 = spn_aktsDers8.getEditor();
+        if (editorOrtKaydetAktsDers8 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers8;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers9 = spn_aktsDers9.getEditor();
+        if (editorOrtKaydetAktsDers9 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers9;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers10 = spn_aktsDers10.getEditor();
+        if (editorOrtKaydetAktsDers10 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers10;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetAktsDers11 = spn_aktsDers11.getEditor();
+        if (editorOrtKaydetAktsDers11 instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetAktsDers11;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetDonem = spn_getirilecekDonem.getEditor();
+        if (editorOrtKaydetDonem instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetDonem;
+            spinnerEditor.getTextField().setEditable(false);
+        }
+        JComponent editorOrtKaydetDersSayisi = spn_hesaplanicakDersSayisi.getEditor();
+        if (editorOrtKaydetDersSayisi instanceof JSpinner.DefaultEditor) {
+            JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) editorOrtKaydetDersSayisi;
             spinnerEditor.getTextField().setEditable(false);
         }
 
@@ -446,6 +657,147 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         fld_finalNotKayit.setVisible(true);
         fld_derstgenGecmeKayi.setVisible(true);
     }
+   public void ortalamaDeneSayfasindakiComponentleriDiziyeAktar(){
+
+        temizlenecekComponent.add(txt_dersIsim1);
+        temizlenecekComponent.add(txt_dersIsim2);
+        temizlenecekComponent.add(txt_dersIsim3);
+        temizlenecekComponent.add(txt_dersIsim4);
+        temizlenecekComponent.add(txt_dersIsim5);
+        temizlenecekComponent.add(txt_dersIsim6);
+        temizlenecekComponent.add(txt_dersIsim7);
+        temizlenecekComponent.add(txt_dersIsim8);
+        temizlenecekComponent.add(txt_dersIsim9);
+        temizlenecekComponent.add(txt_dersIsim10);
+        temizlenecekComponent.add(txt_dersIsim11);
+
+
+
+        temizlenecekComponent.add(spn_aktsDers1);
+        temizlenecekComponent.add(spn_aktsDers2);
+        temizlenecekComponent.add(spn_aktsDers3);
+        temizlenecekComponent.add(spn_aktsDers4);
+        temizlenecekComponent.add(spn_aktsDers5);
+        temizlenecekComponent.add(spn_aktsDers6);
+        temizlenecekComponent.add(spn_aktsDers7);
+        temizlenecekComponent.add(spn_aktsDers8);
+        temizlenecekComponent.add(spn_aktsDers9);
+        temizlenecekComponent.add(spn_aktsDers10);
+        temizlenecekComponent.add(spn_aktsDers11);
+
+        temizlenecekComponent.add(fld_vize1);
+        temizlenecekComponent.add(fld_vize2);
+        temizlenecekComponent.add(fld_vize3);
+        temizlenecekComponent.add(fld_vize4);
+        temizlenecekComponent.add(fld_vize5);
+        temizlenecekComponent.add(fld_vize6);
+        temizlenecekComponent.add(fld_vize7);
+        temizlenecekComponent.add(fld_vize8);
+        temizlenecekComponent.add(fld_vize9);
+        temizlenecekComponent.add(fld_vize10);
+        temizlenecekComponent.add(fld_vize11);
+
+
+        temizlenecekComponent.add(fld_final1);
+        temizlenecekComponent.add(fld_final2);
+        temizlenecekComponent.add(fld_final3);
+        temizlenecekComponent.add(fld_final4);
+        temizlenecekComponent.add(fld_final5);
+        temizlenecekComponent.add(fld_final6);
+        temizlenecekComponent.add(fld_final7);
+        temizlenecekComponent.add(fld_final8);
+        temizlenecekComponent.add(fld_final9);
+        temizlenecekComponent.add(fld_final10);
+        temizlenecekComponent.add(fld_final11);
+
+        temizlenecekComponent.add(fld_vizeEtki1);
+        temizlenecekComponent.add(fld_vizeEtki2);
+        temizlenecekComponent.add(fld_vizeEtki3);
+        temizlenecekComponent.add(fld_vizeEtki4);
+        temizlenecekComponent.add(fld_vizeEtki5);
+        temizlenecekComponent.add(fld_vizeEtki6);
+        temizlenecekComponent.add(fld_vizeEtki7);
+        temizlenecekComponent.add(fld_vizeEtki8);
+        temizlenecekComponent.add(fld_vizeEtki9);
+        temizlenecekComponent.add(fld_vizeEtki10);
+        temizlenecekComponent.add(fld_vizeEtki11);
+
+
+
+        temizlenecekComponent.add(fld_finalEtki1);
+        temizlenecekComponent.add(fld_finalEtki2);
+        temizlenecekComponent.add(fld_finalEtki3);
+        temizlenecekComponent.add(fld_finalEtki4);
+        temizlenecekComponent.add(fld_finalEtki5);
+        temizlenecekComponent.add(fld_finalEtki6);
+        temizlenecekComponent.add(fld_finalEtki7);
+        temizlenecekComponent.add(fld_finalEtki8);
+        temizlenecekComponent.add(fld_finalEtki9);
+        temizlenecekComponent.add(fld_finalEtki10);
+        temizlenecekComponent.add(fld_finalEtki11);
+
+    }public void ortalamaDeneSayfasindakiVerileriTemizle(){
+        for(Component temizle:temizlenecekComponent){
+            if (temizle instanceof JTextField ){
+
+                ((JTextField) temizle).setText("");
+            } else{
+                if (temizle instanceof JSpinner){
+                    ((JSpinner) temizle).setValue(1);
+                }
+            }
+        }
+    }
+    void kayitliDersleriGizle(){
+
+        txt_dersIsim.setVisible(false);
+        txt_akts.setVisible(false);
+        txt_vizeNotu.setVisible(false);
+        txt_finalNotu.setVisible(false);
+        txt_vizeEtkiOrani.setVisible(false);
+        txt_finaltkiOrani.setVisible(false);
+
+        for (Component component:temizlenecekComponent){        //Öncesinde tüm componentlerin görünürlüğünü kapatır.
+            component.setVisible(false);
+        }
+    }
+
+     void kayitliDersleriGetir(int dersSayisi) {
+        MenuGui.dersSayisiIndex=1;
+        String ifade="";
+
+         txt_dersIsim.setVisible(true);
+         txt_akts.setVisible(true);
+         txt_vizeNotu.setVisible(true);
+         txt_finalNotu.setVisible(true);
+         txt_vizeEtkiOrani.setVisible(true);
+         txt_finaltkiOrani.setVisible(true);
+
+
+         for (dersSayisi=dersSayisi;dersSayisiIndex<=dersSayisi;dersSayisiIndex++) {
+
+             ifade=String.valueOf(dersSayisiIndex);
+
+             for (Component component:temizlenecekComponent){
+                 try {
+                      if (component.getName().endsWith(ifade) && !component.getName().endsWith("11")) {
+
+                          component.setVisible(true);
+                      } else if (dersSayisi==11 && component.getName().endsWith("11")){
+
+                          component.setVisible(true);
+
+                       }
+                 }catch (NullPointerException e){
+                  System.out.println(e.getMessage());    //  getName ile dönen değer null ise burası çalışıyor .
+                  component.setVisible(false);
+                  }
+             }
+         }
+     }
+
+
+
     MenuGui(){
         ortalamaSonucuGizle();
         btn_sistemeKayitEt.setVisible(false);
@@ -461,6 +813,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         guncellenicekSayfasindakileriGizle();
         cmbx_silinecekDersGonder();
         cmbx_guncellenicekDersGonder();
+
+        txt_kacDersHesaplanicak.setVisible(false);
+        spn_hesaplanicakDersSayisi.setVisible(false);
 
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -555,6 +910,11 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 new GirisEkrani();
             }
         });
+        if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().equals("0.0")){
+            JOptionPane.showMessageDialog(null,"Gno(Genel ortalama) bilginizi giriniz");
+            btn_gnoEkle.doClick();
+            btn_gnoEkle.setAction(btn_gnoEkle.getAction());
+        }
         tabbedPane1.addChangeListener(e -> {
             int secilenIndex = tabbedPane1.getSelectedIndex();
             String secilenTabIsmi = tabbedPane1.getTitleAt(secilenIndex);
@@ -621,7 +981,8 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     cmbx_EnYuksekGonder();
                     break;
                 case "Ortalama Dene":
-                    //Yapılacak işlemler.
+                    addNumericKeyListenerToAllTextFields(tab_ortalamaDene);//Ortalama Dene sekmesinde sayılar dışında ifade yazılmasını engeller.
+                    ortalamaDeneSayfasindakiComponentleriDiziyeAktar();
                     break;
                 default:
                     System.out.println("HATALI PENCERE DEĞİŞİMİ");
@@ -688,7 +1049,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                                 spn_Akts.setEnabled(false);
                                 spn_donem.setEnabled(false);
                                 btn_ortalamaHesapla.setEnabled(false);
-                                System.out.println("cancel");
                                 break;
                         }
                     }
@@ -830,7 +1190,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                      fld_dersGenelBirincisi.setText(vt.dersGenelEnyuksekOrtalamaVeyaKisisiniGetir(EnYuksekBilgileri.enYuksekDersIsim,false));
 
                      fld_dersGenelBasariSiralaman.setText(""+vt.dersGenelBasariSirasiGetir(EnYuksekBilgileri.enYuksekDersIsim,fld_kisiDersGenelOrt.getText()));
-
                      fld_derstenGecenKisiSayisi.setText(""+vt.derstenGecenKalanKisiSayisiGetir(EnYuksekBilgileri.enYuksekDersIsim,fld_enyFalanToplamKisiSayisi.getText())[0]);
                      fld_derstenKalanKisiSayisi.setText(""+vt.derstenGecenKalanKisiSayisiGetir(EnYuksekBilgileri.enYuksekDersIsim,fld_enyFalanToplamKisiSayisi.getText())[1]);
 
@@ -887,8 +1246,119 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 }
             }
         });
+        chckbx_kayitliDersler.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              chckbx_rastgeleDersler.setSelected(false);
+              chckbx_rastgeleDersler.setEnabled(true);
+              chckbx_kayitliDersler.setEnabled(false);
+
+                txt_hangiDonem.setVisible(true);
+                spn_getirilecekDonem.setVisible(true);
+
+                txt_kacDersHesaplanicak.setVisible(false);
+                spn_hesaplanicakDersSayisi.setVisible(false);
+
+                kayitliDersleriGizle();
+
+            }
+        });
+        chckbx_rastgeleDersler.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txt_dersIsim.setVisible(true);
+                txt_akts.setVisible(true);
+                txt_vizeNotu.setVisible(true);
+                txt_finalNotu.setVisible(true);
+                txt_vizeEtkiOrani.setVisible(true);
+                txt_finaltkiOrani.setVisible(true);
+
+                  chckbx_kayitliDersler.setSelected(false);
+                  chckbx_rastgeleDersler.setEnabled(false);
+                  chckbx_kayitliDersler.setEnabled(true);
+
+                  txt_hangiDonem.setVisible(false);
+                  spn_getirilecekDonem.setVisible(false);
+
+                  txt_kacDersHesaplanicak.setVisible(true);
+                  spn_hesaplanicakDersSayisi.setVisible(true);
+
+            }
+        });
+
+        btn_hesapla.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int vizeNotuOrtHesapla=0,finalNotuOrtHesapla=0,vizeEtkiOraniOrtHesapla=0,finalEtkiOraniOrtHesapla=0,aktsOrtHesapla=0;
+                try {
+                    String finalStringOrtHesapla = fld_final1.getText();
+                    finalNotuOrtHesapla = Integer.parseInt(finalStringOrtHesapla);
+
+                    String vizeStringOrtHesapla = fld_vize1.getText();
+                     vizeNotuOrtHesapla = Integer.parseInt(vizeStringOrtHesapla);
+
+                    String vizeEtkiOStringOrtHesapla = fld_vizeEtki1.getText();
+                    vizeEtkiOraniOrtHesapla = Integer.parseInt(vizeEtkiOStringOrtHesapla);
+
+                    String finalEtkiStringOrtHesapla = fld_finalEtki1.getText();
+                    finalEtkiOraniOrtHesapla = Integer.parseInt(finalEtkiStringOrtHesapla);
+
+                    aktsOrtHesapla = (int) spn_aktsDers1.getValue();
+                    //donem=(int) spn_donem.getValue();
+                    isNotGirisindeHata=false;
+                } catch (NumberFormatException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+                if( vizeNotuOrtHesapla <0 || vizeNotuOrtHesapla >100){
+                    isNotGirisindeHata=true;
+                    JOptionPane.showInternalMessageDialog(null,"!! Vize Notunuz 0-100 Aralığında Olmalılıdır !!");
+                }  if (finalNotuOrtHesapla < 0 || finalNotuOrtHesapla > 100) {
+                    isNotGirisindeHata=true;
+                    JOptionPane.showInternalMessageDialog(null,"!! Final Notunuz 0-100 Aralığında Olmalılıdır !!");
+                } if ( (vizeEtkiOraniOrtHesapla + finalEtkiOraniOrtHesapla ) != 100) {
+                    isNotGirisindeHata=true;
+                    JOptionPane.showInternalMessageDialog(null,"!! Vize ve Final Etki Oranları Toplamı 100 'ü Vermelidir !!");
+                }  if (aktsOrtHesapla > 30 || aktsOrtHesapla <= 0) {
+                    isNotGirisindeHata=true;
+                    JOptionPane.showInternalMessageDialog(null,"!! Akts Değeriniz 30 'dan Büyük, 0 'a Küçük-Eşit Olamaz !!");
+                }/*if(!isNotGirisindeHata){
+
+                    ortalamaHesapla1.dersOrtalamasiHesapla(vizeNotu,finalNotu,akts,vizeEtkiOrani,finalEtkiOrani);
+                    //ortalamaHesapla1.anlikDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem,Integer.parseInt(fld_kalanDersSayisi.getText()));
+                    ortalamaHesapla1.donemOrtalamaHesapla(AktifKullanici.aktifKullaniciID,donem);
+                    ortalamaHesapla1.yeniDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem);
+                    fld_Eskigno.setText(String.valueOf(vt.eskiGnoGetir(AktifKullanici.aktifKullaniciID,donem)));
+                    vt.yeniGnoHesapla(AktifKullanici.aktifKullaniciID,donem,OrtalamaHesapla.yeniDonemOrtalamasi4,OrtalamaHesapla.donemOrtalamasi4);
+
+                    JOptionPane.showMessageDialog(null,"DERS:"+ fld_dersIsim.getText() + "\ndersten geçme notunuz(4lük) : "+ortalamaHesapla1.dortlukDersGecmeNotu+"\ndersten geçme notunuz(100 lük) : "+ortalamaHesapla1.derstenGecmeNotu100+"\n\tDERSTEN GEÇME DURUMUNUZ-->> "+ortalamaHesapla1.dersGecmeDurumuString);
+                    fld_yno.setText(String.valueOf(OrtalamaHesapla.yeniDonemOrtalamasi4));
+                    fld_EskiYno.setText(String.valueOf(OrtalamaHesapla.donemOrtalamasi4));
+                    fld_dersGecme100.setText(String.valueOf(OrtalamaHesapla.derstenGecmeNotu100));
+                    fld_dersGecme4.setText(String.valueOf(OrtalamaHesapla.dortlukDersGecmeNotu));
+                    fld_gno.setText(String.valueOf(VeriTabaniIslemleri.yeniGno));
+                    btn_sistemeKayitEt.setVisible(true);
+                    if(fld_kalanDersSayisi.getText().equals("1")) {
+                        ortalamaHesapla1.donemOrtalamaHesapla(AktifKullanici.aktifKullaniciID,donem);
+                        ortalamaHesapla1.anlikDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem,Integer.parseInt(fld_kalanDersSayisi.getText()));
+                        ortalamaSonucuGorunurYap(false);
+
+                    }else{
+                        ortalamaSonucuGorunurYap(true);
+                    }
+
+                }*/
+            }
+        });
+        btn_dersleriGetir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ortalamaDeneSayfasindakiVerileriTemizle();
+                ortalamaDeneSyfDersleriGetir(chckbx_rastgeleDersler.isSelected(),Integer.parseInt(spn_hesaplanicakDersSayisi.getValue().toString()));
+
+            }
+        });
     }
-
-
 
 }

@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="JP_Menu" layout-manager="GridLayoutManager" row-count="13" column-count="16" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="22" width="2134" height="666"/>
+      <xy x="20" y="22" width="2756" height="940"/>
     </constraints>
     <properties>
       <background color="-1715050"/>
@@ -531,7 +531,7 @@
               </component>
               <component id="4b6ec" class="javax.swing.JLabel" binding="txt_eskiDrsIsim">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="4" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Ders İsmi"/>
@@ -567,7 +567,7 @@
               </component>
               <component id="8c006" class="javax.swing.JLabel" binding="txt_yeniDrsIsim">
                 <constraints>
-                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Ders İsmi"/>
@@ -575,7 +575,7 @@
               </component>
               <component id="cd6cd" class="javax.swing.JLabel" binding="txt_eskiDrsAkts">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="4" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Akts"/>
@@ -583,7 +583,7 @@
               </component>
               <component id="c2550" class="javax.swing.JSpinner" binding="spn_eskiAkts">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <enabled value="false"/>
@@ -592,7 +592,7 @@
               </component>
               <component id="ade18" class="javax.swing.JLabel" binding="txt_yeniDrsAkts">
                 <constraints>
-                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Akts"/>
@@ -600,13 +600,13 @@
               </component>
               <component id="8b0f8" class="javax.swing.JSpinner" binding="spn_yeniAkts">
                 <constraints>
-                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="6" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="aff61" class="javax.swing.JLabel" binding="txt_yeniDrsVize">
                 <constraints>
-                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Vize Notu"/>
@@ -614,7 +614,7 @@
               </component>
               <component id="157c3" class="javax.swing.JLabel" binding="txt_eskiDrsVize">
                 <constraints>
-                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="4" use-parent-layout="false"/>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Vize Notu"/>
@@ -645,7 +645,7 @@
               </component>
               <component id="19636" class="javax.swing.JLabel" binding="txt_yeniDrsFinal">
                 <constraints>
-                  <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Final Notu"/>
@@ -653,7 +653,7 @@
               </component>
               <component id="56042" class="javax.swing.JLabel" binding="txt_eskiDrsFinal">
                 <constraints>
-                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="4" use-parent-layout="false"/>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Final Notu"/>
@@ -685,7 +685,7 @@
               </component>
               <component id="70950" class="javax.swing.JLabel" binding="txt_yeniVizeEtki">
                 <constraints>
-                  <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Vize Etki Oranı"/>
@@ -693,7 +693,7 @@
               </component>
               <component id="6231" class="javax.swing.JLabel" binding="txt_eskiVizeEtki">
                 <constraints>
-                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="4" use-parent-layout="false"/>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Vize Etki Oranı"/>
@@ -725,7 +725,7 @@
               </component>
               <component id="b3b3d" class="javax.swing.JLabel" binding="txt_yeniFinalEtki">
                 <constraints>
-                  <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Final Etki Oranı"/>
@@ -733,7 +733,7 @@
               </component>
               <component id="9509" class="javax.swing.JLabel" binding="txt_eskiFinalEtki">
                 <constraints>
-                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="4" use-parent-layout="false"/>
+                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Final Etki Oranı"/>
@@ -1407,15 +1407,884 @@
               </component>
             </children>
           </grid>
-          <grid id="7098" binding="tab_ortalamaDene" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <scrollpane id="d26a4" binding="scrool_ortalamaDene">
             <constraints>
               <tabbedpane title="Ortalama Dene"/>
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
-          </grid>
+            <children>
+              <grid id="7098" binding="tab_ortalamaDene" layout-manager="GridLayoutManager" row-count="24" column-count="38" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints/>
+                <properties/>
+                <border type="none" title-justification="2">
+                  <font/>
+                </border>
+                <children>
+                  <vspacer id="abb01">
+                    <constraints>
+                      <grid row="23" column="0" row-span="1" col-span="37" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <vspacer id="cee21">
+                    <constraints>
+                      <grid row="0" column="16" row-span="1" col-span="21" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <vspacer id="f5884">
+                    <constraints>
+                      <grid row="22" column="0" row-span="1" col-span="37" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <vspacer id="f0942">
+                    <constraints>
+                      <grid row="20" column="0" row-span="1" col-span="37" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <hspacer id="37c78">
+                    <constraints>
+                      <grid row="0" column="37" row-span="8" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <grid id="a1b3e" binding="jp_checkboxlar" layout-manager="GridLayoutManager" row-count="7" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="16" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="ec6a4" class="javax.swing.JCheckBox" binding="chckbx_rastgeleDersler">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <foreground color="-1769426"/>
+                          <text value="Rastgele Dersleri Girerek Ortalama Dene"/>
+                        </properties>
+                      </component>
+                      <component id="f4d32" class="javax.swing.JCheckBox" binding="chckbx_kayitliDersler">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <enabled value="false"/>
+                          <foreground color="-1769454"/>
+                          <selected value="true"/>
+                          <text value="Kayıtlı Dersler Üzerinden Ortalama Dene"/>
+                        </properties>
+                      </component>
+                      <component id="29f31" class="javax.swing.JLabel" binding="txt_hangiDonem">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Hangi Dönemdeki Derslerde Değişiklik Yaparak Ortalama Denemek İstersiniz ?"/>
+                        </properties>
+                      </component>
+                      <vspacer id="28aee">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </vspacer>
+                      <hspacer id="7de1b">
+                        <constraints>
+                          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="4f72b">
+                        <constraints>
+                          <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <vspacer id="e2d24">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </vspacer>
+                      <component id="88beb" class="javax.swing.JLabel" binding="txt_kacDersHesaplanicak">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Kaç Ders İçin Ortalama Hesaplıycaksınız ?"/>
+                        </properties>
+                      </component>
+                      <component id="33c50" class="javax.swing.JSpinner" binding="spn_hesaplanicakDersSayisi">
+                        <constraints>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="5a53b" class="javax.swing.JSpinner" binding="spn_getirilecekDonem">
+                        <constraints>
+                          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="b5c33" class="javax.swing.JButton" binding="btn_dersleriGetir">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Dersleri Getir"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <component id="fe6d0" class="javax.swing.JLabel" binding="txt_akts">
+                    <constraints>
+                      <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Akts"/>
+                    </properties>
+                  </component>
+                  <component id="61c7f" class="javax.swing.JLabel" binding="txt_vizeNotu">
+                    <constraints>
+                      <grid row="8" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Vize Notu"/>
+                    </properties>
+                  </component>
+                  <component id="dd9dc" class="javax.swing.JLabel" binding="txt_finalNotu">
+                    <constraints>
+                      <grid row="8" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Final Notu"/>
+                    </properties>
+                  </component>
+                  <component id="f79af" class="javax.swing.JLabel" binding="txt_finaltkiOrani">
+                    <constraints>
+                      <grid row="8" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Final Etki Oranı"/>
+                    </properties>
+                  </component>
+                  <component id="b2d85" class="javax.swing.JTextField" binding="fld_vize1">
+                    <constraints>
+                      <grid row="9" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize1"/>
+                    </properties>
+                  </component>
+                  <component id="59cbe" class="javax.swing.JSpinner" binding="spn_aktsDers1">
+                    <constraints>
+                      <grid row="9" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts1"/>
+                    </properties>
+                  </component>
+                  <component id="b7949" class="javax.swing.JTextField" binding="fld_final1">
+                    <constraints>
+                      <grid row="9" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final1"/>
+                    </properties>
+                  </component>
+                  <component id="c8e25" class="javax.swing.JTextField" binding="fld_vizeEtki1">
+                    <constraints>
+                      <grid row="9" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki1"/>
+                    </properties>
+                  </component>
+                  <component id="e8580" class="javax.swing.JTextField" binding="fld_finalEtki1">
+                    <constraints>
+                      <grid row="9" column="12" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki1"/>
+                    </properties>
+                  </component>
+                  <component id="80c5b" class="javax.swing.JSpinner" binding="spn_aktsDers2">
+                    <constraints>
+                      <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts2"/>
+                    </properties>
+                  </component>
+                  <component id="7d37f" class="javax.swing.JSpinner" binding="spn_aktsDers3">
+                    <constraints>
+                      <grid row="11" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts3"/>
+                    </properties>
+                  </component>
+                  <component id="dfd40" class="javax.swing.JSpinner" binding="spn_aktsDers4">
+                    <constraints>
+                      <grid row="12" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts4"/>
+                    </properties>
+                  </component>
+                  <component id="95182" class="javax.swing.JSpinner" binding="spn_aktsDers5">
+                    <constraints>
+                      <grid row="13" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts5"/>
+                    </properties>
+                  </component>
+                  <component id="e1144" class="javax.swing.JSpinner" binding="spn_aktsDers6">
+                    <constraints>
+                      <grid row="14" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts6"/>
+                    </properties>
+                  </component>
+                  <component id="fd52" class="javax.swing.JSpinner" binding="spn_aktsDers7">
+                    <constraints>
+                      <grid row="15" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts7"/>
+                    </properties>
+                  </component>
+                  <component id="edbfa" class="javax.swing.JSpinner" binding="spn_aktsDers8">
+                    <constraints>
+                      <grid row="16" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts8"/>
+                    </properties>
+                  </component>
+                  <component id="c9ea3" class="javax.swing.JSpinner" binding="spn_aktsDers9">
+                    <constraints>
+                      <grid row="17" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts9"/>
+                    </properties>
+                  </component>
+                  <component id="414c1" class="javax.swing.JSpinner" binding="spn_aktsDers10">
+                    <constraints>
+                      <grid row="18" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts10"/>
+                    </properties>
+                  </component>
+                  <component id="e2f76" class="javax.swing.JSpinner" binding="spn_aktsDers11">
+                    <constraints>
+                      <grid row="19" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts11"/>
+                    </properties>
+                  </component>
+                  <component id="2f280" class="javax.swing.JTextField" binding="fld_vize2">
+                    <constraints>
+                      <grid row="10" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize2"/>
+                    </properties>
+                  </component>
+                  <component id="bbf72" class="javax.swing.JTextField" binding="fld_vize3">
+                    <constraints>
+                      <grid row="11" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize3"/>
+                    </properties>
+                  </component>
+                  <component id="33d7b" class="javax.swing.JTextField" binding="fld_vize4">
+                    <constraints>
+                      <grid row="12" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize4"/>
+                    </properties>
+                  </component>
+                  <component id="8b1d1" class="javax.swing.JTextField" binding="fld_vize5">
+                    <constraints>
+                      <grid row="13" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize5"/>
+                    </properties>
+                  </component>
+                  <component id="ba3a6" class="javax.swing.JTextField" binding="fld_vize6">
+                    <constraints>
+                      <grid row="14" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize6"/>
+                    </properties>
+                  </component>
+                  <component id="50ac6" class="javax.swing.JTextField" binding="fld_vize7">
+                    <constraints>
+                      <grid row="15" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize7"/>
+                    </properties>
+                  </component>
+                  <component id="608b1" class="javax.swing.JTextField" binding="fld_vize8">
+                    <constraints>
+                      <grid row="16" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize8"/>
+                    </properties>
+                  </component>
+                  <component id="d482c" class="javax.swing.JTextField" binding="fld_vize9">
+                    <constraints>
+                      <grid row="17" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize9"/>
+                    </properties>
+                  </component>
+                  <component id="941ed" class="javax.swing.JTextField" binding="fld_vize10">
+                    <constraints>
+                      <grid row="18" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize10"/>
+                    </properties>
+                  </component>
+                  <component id="167d2" class="javax.swing.JTextField" binding="fld_vize11">
+                    <constraints>
+                      <grid row="19" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <name value="numberFld_vize11"/>
+                    </properties>
+                  </component>
+                  <component id="c6ae9" class="javax.swing.JTextField" binding="fld_final2">
+                    <constraints>
+                      <grid row="10" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final2"/>
+                    </properties>
+                  </component>
+                  <component id="1eeb7" class="javax.swing.JTextField" binding="fld_final3">
+                    <constraints>
+                      <grid row="11" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final3"/>
+                    </properties>
+                  </component>
+                  <component id="e8fd8" class="javax.swing.JTextField" binding="fld_final4">
+                    <constraints>
+                      <grid row="12" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final4"/>
+                    </properties>
+                  </component>
+                  <component id="d6bad" class="javax.swing.JTextField" binding="fld_final5">
+                    <constraints>
+                      <grid row="13" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final5"/>
+                    </properties>
+                  </component>
+                  <component id="d5426" class="javax.swing.JTextField" binding="fld_final6">
+                    <constraints>
+                      <grid row="14" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final6"/>
+                    </properties>
+                  </component>
+                  <component id="26451" class="javax.swing.JTextField" binding="fld_final7">
+                    <constraints>
+                      <grid row="15" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final7"/>
+                    </properties>
+                  </component>
+                  <component id="ca388" class="javax.swing.JTextField" binding="fld_final8">
+                    <constraints>
+                      <grid row="16" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final8"/>
+                    </properties>
+                  </component>
+                  <component id="2e39c" class="javax.swing.JTextField" binding="fld_final9">
+                    <constraints>
+                      <grid row="17" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final9"/>
+                    </properties>
+                  </component>
+                  <component id="1e837" class="javax.swing.JTextField" binding="fld_final10">
+                    <constraints>
+                      <grid row="18" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final10"/>
+                    </properties>
+                  </component>
+                  <component id="9b998" class="javax.swing.JTextField" binding="fld_final11">
+                    <constraints>
+                      <grid row="19" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final11"/>
+                    </properties>
+                  </component>
+                  <component id="72be4" class="javax.swing.JTextField" binding="fld_vizeEtki2">
+                    <constraints>
+                      <grid row="10" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki2"/>
+                    </properties>
+                  </component>
+                  <component id="e340e" class="javax.swing.JTextField" binding="fld_vizeEtki3">
+                    <constraints>
+                      <grid row="11" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki3"/>
+                    </properties>
+                  </component>
+                  <component id="fdf3c" class="javax.swing.JTextField" binding="fld_vizeEtki4">
+                    <constraints>
+                      <grid row="12" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki4"/>
+                    </properties>
+                  </component>
+                  <component id="18116" class="javax.swing.JTextField" binding="fld_vizeEtki5">
+                    <constraints>
+                      <grid row="13" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki5"/>
+                    </properties>
+                  </component>
+                  <component id="2a746" class="javax.swing.JTextField" binding="fld_vizeEtki6">
+                    <constraints>
+                      <grid row="14" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki6"/>
+                    </properties>
+                  </component>
+                  <component id="32497" class="javax.swing.JTextField" binding="fld_vizeEtki7">
+                    <constraints>
+                      <grid row="15" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki7"/>
+                    </properties>
+                  </component>
+                  <component id="5556f" class="javax.swing.JTextField" binding="fld_vizeEtki8">
+                    <constraints>
+                      <grid row="16" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki8"/>
+                    </properties>
+                  </component>
+                  <component id="91e9" class="javax.swing.JTextField" binding="fld_vizeEtki9">
+                    <constraints>
+                      <grid row="17" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki9"/>
+                    </properties>
+                  </component>
+                  <component id="61124" class="javax.swing.JTextField" binding="fld_vizeEtki10">
+                    <constraints>
+                      <grid row="18" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki10"/>
+                    </properties>
+                  </component>
+                  <component id="1d74c" class="javax.swing.JTextField" binding="fld_vizeEtki11">
+                    <constraints>
+                      <grid row="19" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki11"/>
+                    </properties>
+                  </component>
+                  <component id="9dbf2" class="javax.swing.JTextField" binding="fld_finalEtki2">
+                    <constraints>
+                      <grid row="10" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki2"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="f2a4b" class="javax.swing.JTextField" binding="fld_finalEtki3">
+                    <constraints>
+                      <grid row="11" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki3"/>
+                    </properties>
+                  </component>
+                  <component id="b8d7d" class="javax.swing.JTextField" binding="fld_finalEtki4">
+                    <constraints>
+                      <grid row="12" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki4"/>
+                    </properties>
+                  </component>
+                  <component id="6dd59" class="javax.swing.JTextField" binding="fld_finalEtki5">
+                    <constraints>
+                      <grid row="13" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki5"/>
+                    </properties>
+                  </component>
+                  <component id="8e480" class="javax.swing.JTextField" binding="fld_finalEtki6">
+                    <constraints>
+                      <grid row="14" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki6"/>
+                    </properties>
+                  </component>
+                  <component id="94d94" class="javax.swing.JTextField" binding="fld_finalEtki7">
+                    <constraints>
+                      <grid row="15" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki7"/>
+                    </properties>
+                  </component>
+                  <component id="afa7a" class="javax.swing.JTextField" binding="fld_finalEtki8">
+                    <constraints>
+                      <grid row="16" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki8"/>
+                    </properties>
+                  </component>
+                  <component id="168c8" class="javax.swing.JTextField" binding="fld_finalEtki9">
+                    <constraints>
+                      <grid row="17" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki9"/>
+                    </properties>
+                  </component>
+                  <component id="303f6" class="javax.swing.JTextField" binding="fld_finalEtki10">
+                    <constraints>
+                      <grid row="18" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki10"/>
+                    </properties>
+                  </component>
+                  <component id="f6058" class="javax.swing.JTextField" binding="fld_finalEtki11">
+                    <constraints>
+                      <grid row="19" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki11"/>
+                    </properties>
+                  </component>
+                  <component id="e6c4f" class="javax.swing.JButton" binding="btn_hesapla">
+                    <constraints>
+                      <grid row="21" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Hesapla"/>
+                    </properties>
+                  </component>
+                  <component id="e7984" class="javax.swing.JLabel" binding="txt_dersIsim">
+                    <constraints>
+                      <grid row="8" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="5" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Ders Ismi"/>
+                    </properties>
+                  </component>
+                  <component id="51416" class="javax.swing.JLabel" binding="txt_vizeEtkiOrani">
+                    <constraints>
+                      <grid row="8" column="10" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Vize Etki Oranı"/>
+                    </properties>
+                  </component>
+                  <component id="4fc12" class="javax.swing.JTextField" binding="txt_dersIsim3">
+                    <constraints>
+                      <grid row="11" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders3"/>
+                    </properties>
+                  </component>
+                  <component id="2152c" class="javax.swing.JTextField" binding="txt_dersIsim4">
+                    <constraints>
+                      <grid row="12" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders4"/>
+                    </properties>
+                  </component>
+                  <component id="4b0fb" class="javax.swing.JTextField" binding="txt_dersIsim5">
+                    <constraints>
+                      <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders5"/>
+                    </properties>
+                  </component>
+                  <component id="70b4e" class="javax.swing.JTextField" binding="txt_dersIsim6">
+                    <constraints>
+                      <grid row="14" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders6"/>
+                    </properties>
+                  </component>
+                  <component id="7a2f0" class="javax.swing.JTextField" binding="txt_dersIsim7">
+                    <constraints>
+                      <grid row="15" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders7"/>
+                    </properties>
+                  </component>
+                  <component id="87ea2" class="javax.swing.JTextField" binding="txt_dersIsim8">
+                    <constraints>
+                      <grid row="16" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders8"/>
+                    </properties>
+                  </component>
+                  <component id="99eda" class="javax.swing.JTextField" binding="txt_dersIsim9">
+                    <constraints>
+                      <grid row="17" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders9"/>
+                    </properties>
+                  </component>
+                  <component id="1760d" class="javax.swing.JTextField" binding="txt_dersIsim10">
+                    <constraints>
+                      <grid row="18" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders10"/>
+                    </properties>
+                  </component>
+                  <component id="bb6a2" class="javax.swing.JTextField" binding="txt_dersIsim11">
+                    <constraints>
+                      <grid row="19" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders11"/>
+                    </properties>
+                  </component>
+                  <component id="d1785" class="javax.swing.JTextField" binding="txt_dersIsim2">
+                    <constraints>
+                      <grid row="10" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders2"/>
+                    </properties>
+                  </component>
+                  <component id="7d735" class="javax.swing.JTextField" binding="txt_dersIsim1">
+                    <constraints>
+                      <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <name value="txt_ders1"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </scrollpane>
         </children>
       </tabbedpane>
       <component id="3c90b" class="javax.swing.JButton" binding="btn_cikisYapKullanici">
@@ -1625,4 +2494,7 @@
       </component>
     </children>
   </grid>
+  <inspectionSuppressions>
+    <suppress inspection="NoLabelFor"/>
+  </inspectionSuppressions>
 </form>

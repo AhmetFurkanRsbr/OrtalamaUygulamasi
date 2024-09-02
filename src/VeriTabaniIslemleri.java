@@ -1335,12 +1335,12 @@ boolean dersVeNotguncelle(){
            try {
                statement = baglan.createStatement();
 
-
+               System.out.println(kisiDersGenelOrt);
                    String sqlDersGenelBasariSirasiHesapla =" Select count(*) from ders_ortalama_bilgileri where dersten_gecme_notu100 > "+kisiDersGenelOrt+" and ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"');";
                    ResultSet resultSetDersGenelBasariSirasi = statement.executeQuery(sqlDersGenelBasariSirasiHesapla);
 
                    if (resultSetDersGenelBasariSirasi.next()) {
-                       dersGenelBasariSirasi = 1+resultSetDersGenelBasariSirasi.getInt(1);
+                       dersGenelBasariSirasi = 1 + resultSetDersGenelBasariSirasi.getInt(1);
 
                    }
                    resultSetDersGenelBasariSirasi.close();
