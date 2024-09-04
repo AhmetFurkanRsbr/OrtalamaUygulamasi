@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MenuGui extends  JFrame{
@@ -151,7 +150,7 @@ public class MenuGui extends  JFrame{
     private JCheckBox chckbx_rastgeleDersler;
     private JCheckBox chckbx_kayitliDersler;
     private JSpinner spn_getirilecekDonem;
-    private JButton btn_hesapla;
+    private JButton btn_hesaplaOrtalamaDene;
     private JTextField fld_vize1;
     private JTextField fld_final1;
     private JTextField fld_vizeEtki1;
@@ -231,15 +230,21 @@ public class MenuGui extends  JFrame{
     private JSpinner spn_hesaplanicakDersSayisi;
     private JLabel txt_finaltkiOrani;
     ArrayList<Component> temizlenecekComponent = new ArrayList<>();
+    ArrayList<JTextField> vizeNotlariOrtalamaDene=new ArrayList<>();
+    ArrayList<JTextField> finalNotlariOrtalamaDene=new ArrayList<>();
+    ArrayList<JSpinner> aktslerOrtalamaDene=new ArrayList<>();
+    ArrayList<JTextField> vizeEtkiOranlariOrtalamaDene=new ArrayList<>();
+    ArrayList<JTextField> finalEtkiOranlariOrtalamaDene=new ArrayList<>();
     static int dersSayisi = 0;
     static String dersSayisiString="";
-   static int finalNotu=0;
-   static int vizeNotu=0;
+    static int finalNotu=0;
+    static int vizeNotu=0;
     static int vizeEtkiOrani=0;
     static int finalEtkiOrani=0;
     static int akts=0;
     static int donem=0;
     static int dersSayisiIndex = 1;
+    ArrayList<Integer> derstenGecmeNotlari100lukOrtDene=new ArrayList<>();
     boolean isNotGirisindeHata=false;
     String cmbxSilinecekDersIsim;
     String cmbxguncellenicekDersIsim;
@@ -305,7 +310,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
     }
     void spinnerLimitle(){
+
          int minDeger =1;
+         float aktifDegilkenkiDeger=1.1f;
          int maxDeger =30;
          int minDeger2 =1;
          int maxDeger2 =20;
@@ -315,6 +322,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
          spn_Akts.setModel(spinnerModelAktsNotKaydet);
          spn_donem.setModel(spinnerModel2);
+
         SpinnerModel spinnerModelAktsOrtHesaplaDers1 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
         SpinnerModel spinnerModelAktsOrtHesaplaDers2 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
         SpinnerModel spinnerModelAktsOrtHesaplaDers3 = new SpinnerNumberModel(minDeger,minDeger,maxDeger,1);
@@ -738,8 +746,8 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
     }public void ortalamaDeneSayfasindakiVerileriTemizle(){
         for(Component temizle:temizlenecekComponent){
-            if (temizle instanceof JTextField ){
 
+            if (temizle instanceof JTextField ){
                 ((JTextField) temizle).setText("");
             } else{
                 if (temizle instanceof JSpinner){
@@ -748,6 +756,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             }
         }
     }
+
     void kayitliDersleriGizle(){
 
         txt_dersIsim.setVisible(false);
@@ -783,10 +792,17 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                       if (component.getName().endsWith(ifade) && !component.getName().endsWith("11")) {
 
                           component.setVisible(true);
+                          if(component.getName().startsWith("spn")){
+                               JSpinner aktsJS = (JSpinner) component;
+                               aktsJS.setValue(1);
+                          }
                       } else if (dersSayisi==11 && component.getName().endsWith("11")){
 
                           component.setVisible(true);
-
+                          if(component.getName().startsWith("spn")){
+                              JSpinner aktsJS = (JSpinner) component;
+                              aktsJS.setValue(1);
+                          }
                        }
                  }catch (NullPointerException e){
                   System.out.println(e.getMessage());    //  getName ile dönen değer null ise burası çalışıyor .
@@ -795,6 +811,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
              }
          }
      }
+
 
 
 
@@ -983,6 +1000,8 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 case "Ortalama Dene":
                     addNumericKeyListenerToAllTextFields(tab_ortalamaDene);//Ortalama Dene sekmesinde sayılar dışında ifade yazılmasını engeller.
                     ortalamaDeneSayfasindakiComponentleriDiziyeAktar();
+                    //kayitliDersleriGizle();
+                    //kayitliDersleriGetir(1);
                     break;
                 default:
                     System.out.println("HATALI PENCERE DEĞİŞİMİ");
@@ -1273,6 +1292,10 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 txt_vizeEtkiOrani.setVisible(true);
                 txt_finaltkiOrani.setVisible(true);
 
+                kayitliDersleriGizle();
+                kayitliDersleriGetir(1);
+
+
                   chckbx_kayitliDersler.setSelected(false);
                   chckbx_rastgeleDersler.setEnabled(false);
                   chckbx_kayitliDersler.setEnabled(true);
@@ -1286,10 +1309,11 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             }
         });
 
-        btn_hesapla.addActionListener(new ActionListener() {
+        btn_hesaplaOrtalamaDene.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int vizeNotuOrtHesapla=0,finalNotuOrtHesapla=0,vizeEtkiOraniOrtHesapla=0,finalEtkiOraniOrtHesapla=0,aktsOrtHesapla=0;
+
                 try {
                     String finalStringOrtHesapla = fld_final1.getText();
                     finalNotuOrtHesapla = Integer.parseInt(finalStringOrtHesapla);
@@ -1322,8 +1346,20 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 }  if (aktsOrtHesapla > 30 || aktsOrtHesapla <= 0) {
                     isNotGirisindeHata=true;
                     JOptionPane.showInternalMessageDialog(null,"!! Akts Değeriniz 30 'dan Büyük, 0 'a Küçük-Eşit Olamaz !!");
-                }/*if(!isNotGirisindeHata){
+                }if(!isNotGirisindeHata){
 
+                    new  YnoHesaplaOrtDeneSyf(Integer.parseInt(spn_hesaplanicakDersSayisi.getValue().toString()),vizeNotlariOrtalamaDene,finalNotlariOrtalamaDene,finalEtkiOranlariOrtalamaDene,vizeEtkiOranlariOrtalamaDene,aktslerOrtalamaDene,temizlenecekComponent);
+
+                    float ynoOrtDene=0.00f;
+                    ynoOrtDene = YnoHesaplaOrtDeneSyf.yno100lukOrtDene;
+
+                    fld_yno.setText("0.00");
+                    lbl_yno.setVisible(true);
+                    fld_yno.setVisible(true);
+                    fld_yno.setText(String.valueOf(ynoOrtDene));
+
+
+                    /*
                     ortalamaHesapla1.dersOrtalamasiHesapla(vizeNotu,finalNotu,akts,vizeEtkiOrani,finalEtkiOrani);
                     //ortalamaHesapla1.anlikDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem,Integer.parseInt(fld_kalanDersSayisi.getText()));
                     ortalamaHesapla1.donemOrtalamaHesapla(AktifKullanici.aktifKullaniciID,donem);
@@ -1346,8 +1382,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     }else{
                         ortalamaSonucuGorunurYap(true);
                     }
+                       */
 
-                }*/
+                }
             }
         });
         btn_dersleriGetir.addActionListener(new ActionListener() {

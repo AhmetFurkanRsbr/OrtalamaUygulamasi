@@ -2137,7 +2137,7 @@
                       <name value="numberFld_finalEtki11"/>
                     </properties>
                   </component>
-                  <component id="e6c4f" class="javax.swing.JButton" binding="btn_hesapla">
+                  <component id="e6c4f" class="javax.swing.JButton" binding="btn_hesaplaOrtalamaDene">
                     <constraints>
                       <grid row="21" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -2278,6 +2278,7 @@
                       </grid>
                     </constraints>
                     <properties>
+                      <horizontalAlignment value="0"/>
                       <name value="txt_ders1"/>
                     </properties>
                   </component>
