@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class VeriTabaniIslemleri {
     static int enYuksekOrtalamaId=0;
@@ -347,6 +348,202 @@ public class VeriTabaniIslemleri {
         }
 
     }
+    int kisininDonemdekiDersSayisiniGetir(int sorgulanicakDonem){
+          int donemdekiDersSayisi=0;
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+           try {
+               String sqlDonemdekiDersSayisiniGetir="  select count(*) from ders_bilgileri where alindigi_donem = "+sorgulanicakDonem+" and kisi_idf = "+AktifKullanici.aktifKullaniciID+" ;";
+               Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+               ResultSet resultSetCekilenDonemDersSayisi = stat3.executeQuery(sqlDonemdekiDersSayisiniGetir);
+               while (resultSetCekilenDonemDersSayisi.next()){
+                   donemdekiDersSayisi = resultSetCekilenDonemDersSayisi.getInt(1);
+                   //System.out.println("Donemdeki Ders Sayısı : "+donemdekiDersSayisi);
+               }
+               resultSetCekilenDonemDersSayisi.close();
+           }catch (SQLException e){
+               System.out.println("Donemdeki Ders Sayısı Bulunurken oluşan sql hatası : "+e.getMessage());
+            }
+
+          return donemdekiDersSayisi;
+    }
+
+    ArrayList<String> kisininDonemdekiDersIsimleriniGetir(int sorgulanicakDonem,int dersSayisi,ArrayList<String> kisiDonemdekiDersIsimleriAR){
+       kisiDonemdekiDersIsimleriAR.clear();
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+                String sqlDonemdekiDersIsimleriGetir="select ders_isim from ders_bilgileri where alindigi_donem = "+sorgulanicakDonem+" and kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+                Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                ResultSet resultSetCekilenDonemDersIsimleri = stat3.executeQuery(sqlDonemdekiDersIsimleriGetir);
+
+
+                while (resultSetCekilenDonemDersIsimleri.next()){
+
+                     kisiDonemdekiDersIsimleriAR.add(resultSetCekilenDonemDersIsimleri.getString(1));
+
+                }
+                resultSetCekilenDonemDersIsimleri.close();
+
+        }catch (SQLException e){
+            System.out.println("Donemdeki İsimleri Bulunurken oluşan sql hatası : "+e.getMessage());
+        }
+
+        return kisiDonemdekiDersIsimleriAR;
+    }
+    int dersDonemBilgisiGetir(String dersIsmi){
+        int dersinAlindigiDonem=0;
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            String sqlDersinDoneminiGetir="select alindigi_donem from ders_bilgileri where ders_isim = '"+dersIsmi+"' and kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+            Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet resultSetCekilenDersinDonemi = stat3.executeQuery(sqlDersinDoneminiGetir);
+
+
+            while (resultSetCekilenDersinDonemi.next()){
+                 dersinAlindigiDonem = resultSetCekilenDersinDonemi.getInt(1);
+            }
+            resultSetCekilenDersinDonemi.close();
+
+        }catch (SQLException e){
+            System.out.println("Dersin Dönem Bilgisi Getirilirken Oluşan Sql Hatası : "+e.getMessage());
+        }
+
+        return dersinAlindigiDonem;
+    }
+
+
+    ArrayList dersinBilgileriniGetir(String dersIsmi,ArrayList dersinBilgileriAR){
+
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+
+            dersinBilgileriAR.clear();
+
+            String sqlDersinBilgileriniGetir = "select ders_akts,vize_notu,final_notu,vize_etkiO,final_etkiO,dersten_gecme_durumu,dersten_gecme_notu100,dersten_gecme_notu4,ders_bilgileri.alindigi_donem from not_bilgileri inner join ders_bilgileri on ders_idf = ders_id inner join ders_ortalama_bilgileri on ders_ortalama_bilgileri.ders_idf = ders_bilgileri.ders_id  where ders_bilgileri.ders_isim = '"+dersIsmi+"' and not_bilgileri.kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+
+            Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet resultSetCekilenDersVerileri = stat3.executeQuery(sqlDersinBilgileriniGetir);
+
+
+            while (resultSetCekilenDersVerileri.next()){
+
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getInt("alindigi_donem"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getInt("ders_akts"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getFloat("vize_notu"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getFloat("final_notu"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getInt("vize_etkiO"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getInt("final_etkiO"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getFloat("dersten_gecme_notu100"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getFloat("dersten_gecme_notu4"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getString("dersten_gecme_durumu"));
+
+
+                //     System.out.println("Donemdeki "+getirilicekVeriIsmi+" : "+kisiDonemdekiIstenilenVeriAR.get(index));
+
+            }
+            resultSetCekilenDersVerileri.close();
+
+        }catch (SQLException e){
+            System.out.println("Dersin Bilgileri Getirilirken Oluşan Sql Hatası : "+e.getMessage());
+        }
+
+       return dersinBilgileriAR;
+    }
+
+
+   ArrayList<Integer> kisininDonemdekiDersVerisiniGetir(int sorgulanicakDonem,int dersSayisi,ArrayList<Integer> kisiDonemdekiIstenilenVeriAR,String istenilenVeriIsmi){
+
+       if (!baglanmaDurumu){
+           try {
+               msqlBaglan();
+               baglanmaDurumu=true;
+           } catch (SQLException e) {
+               baglanmaDurumu=false;
+               throw new RuntimeException(e);
+           }
+       }
+       try {
+           String getirilicekVeriIsmi="";
+           String sqlDonemdekiDersBilgisiGetir="";
+           kisiDonemdekiIstenilenVeriAR.clear();
+
+           switch (istenilenVeriIsmi){
+               case "vize":
+                   getirilicekVeriIsmi="vize_notu";
+                   sqlDonemdekiDersBilgisiGetir="select "+getirilicekVeriIsmi+" from not_bilgileri inner join ders_bilgileri on ders_idf=ders_id where ders_bilgileri.alindigi_donem = "+sorgulanicakDonem+" and not_bilgileri.kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+
+                   break;
+               case "final":
+                   getirilicekVeriIsmi="final_notu";
+                   sqlDonemdekiDersBilgisiGetir="select "+getirilicekVeriIsmi+" from not_bilgileri inner join ders_bilgileri on ders_idf=ders_id where ders_bilgileri.alindigi_donem = "+sorgulanicakDonem+" and not_bilgileri.kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+                   break;
+               case "vizeEtki":
+                   getirilicekVeriIsmi="vize_etkiO";
+                   sqlDonemdekiDersBilgisiGetir="select "+getirilicekVeriIsmi+" from not_bilgileri inner join ders_bilgileri on ders_idf=ders_id where ders_bilgileri.alindigi_donem = "+sorgulanicakDonem+" and not_bilgileri.kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+                   break;
+               case "finalEtki":
+                   getirilicekVeriIsmi="final_etkiO";
+                   sqlDonemdekiDersBilgisiGetir="select "+getirilicekVeriIsmi+" from not_bilgileri inner join ders_bilgileri on ders_idf=ders_id where ders_bilgileri.alindigi_donem = "+sorgulanicakDonem+" and not_bilgileri.kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+                   break;
+               case "akts":
+                   getirilicekVeriIsmi="ders_akts";
+                   sqlDonemdekiDersBilgisiGetir="select ders_akts from ders_bilgileri where alindigi_donem = "+sorgulanicakDonem+" and kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+                   break;
+               default:
+                   System.out.println("hatalı veri ismi");
+                   break;
+           }
+
+           Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+           ResultSet resultSetCekilenDonemDersVerileri = stat3.executeQuery(sqlDonemdekiDersBilgisiGetir);
+
+
+               while (resultSetCekilenDonemDersVerileri.next()){
+                       kisiDonemdekiIstenilenVeriAR.add(resultSetCekilenDonemDersVerileri.getInt(1));
+                  //     System.out.println("Donemdeki "+getirilicekVeriIsmi+" : "+kisiDonemdekiIstenilenVeriAR.get(index));
+
+               }
+               resultSetCekilenDonemDersVerileri.close();
+
+
+       }catch (SQLException e){
+           System.out.println("Donemdeki İstenilen Veriler Bulunurken oluşan sql hatası : "+e.getMessage());
+       }
+
+       return kisiDonemdekiIstenilenVeriAR;
+   }
+
     int dersIdBul(String anlikDersIsim){
         AnlikdersId=0;
         kullanici=AktifKullanici.aktifKullaniciKullaniciAdi;
@@ -363,7 +560,7 @@ public class VeriTabaniIslemleri {
                 ResultSet resultSetCekilenDersID = stat3.executeQuery(sqlDersIDiAlma);
                 while (resultSetCekilenDersID.next()){
                     AnlikdersId = resultSetCekilenDersID.getInt(1);
-                    System.out.println("BURDAKİ DERSıd : "+AnlikdersId);
+                    //System.out.println("BURDAKİ DERSıd : "+AnlikdersId);
                 }
                 resultSetCekilenDersID.close();
 
@@ -421,7 +618,9 @@ public class VeriTabaniIslemleri {
 
                 String sqlKullaniciKayitliDersAlma = "SELECT ders_isim FROM ders_bilgileri WHERE kisi_idf = '" + AktifKullanici.aktifKullaniciID + "'";
                 ResultSet resultSetCekilenDers = statement.executeQuery(sqlKullaniciKayitliDersAlma);
-
+                for(int k=0;k<cekilenDers.length;k++){
+                    cekilenDers[k]="";
+                }
                 int i = 0;
                 while (resultSetCekilenDers.next()) {
                     cekilenDers[i] = resultSetCekilenDers.getString("ders_isim");
@@ -501,6 +700,7 @@ public class VeriTabaniIslemleri {
             StatGnoYnoGuncelle.executeUpdate();
             System.out.println("Gno-Yno güncelleme başarıyla gerçekleşti");
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Gno-Yno güncellenirken oluşan sql hatası");
             System.out.println("Gno-Yno güncellenirken oluşan sql hatası "+e.getMessage());
             throw new RuntimeException(e);
         }
@@ -867,6 +1067,7 @@ public class VeriTabaniIslemleri {
                     "AND kisi_idf = "+AktifKullanici.aktifKullaniciID+");";
             PreparedStatement parametreliStatDersSilme   = baglan.prepareStatement(sqlDersSilme1);
             parametreliStatDersSilme.executeUpdate();
+            kisininKayitliDersleriniGetir();
 
             dersSilmeDurumu=true;
         } catch (SQLException e) {
@@ -1227,8 +1428,8 @@ boolean dersVeNotguncelle(){
 
 
 
-    int sinifKisiGenelNotOrtalamasiGonder(String dersIsim,int kisiId,boolean isSinif){
-        int sinifVeyaKisiGenelOrtalama=0;
+    float sinifKisiGenelNotOrtalamasiGonder(String dersIsim,int kisiId,boolean isSinif){
+        float sinifVeyaKisiGenelOrtalama=0.00f;
 
 
         if (!baglanmaDurumu){
@@ -1249,7 +1450,7 @@ boolean dersVeNotguncelle(){
                 ResultSet resultSetGetirilenSinifGenelOrt = statement.executeQuery(sqlSinifGenelOrtGetir);
 
                 if (resultSetGetirilenSinifGenelOrt.next()) {
-                    sinifVeyaKisiGenelOrtalama = resultSetGetirilenSinifGenelOrt.getInt(1);
+                    sinifVeyaKisiGenelOrtalama = resultSetGetirilenSinifGenelOrt.getFloat(1);
 
                 }
                 resultSetGetirilenSinifGenelOrt.close();
@@ -1258,7 +1459,7 @@ boolean dersVeNotguncelle(){
                 ResultSet resultSetGetirilenKisiGenelOrt = statement.executeQuery(sqlKisiGenelOrtGetir);
 
                 if (resultSetGetirilenKisiGenelOrt.next()) {
-                    sinifVeyaKisiGenelOrtalama = resultSetGetirilenKisiGenelOrt.getInt(1);
+                    sinifVeyaKisiGenelOrtalama = resultSetGetirilenKisiGenelOrt.getFloat(1);
 
                 }
                 resultSetGetirilenKisiGenelOrt.close();
@@ -1272,7 +1473,7 @@ boolean dersVeNotguncelle(){
 
 
        String dersGenelEnyuksekOrtalamaVeyaKisisiniGetir(String dersIsim,boolean isOrtalama){
-          int dersGenelEnyuksekOrtalama=0;
+          float dersGenelEnyuksekOrtalama=0.00f;
           String enYuksekGenelOrtAlanKisi="";
           String dondurulecekDeger="";
 
@@ -1294,7 +1495,7 @@ boolean dersVeNotguncelle(){
                    ResultSet resultSetGetirilenEnYuksekGenelOrt = statement.executeQuery(sqlGenelEnyuksekOrtGetir);
 
                    if (resultSetGetirilenEnYuksekGenelOrt.next()) {
-                       dersGenelEnyuksekOrtalama = resultSetGetirilenEnYuksekGenelOrt.getInt(1);
+                       dersGenelEnyuksekOrtalama = resultSetGetirilenEnYuksekGenelOrt.getFloat(1);
 
                    }
                    resultSetGetirilenEnYuksekGenelOrt.close();
@@ -1335,13 +1536,12 @@ boolean dersVeNotguncelle(){
            try {
                statement = baglan.createStatement();
 
-               System.out.println(kisiDersGenelOrt);
+
                    String sqlDersGenelBasariSirasiHesapla =" Select count(*) from ders_ortalama_bilgileri where dersten_gecme_notu100 > "+kisiDersGenelOrt+" and ders_idf IN(select ders_id from ders_bilgileri  where ders_isim = '"+dersIsim+"');";
                    ResultSet resultSetDersGenelBasariSirasi = statement.executeQuery(sqlDersGenelBasariSirasiHesapla);
 
                    if (resultSetDersGenelBasariSirasi.next()) {
-                       dersGenelBasariSirasi = 1 + resultSetDersGenelBasariSirasi.getInt(1);
-
+                       dersGenelBasariSirasi = 1 + (int) resultSetDersGenelBasariSirasi.getInt(1);
                    }
                    resultSetDersGenelBasariSirasi.close();
 

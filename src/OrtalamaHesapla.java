@@ -190,7 +190,7 @@ int donemAktsHesapla(int kisiId,int alindigiDonem){
             dersGecmeDurumu=false;
             dersGecmeDurumuString="Kaldı";
         }
-        dortlukDersGecmeNotu = okulHarfNotlari.dortlukSistemdeOrtalamaDonustur(derstenGecmeNotu100);
+        dortlukDersGecmeNotu = okulHarfNotlari.dortlukSistemdeOrtalamaDonustur(derstenGecmeNotu100,AktifKullanici.aktifKullaniciOkul);
 
 
         return dortlukDersGecmeNotu;
