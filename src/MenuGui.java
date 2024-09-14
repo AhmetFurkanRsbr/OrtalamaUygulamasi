@@ -1066,6 +1066,18 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         txt_kacDersHesaplanicak.setVisible(false);
         spn_hesaplanicakDersSayisi.setVisible(false);
 
+        // Ekran boyutlarını almak için GraphicsDevice kullan
+        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
+
+        // Tam ekran moduna geç
+        // setUndecorated(true); // Pencere kenarlıkları olmadan tam ekran yap
+        //setResizable(false); // Pencerenin boyutunu değiştirmeyi engelle
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+             // JFrame fr = new JFrame();
+
+
+
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
@@ -1079,7 +1091,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         Image image = icon.getImage();
         setIconImage(image);
 
-        setSize(600,600);
+        // Ekranı tam ekran yap
+        device.setFullScreenWindow(this);
+        //setSize(600,600);
         setTitle("Ortalama Hesaplama Uygulaması");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);

@@ -56,8 +56,14 @@ public class GirisEkrani  extends JFrame{
         // JFrame'in ikonunu ayarla
         setIconImage(image);
 
+        // Ekran boyutlarını almak için GraphicsDevice kullan
+        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
 
-        setSize(600,600);
+        // Ekranı tam ekran yap
+        device.setFullScreenWindow(this);
+
+        //setSize(600,600);
         setTitle("Ortalama Hesaplama Uygulaması");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
