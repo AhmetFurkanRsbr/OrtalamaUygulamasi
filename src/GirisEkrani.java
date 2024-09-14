@@ -20,11 +20,14 @@ public class GirisEkrani  extends JFrame{
             // VeriTabaniIslemleri veriTabaniIslemleri2 =new VeriTabaniIslemleri();
             veriTabaniIslemleri2.kullaniciGirisiDogruMu(kullaniciAdiGirisText,parolaGirisText);
             if(!veriTabaniIslemleri2.isKullaniciGirisiDogruMu){
-                JOptionPane.showMessageDialog(null,"KULLANICI SİSTEMDE YOK");
+                JOptionPane.showMessageDialog(this,"KULLANICI SİSTEMDE YOK");
             }else {
-                JOptionPane.showMessageDialog(null,"KULLANICI GİRİŞİ BAŞARILI");
-                AktifKullanici.aktifKullaniciParola=fld_parolaGiris.getText();
+                tamEkranYap(false);
+                JOptionPane.showMessageDialog(this, "KULLANICI GİRİŞİ BAŞARILI");
+                tamEkranYap(true);
 
+                AktifKullanici.aktifKullaniciParola=fld_parolaGiris.getText();
+                setAlwaysOnTop(false);
 
                 veriTabaniIslemleri2.kullaniciBilgileriAktar();
                 dispose();
@@ -32,8 +35,14 @@ public class GirisEkrani  extends JFrame{
             }
 
         }else{
+            tamEkranYap(false);
             JOptionPane.showMessageDialog(null,"!! Lütfen Boş Alan Bırakmayınız !!");
+            tamEkranYap(true);
         }
+    }
+    public  void tamEkranYap(boolean isTamEkranYap){
+        new TamEkran(this, isTamEkranYap);
+        System.out.println("tam ekran yapıldı");
     }
 
     GirisEkrani(){
@@ -63,7 +72,7 @@ public class GirisEkrani  extends JFrame{
         // Ekranı tam ekran yap
         device.setFullScreenWindow(this);
 
-        //setSize(600,600);
+       // setSize(1500,1000);
         setTitle("Ortalama Hesaplama Uygulaması");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -105,7 +114,9 @@ public class GirisEkrani  extends JFrame{
             System.out.println("Kullanıcı bilgileri denetleniyor...");
             girisIslemiYap();
         } else {
+            tamEkranYap(false);
             JOptionPane.showMessageDialog(null,"Lütfen Kullanıcıadı ve parola alanlarını doldurun.");
+            tamEkranYap(true);
             System.out.println("Lütfen  adı ve parola alanlarını doldurun.");
         }
     }

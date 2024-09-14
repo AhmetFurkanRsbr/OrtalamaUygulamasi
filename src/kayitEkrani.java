@@ -17,6 +17,12 @@ public class kayitEkrani extends JFrame {
     private JButton btn_GeriDon;
     private JTextField fld_kullaniciAdi;
     VeriTabaniIslemleri veriTabaniIslemleri1 = new VeriTabaniIslemleri();
+
+    public  void tamEkranYap(boolean isTamEkranYap){
+        new TamEkran(this, isTamEkranYap);
+        System.out.println("tam ekran yapıldı");
+    }
+
     kayitEkrani(){
 
 
@@ -75,16 +81,22 @@ public class kayitEkrani extends JFrame {
                     veriTabaniIslemleri1.veriGirmeDurumu = veriTabaniIslemleri1.veriyiParametreIleGir((veriTabaniIslemleri1.enYuksekKisiId+1),fld_isim.getText(), fld_soyad.getText(),fld_kullaniciAdi.getText() ,fld_parola.getText(), cmbx_sinif.getSelectedItem().toString(), fld_bolum.getText(), cmbx_okul.getSelectedItem().toString() );
 
                     if (!veriTabaniIslemleri1.veriGirmeDurumu) {
+                        tamEkranYap(false);
                         JOptionPane.showMessageDialog(null, "Veri Aktarımı başarısız,\n\tTekrar deneyiniz.");
+                        tamEkranYap(true);
                     }else{
+                        tamEkranYap(false);
                         JOptionPane.showMessageDialog(null,"Kayıt İşleminiz Başarılı Şekilde Gerçekleşmiştir");
+                        tamEkranYap(true);
                          dispose();
                          new GirisEkrani();
                     }
 
                 }
                 else{
+                    tamEkranYap(false);
                     JOptionPane.showMessageDialog(null, "Eksik Bilgi Girdiniz,\n\tBoşlukları doldurunuz.");
+                    tamEkranYap(true);
                 }
 
 

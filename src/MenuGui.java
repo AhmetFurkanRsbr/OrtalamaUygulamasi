@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class MenuGui extends  JFrame{
+public class MenuGui extends JFrame{
    // Ders ders1= new Ders();
 
     OrtalamaHesapla ortalamaHesapla1=new OrtalamaHesapla();
@@ -299,20 +299,30 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
         if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().equals("0.0") ){
             System.out.println("gno ekleme başlatıldı");
-            String gnoKayitString =  JOptionPane.showInputDialog(null,"Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
+
+            tamEkranYap(false);
+            String gnoKayitString =  JOptionPane.showInputDialog(this,"Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
+            tamEkranYap(true);
+
             float gnoKayit= Float.parseFloat(gnoKayitString);
 
             if(gnoKayit<0.0 || gnoKayit>4.0){
-                JOptionPane.showMessageDialog(null,"Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
+                tamEkranYap(false);
+                JOptionPane.showMessageDialog(this,"Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
+                tamEkranYap(true);
                 gnoKayitEkle();
             }else{
                 fld_anlikGnoKayit.setText(gnoKayitString);
+                tamEkranYap(false);
                 fld_gnoGercerliDonem.setText(JOptionPane.showInputDialog(null,"Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)"));
+                tamEkranYap(true);
                 vt.sistemeGnoEkle(AktifKullanici.aktifKullaniciID,fld_anlikGnoKayit.getText(),fld_gnoGercerliDonem.getText());
             }
 
         }else {
+            tamEkranYap(false);
             JOptionPane.showMessageDialog(null,"Zaten Sistemde Gno Kaydınız Var.... Gno Güncelle Kısmını Kullanınınz !!");
+            tamEkranYap(true);
         }
     }
 
@@ -1043,6 +1053,10 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
     }
 
+    public  void tamEkranYap(boolean isTamEkranYap){
+        new TamEkran(this, isTamEkranYap);
+        System.out.println("tam ekran yapıldı");
+    }
 
 
     MenuGui(){
@@ -1090,7 +1104,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         //ImageIcon icon =new ImageIcon("C:\\Users\\HP\\IdeaProjects\\OrtalamaHesaplamaUygulamasi\\src\\Ortalama Hesapla6.png");
         Image image = icon.getImage();
         setIconImage(image);
-
+        System.out.println(this);
         // Ekranı tam ekran yap
         device.setFullScreenWindow(this);
         //setSize(600,600);
@@ -1187,11 +1201,31 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 new GirisEkrani();
             }
         });
+
         if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().equals("0.0")){
+            /*device.setFullScreenWindow(null);
+
+            setSize(1600,1400);
+            setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width )/2,(Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height )/2);
+
+             */
+             tamEkranYap(false);
             JOptionPane.showMessageDialog(null,"Gno(Genel ortalama) bilginizi giriniz");
-            btn_gnoEkle.doClick();
-            btn_gnoEkle.setAction(btn_gnoEkle.getAction());
+
+            tamEkranYap(true);
+             System.out.println("naber");
+
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    btn_gnoEkle.doClick(); // doClick işlemi EDT üzerinde çalışır
+                }
+            });
+
+
         }
+
+
         tabbedPane1.addChangeListener(e -> {
             int secilenIndex = tabbedPane1.getSelectedIndex();
             String secilenTabIsmi = tabbedPane1.getTitleAt(secilenIndex);
@@ -1515,9 +1549,12 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         btn_gnoEkle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("buraya geldimm");
                 gnoKayitEkle();
             }
         });
+
+
         btn_gnoDegis.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1525,19 +1562,23 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                  eskiGnoKayit = fld_anlikGnoKayit.getText();
                  eskiGecerliDonem = Integer.parseInt(fld_gnoGercerliDonem.getText());
 
-                if(fld_anlikGnoKayit.getText().isEmpty()){
+                if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().startsWith("0")){
                     JOptionPane.showMessageDialog(null,"Kayıtlı Gno'nuz Yok Gno Ekle Kısmını Kullanınız");
                 }else{
                     String guncelGnoString = JOptionPane.showInputDialog(null,"Güncelleyeceğiniz Gno'yu Giriniz (ondalıklı kısım için . kullanınız)");
                     float guncelGno=Float.parseFloat(guncelGnoString);
                      if(guncelGno<0.0 || guncelGno>4){
                          JOptionPane.showMessageDialog(null,"Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
-                         guncelGnoString=  JOptionPane.showInputDialog(null,"Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
+                         guncelGnoString=  JOptionPane.showInputDialog(JP_Menu,"Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
                          guncelGno= Float.parseFloat(guncelGnoString);
                      }
 
                     fld_anlikGnoKayit.setText(guncelGnoString);
                     fld_gnoGercerliDonem.setText(JOptionPane.showInputDialog(null,"Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)"));
+                    //tamEkranYap
+                    //device.setFullScreenWindow(this);
+                    tamEkranYap(true);
+                  //  new TamEkran((JFrame) JP_Menu, true);
                     vt.sistemdekiGnoGuncelle(AktifKullanici.aktifKullaniciID,guncelGnoString,fld_gnoGercerliDonem.getText(),eskiGecerliDonem,eskiGnoKayit);
                 }
             }
@@ -1813,7 +1854,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                // }
             }
         });
-
 
 
     }

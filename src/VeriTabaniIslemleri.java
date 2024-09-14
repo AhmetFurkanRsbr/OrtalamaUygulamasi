@@ -14,6 +14,7 @@ public class VeriTabaniIslemleri {
     String kullanici;
     boolean dersBilgileriAktarmaDurumu=false;
     boolean kisininKayitliDersGetirmeDurumu=false;
+    boolean isGecerliDonemdeYnoKayitYok=true;
     String []cekilenDers = new String[50];
     boolean dersSilmeDurumu=false;
     static int AnlikdersId;
@@ -693,18 +694,92 @@ public class VeriTabaniIslemleri {
 
         return enYuksekOrtalamaId;
     }
-    void gnoYnoGuncelle(int kisiId,int gecerliDonem,float gno,float yno){
-        String sqlGnoYnoGuncelle = "update kisi_ortalama_bilgileri set alindigi_donem = "+gecerliDonem+" ,genel_ortalamasi = "+gno+", donem_ortalamasi = "+yno+" where kisi_idf = "+kisiId+" and alindigi_donem ="+gecerliDonem+" ;";
+
+    boolean gecerliDonemdeYnoOrtalamaKaydiVarMi(int gecerliDonem){
+
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+
         try {
-            PreparedStatement StatGnoYnoGuncelle = baglan.prepareStatement(sqlGnoYnoGuncelle);
-            StatGnoYnoGuncelle.executeUpdate();
-            System.out.println("Gno-Yno güncelleme başarıyla gerçekleşti");
+
+            String sqlDonemdeKayitliYnoGetir = "select donem_ortalamasi from  kisi_ortalama_bilgileri  where kisi_idf = "+AktifKullanici.aktifKullaniciID+" and alindigi_donem = "+gecerliDonem+" ;";
+
+
+            Statement statementDonemdeKayitliYnoGetir = baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet resultSetDonemdeKayitliYnoGetir = statementDonemdeKayitliYnoGetir.executeQuery(sqlDonemdeKayitliYnoGetir);
+
+            if (resultSetDonemdeKayitliYnoGetir.next() && (resultSetDonemdeKayitliYnoGetir.getInt(1)>0)) {
+
+                isGecerliDonemdeYnoKayitYok=false;
+
+            }else {
+                isGecerliDonemdeYnoKayitYok=true;
+
+            }
+            resultSetDonemdeKayitliYnoGetir.close();
+
+        }catch (SQLException e){
+            System.out.println("Geçerli dönemde yno kaydı varmı diye sorgulanırken oluşan sql hatası "+e.getMessage());
+        }
+
+            return  isGecerliDonemdeYnoKayitYok;
+    }
+    void donemeYnoKaydiEkle(int gecerliDonem,float gno,float yno){
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        enYuksekOrtalamaId=enYuksekOrtalamaId()+1;
+        String sqlDonemeYnoGnoEkle = "insert into kisi_ortalama_bilgileri(kisi_ortalama_id,alindigi_donem,donem_ortalamasi,genel_ortalamasi,kisi_idf) values ("+enYuksekOrtalamaId+","+gecerliDonem+","+yno+","+gno+","+AktifKullanici.aktifKullaniciID+") ;";
+        try {
+
+            PreparedStatement StatDonemeYnoGnoEkle = baglan.prepareStatement(sqlDonemeYnoGnoEkle);
+            StatDonemeYnoGnoEkle.executeUpdate();
+            System.out.println("Gno-yno doneme ekleme başarıyla gerçekleşti");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Gno-Yno güncellenirken oluşan sql hatası");
-            System.out.println("Gno-Yno güncellenirken oluşan sql hatası "+e.getMessage());
+            System.out.println("Gno-yno doneme eklenirken oluşan sql hatası "+e.getMessage());
             throw new RuntimeException(e);
         }
-      }
+
+    }
+
+
+    void gnoYnoGuncelle(int kisiId,int gecerliDonem,float gno,float yno){
+
+          isGecerliDonemdeYnoKayitYok = gecerliDonemdeYnoOrtalamaKaydiVarMi(gecerliDonem);
+
+          if (isGecerliDonemdeYnoKayitYok){
+              System.out.println("yno eklenmeli");
+              donemeYnoKaydiEkle(gecerliDonem,gno,yno);
+              gnoYnoGuncelle(kisiId,gecerliDonem,gno,yno);
+
+          }else {
+              System.out.println("yno kaydı var");
+
+              String sqlGnoYnoGuncelle = "update kisi_ortalama_bilgileri set alindigi_donem = "+gecerliDonem+" ,genel_ortalamasi = "+gno+", donem_ortalamasi = "+yno+" where kisi_idf = "+kisiId+" and alindigi_donem ="+gecerliDonem+" ;";
+              try {
+                  PreparedStatement StatGnoYnoGuncelle = baglan.prepareStatement(sqlGnoYnoGuncelle);
+                  StatGnoYnoGuncelle.executeUpdate();
+                  System.out.println("Gno-Yno güncelleme başarıyla gerçekleşti");
+              } catch (SQLException e) {
+                  JOptionPane.showMessageDialog(null,"Gno-Yno güncellenirken oluşan sql hatası");
+                  System.out.println("Gno-Yno güncellenirken oluşan sql hatası "+e.getMessage());
+                  throw new RuntimeException(e);
+              }
+          }
+    }
 
     void sistemdekiGnoGuncelle(int kisiId,String gno,String gnoGercerliDonemString,int eskiGecerliDonem,String eskiGno){
         float guncellenicekGno=Float.parseFloat(gno);
