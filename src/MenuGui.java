@@ -273,6 +273,7 @@ public class MenuGui extends JFrame{
     String cmbxEnyuksekDersIsim;
     String eskiGnoKayit;
     int eskiGecerliDonem;
+    String gnoGecerliDonemSt ="";
 
 VeriTabaniIslemleri vt= new  VeriTabaniIslemleri();
 SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
@@ -301,50 +302,63 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
     void gnoKayitEkle() {
          boolean isHataYok=false;
-        while (!isHataYok){
+        while (!isHataYok) {
+            try {
+                if (fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().startsWith("0") || fld_gnoGercerliDonem.getText().isEmpty() || fld_gnoGercerliDonem.getText().startsWith("0")) {
+                    System.out.println("gno ekleme başlatıldı");
 
-            if (fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().startsWith("0") || fld_gnoGercerliDonem.getText().isEmpty() || fld_gnoGercerliDonem.getText().startsWith("0")) {
-                System.out.println("gno ekleme başlatıldı");
-
-                tamEkranYap(false);
-                String gnoKayitString = JOptionPane.showInputDialog(this, "Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
-                tamEkranYap(true);
-
-                float gnoKayit = Float.parseFloat(gnoKayitString);
-                if (gnoKayit < 0.0 || gnoKayit > 4.0) {
-                    isHataYok=false;
                     tamEkranYap(false);
-                    JOptionPane.showMessageDialog(this, "Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
+                    String gnoKayitString = JOptionPane.showInputDialog(this, "Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
                     tamEkranYap(true);
 
-
-                } else {
-                    fld_anlikGnoKayit.setText(gnoKayitString);
-                    tamEkranYap(false);
-                    String gnoGecerliDonemSt = JOptionPane.showInputDialog(null, "Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)");
-                    tamEkranYap(true);
-                    int gnoGecerliDonem = Integer.parseInt(gnoGecerliDonemSt);
-
-                    if (gnoGecerliDonem <= 0 || 30 < gnoGecerliDonem) {
-                        isHataYok=false;
+                    float gnoKayit = Float.parseFloat(gnoKayitString);
+                    if (gnoKayit < 0.0 || gnoKayit > 4.0) {
+                        isHataYok = false;
                         tamEkranYap(false);
-                        JOptionPane.showMessageDialog(null, "Gno'nuzun Geçerli Olduğu Son Dönem 1 - 30 Arasında Olmalıdır !!");
+                        JOptionPane.showMessageDialog(this, "Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
                         tamEkranYap(true);
 
-                    }else {
-                        fld_gnoGercerliDonem.setText(gnoGecerliDonemSt);
+
+                    } else {
+                        fld_anlikGnoKayit.setText(gnoKayitString);
+                        tamEkranYap(false);
+                        gnoGecerliDonemSt = JOptionPane.showInputDialog(null, "Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)");
                         tamEkranYap(true);
-                        vt.sistemeGnoEkle(AktifKullanici.aktifKullaniciID, fld_anlikGnoKayit.getText(), fld_gnoGercerliDonem.getText());
-                        isHataYok=true;
+                        int gnoGecerliDonem = Integer.parseInt(gnoGecerliDonemSt);
+
+                        if (gnoGecerliDonem <= 0 || 30 < gnoGecerliDonem) {
+                            isHataYok = false;
+                            tamEkranYap(false);
+                            JOptionPane.showMessageDialog(null, "Gno'nuzun Geçerli Olduğu Son Dönem 1 - 30 Arasında Olmalıdır !!");
+                            tamEkranYap(true);
+
+                        } else {
+                            fld_gnoGercerliDonem.setText(gnoGecerliDonemSt);
+                            tamEkranYap(true);
+                            vt.sistemeGnoEkle(AktifKullanici.aktifKullaniciID, fld_anlikGnoKayit.getText(), fld_gnoGercerliDonem.getText());
+                            isHataYok = true;
+                        }
+
                     }
 
+                } else if (!(fld_gnoGercerliDonem.getText().isEmpty() || fld_gnoGercerliDonem.getText().startsWith("0"))) {
+                    tamEkranYap(false);
+                    JOptionPane.showMessageDialog(null, "Zaten Sistemde Gno Kaydınız Var.... Gno Güncelle Kısmını Kullanınınz !!");
+                    tamEkranYap(true);
+                    isHataYok = true;
                 }
-
-            } else if (!(fld_gnoGercerliDonem.getText().isEmpty() || fld_gnoGercerliDonem.getText().startsWith("0"))) {
+            }catch (NumberFormatException k){
                 tamEkranYap(false);
-                JOptionPane.showMessageDialog(null, "Zaten Sistemde Gno Kaydınız Var.... Gno Güncelle Kısmını Kullanınınz !!");
+                JOptionPane.showMessageDialog(null,"Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
                 tamEkranYap(true);
-                isHataYok=true;
+                System.out.println("gno kısmına sayı girilmedi "+k.getMessage());
+                isHataYok=false;
+            }catch (NullPointerException e ){
+                tamEkranYap(false);
+                JOptionPane.showMessageDialog(null,"İlk girişte gno girmeniz zorunludur.");
+                tamEkranYap(true);
+                System.out.println("null geldiği için gno kayıt ekle kısmında hata : "+e.getMessage());
+                isHataYok=false;
             }
         }
     }
@@ -1239,6 +1253,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         btn_cikisYapKullanici.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                VeriTabaniIslemleri.gecerliDonem=0;
                 dispose();
                 AktifKullanici.aktifKullaniciBilgileriSifirla();
                 new GirisEkrani();
@@ -1246,12 +1261,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         });
 
         if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().equals("0.0")){
-            /*device.setFullScreenWindow(null);
 
-            setSize(1600,1400);
-            setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width )/2,(Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height )/2);
-
-             */
              tamEkranYap(false);
             JOptionPane.showMessageDialog(null,"Gno(Genel ortalama) bilginizi giriniz");
             tamEkranYap(true);
@@ -1604,8 +1614,11 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         btn_gnoEkle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("buraya geldimm");
-                gnoKayitEkle();
+                do {
+                    System.out.println("sa");
+                    gnoKayitEkle();
+                }while(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().startsWith("0") || fld_gnoGercerliDonem.getText().isEmpty() || fld_gnoGercerliDonem.getText().startsWith("0"));
+
             }
         });
 
