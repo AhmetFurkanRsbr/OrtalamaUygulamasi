@@ -176,9 +176,7 @@ int donemAktsHesapla(int kisiId,int alindigiDonem){
       return donemOrtalamasi4;
     }
 
-    void genelOrtalamaHesapla(){
 
-    }
 
 
     float dersOrtalamasiHesapla(int VizeNotu,int FinalNotu,int akts,int VizeEtki,int FinalEtki){

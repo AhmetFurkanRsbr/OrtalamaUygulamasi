@@ -238,6 +238,10 @@ public class MenuGui extends JFrame{
     private JTextField fld_verildigiDonemKayit;
     private JLabel txt_verildigiDonemKayit;
     private JLabel txt_kayitliDersSayisiKayit;
+    private JLabel txt_harfNotuKayit;
+    private JTextField fld_harfNotuKayit;
+    private JLabel lbl_harfNotu;
+    private JTextField fld_harfNotu;
     ArrayList<Component> temizlenecekComponent = new ArrayList<>();
     ArrayList<JTextField> dersIsimleriOrtalamaDene=new ArrayList<>();
     ArrayList<JTextField> vizeNotlariOrtalamaDene=new ArrayList<>();
@@ -295,34 +299,53 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         }
     }
 
-    void gnoKayitEkle(){
+    void gnoKayitEkle() {
+         boolean isHataYok=false;
+        while (!isHataYok){
 
-        if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().equals("0.0") ){
-            System.out.println("gno ekleme başlatıldı");
+            if (fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().startsWith("0") || fld_gnoGercerliDonem.getText().isEmpty() || fld_gnoGercerliDonem.getText().startsWith("0")) {
+                System.out.println("gno ekleme başlatıldı");
 
-            tamEkranYap(false);
-            String gnoKayitString =  JOptionPane.showInputDialog(this,"Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
-            tamEkranYap(true);
-
-            float gnoKayit= Float.parseFloat(gnoKayitString);
-
-            if(gnoKayit<0.0 || gnoKayit>4.0){
                 tamEkranYap(false);
-                JOptionPane.showMessageDialog(this,"Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
+                String gnoKayitString = JOptionPane.showInputDialog(this, "Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
                 tamEkranYap(true);
-                gnoKayitEkle();
-            }else{
-                fld_anlikGnoKayit.setText(gnoKayitString);
+
+                float gnoKayit = Float.parseFloat(gnoKayitString);
+                if (gnoKayit < 0.0 || gnoKayit > 4.0) {
+                    isHataYok=false;
+                    tamEkranYap(false);
+                    JOptionPane.showMessageDialog(this, "Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
+                    tamEkranYap(true);
+
+
+                } else {
+                    fld_anlikGnoKayit.setText(gnoKayitString);
+                    tamEkranYap(false);
+                    String gnoGecerliDonemSt = JOptionPane.showInputDialog(null, "Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)");
+                    tamEkranYap(true);
+                    int gnoGecerliDonem = Integer.parseInt(gnoGecerliDonemSt);
+
+                    if (gnoGecerliDonem <= 0 || 30 < gnoGecerliDonem) {
+                        isHataYok=false;
+                        tamEkranYap(false);
+                        JOptionPane.showMessageDialog(null, "Gno'nuzun Geçerli Olduğu Son Dönem 1 - 30 Arasında Olmalıdır !!");
+                        tamEkranYap(true);
+
+                    }else {
+                        fld_gnoGercerliDonem.setText(gnoGecerliDonemSt);
+                        tamEkranYap(true);
+                        vt.sistemeGnoEkle(AktifKullanici.aktifKullaniciID, fld_anlikGnoKayit.getText(), fld_gnoGercerliDonem.getText());
+                        isHataYok=true;
+                    }
+
+                }
+
+            } else if (!(fld_gnoGercerliDonem.getText().isEmpty() || fld_gnoGercerliDonem.getText().startsWith("0"))) {
                 tamEkranYap(false);
-                fld_gnoGercerliDonem.setText(JOptionPane.showInputDialog(null,"Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)"));
+                JOptionPane.showMessageDialog(null, "Zaten Sistemde Gno Kaydınız Var.... Gno Güncelle Kısmını Kullanınınz !!");
                 tamEkranYap(true);
-                vt.sistemeGnoEkle(AktifKullanici.aktifKullaniciID,fld_anlikGnoKayit.getText(),fld_gnoGercerliDonem.getText());
+                isHataYok=true;
             }
-
-        }else {
-            tamEkranYap(false);
-            JOptionPane.showMessageDialog(null,"Zaten Sistemde Gno Kaydınız Var.... Gno Güncelle Kısmını Kullanınınz !!");
-            tamEkranYap(true);
         }
     }
 
@@ -514,7 +537,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
             fld_dersGecme100.setVisible(true);
             fld_dersGecme4.setVisible(true);
+            fld_harfNotu.setVisible(true);
 
+            lbl_harfNotu.setVisible(true);
             lbl_dersGecme4.setVisible(true);
             lbl_dersGecme100.setVisible(true);
         }
@@ -534,7 +559,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         fld_gno.setVisible(false);
         fld_dersGecme100.setVisible(false);
         fld_dersGecme4.setVisible(false);
+        fld_harfNotu.setVisible(false);
 
+        lbl_harfNotu.setVisible(false);
         lbl_dersGecme4.setVisible(false);
         lbl_gno.setVisible(false);
         lbl_yno.setVisible(false);
@@ -715,6 +742,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         txt_finalEtkiOKayit.setVisible(false);
         txt_derstenGecmeDurumuKayit.setVisible(false);
         txt_verildigiDonemKayit.setVisible(false);
+        txt_harfNotuKayit.setVisible(false);
 
         fld_aktsKayit.setVisible(false);
         fld_dersIsimKayit.setVisible(false);
@@ -726,6 +754,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         fld_finalEtkiKayit.setVisible(false);
         fld_derstenGecmeDurumuKayit.setVisible(false);
         fld_verildigiDonemKayit.setVisible(false);
+        fld_harfNotuKayit.setVisible(false);
 
     }
     void kayitEkraniGoster(){
@@ -739,6 +768,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         fld_finalEtkiKayit.setVisible(true);
         fld_derstenGecmeDurumuKayit.setVisible(true);
         fld_verildigiDonemKayit.setVisible(true);
+        fld_harfNotuKayit.setVisible(true);
 
         txt_dersIsimKayit.setVisible(true);
         txt_aktsKayit.setVisible(true);
@@ -750,6 +780,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         txt_derstengecmeKayit.setVisible(true);
         txt_derstenGecmeDurumuKayit.setVisible(true);
         txt_verildigiDonemKayit.setVisible(true);
+        txt_harfNotuKayit.setVisible(true);
 
 
     }
@@ -1039,6 +1070,10 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
          fld_dersOrt100Kayit.setText(dersinBilgileri.get(6).toString());
          fld_derstenGecme4Kayit.setText(dersinBilgileri.get(7).toString());
          fld_derstenGecmeDurumuKayit.setText(dersinBilgileri.get(8).toString());
+         fld_harfNotuKayit.setText("");
+         if(!dersinBilgileri.get(9).toString().isEmpty()){
+             fld_harfNotuKayit.setText(dersinBilgileri.get(9).toString());
+         }
 
      }
 
@@ -1055,7 +1090,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
     public  void tamEkranYap(boolean isTamEkranYap){
         new TamEkran(this, isTamEkranYap);
-        System.out.println("tam ekran yapıldı");
     }
 
 
@@ -1104,7 +1138,6 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         //ImageIcon icon =new ImageIcon("C:\\Users\\HP\\IdeaProjects\\OrtalamaHesaplamaUygulamasi\\src\\Ortalama Hesapla6.png");
         Image image = icon.getImage();
         setIconImage(image);
-        System.out.println(this);
         // Ekranı tam ekran yap
         device.setFullScreenWindow(this);
         //setSize(600,600);
@@ -1141,16 +1174,24 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
                 if( vizeNotu <0 || vizeNotu >100){
                     isNotGirisindeHata=true;
-                    JOptionPane.showInternalMessageDialog(null,"!! Vize Notunuz 0-100 Aralığında Olmalılıdır !!");
+                    tamEkranYap(false);
+                    JOptionPane.showInternalMessageDialog(JP_Menu,"!! Vize Notunuz 0-100 Aralığında Olmalılıdır !!");
+                    tamEkranYap(true);
                 }  if (finalNotu < 0 || finalNotu > 100) {
                     isNotGirisindeHata=true;
-                    JOptionPane.showInternalMessageDialog(null,"!! Final Notunuz 0-100 Aralığında Olmalılıdır !!");
+                    tamEkranYap(false);
+                    JOptionPane.showInternalMessageDialog(JP_Menu,"!! Final Notunuz 0-100 Aralığında Olmalılıdır !!");
+                    tamEkranYap(true);
                 } if ( (vizeEtkiOrani + finalEtkiOrani ) != 100) {
                     isNotGirisindeHata=true;
-                    JOptionPane.showInternalMessageDialog(null,"!! Vize ve Final Etki Oranları Toplamı 100 'ü Vermelidir !!");
+                    tamEkranYap(false);
+                    JOptionPane.showInternalMessageDialog(JP_Menu,"!! Vize ve Final Etki Oranları Toplamı 100 'ü Vermelidir !!");
+                    tamEkranYap(true);
                 }  if (akts > 30 || akts <= 0) {
                     isNotGirisindeHata=true;
-                    JOptionPane.showInternalMessageDialog(null,"!! Akts Değeriniz 30 'dan Büyük, 0 'dan Küçük Olamaz !!");
+                    tamEkranYap(false);
+                    JOptionPane.showInternalMessageDialog(JP_Menu,"!! Akts Değeriniz 30 'dan Büyük, 0 'dan Küçük Olamaz !!");
+                    tamEkranYap(true);
                 }if(!isNotGirisindeHata){
 
                      ortalamaHesapla1.dersOrtalamasiHesapla(vizeNotu,finalNotu,akts,vizeEtkiOrani,finalEtkiOrani);
@@ -1159,13 +1200,15 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                      ortalamaHesapla1.yeniDonemOrtalamasiHesapla(AktifKullanici.aktifKullaniciID,donem);
                      fld_Eskigno.setText(String.valueOf(vt.eskiGnoGetir(AktifKullanici.aktifKullaniciID,donem)));
                      vt.yeniGnoHesapla(AktifKullanici.aktifKullaniciID,donem,OrtalamaHesapla.yeniDonemOrtalamasi4,OrtalamaHesapla.donemOrtalamasi4);
-
-                    JOptionPane.showMessageDialog(null,"DERS:"+ fld_dersIsim.getText() + "\ndersten geçme notunuz(4lük) : "+ortalamaHesapla1.dortlukDersGecmeNotu+"\ndersten geçme notunuz(100 lük) : "+ortalamaHesapla1.derstenGecmeNotu100+"\n\tDERSTEN GEÇME DURUMUNUZ-->> "+ortalamaHesapla1.dersGecmeDurumuString);
+                    tamEkranYap(false);
+                    JOptionPane.showMessageDialog(JP_Menu,"DERS:"+ fld_dersIsim.getText() + "\ndersten geçme notunuz(4lük) : "+ortalamaHesapla1.dortlukDersGecmeNotu+"\ndersten geçme notunuz(100 lük) : "+ortalamaHesapla1.derstenGecmeNotu100+"\n\tDERSTEN GEÇME DURUMUNUZ-->> "+ortalamaHesapla1.dersGecmeDurumuString);
+                    tamEkranYap(false);
                     fld_yno.setText(String.valueOf(OrtalamaHesapla.yeniDonemOrtalamasi4));
                     fld_EskiYno.setText(String.valueOf(OrtalamaHesapla.donemOrtalamasi4));
                     fld_dersGecme100.setText(String.valueOf(OrtalamaHesapla.derstenGecmeNotu100));
                     fld_dersGecme4.setText(String.valueOf(OrtalamaHesapla.dortlukDersGecmeNotu));
                     fld_gno.setText(String.valueOf(VeriTabaniIslemleri.yeniGno));
+                    fld_harfNotu.setText(String.valueOf(OkulHarfNotlari.harfNotuStr));
                     btn_sistemeKayitEt.setVisible(true);
                         if(fld_kalanDersSayisi.getText().equals("1")) {
                             ortalamaHesapla1.donemOrtalamaHesapla(AktifKullanici.aktifKullaniciID, donem);
@@ -1211,9 +1254,8 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
              */
              tamEkranYap(false);
             JOptionPane.showMessageDialog(null,"Gno(Genel ortalama) bilginizi giriniz");
-
             tamEkranYap(true);
-             System.out.println("naber");
+
 
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
@@ -1234,33 +1276,39 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 case "Not Kaydet":
                     kayitEkraniGizle();
                     ortalamaSonucuGizle();
+                    boolean isDongudenCik=false;
                     do {
-                        try {
-                            String dersSayisiString = JOptionPane.showInputDialog(null, "Kaç ders için hesaplama işlemi yapıcaksınız.");
+                        tamEkranYap(false);
+                        dersSayisiString=JOptionPane.showInputDialog(JP_Menu, "Kaç ders için hesaplama işlemi yapıcaksınız.");
+                        tamEkranYap(true);
 
+                        try {
 
                             dersSayisi = Integer.parseInt(dersSayisiString);
                             fld_kalanDersSayisi.setText(dersSayisiString);
 
-
                         } catch (NumberFormatException e2) {
 
-                                if(dersSayisiString.isEmpty()){
-
-                                    cmbx_silinecekDersGonder();
-                                    cmbx_guncellenicekDersGonder();
-                                    cmbx_EnYuksekGonder();
-
+                            try {
+                                if (dersSayisi<0){
+                                    isDongudenCik=false;
+                                    dersSayisi=0;
+                                } else if (dersSayisiString.isEmpty() || dersSayisiString==null) {
+                                    System.out.println("Kaç ders girilecği sorusuna cancel cevabı verildi : " + e2.getMessage());
+                                    dersSayisi=0;
                                     dispose();
                                     new MenuGui();
-                                    break;
-                                }else{
-                                    System.out.println("Kaç ders girelecği sorusuna cancel cevabı verildi : " + e2.getMessage());
-                                    dersSayisiString=null;
-                                    dersSayisi = 0;
+                                    isDongudenCik=true;
                                 }
+                            }catch (NullPointerException m){
+                                System.out.println("Kaç ders girilecği sorusuna cancel cevabı verildi : " + m.getMessage());
+                                dersSayisi=0;
+                                dispose();
+                                new MenuGui();
+                                isDongudenCik=true;
+                            }
                         }
-                    } while (dersSayisi <= 0);
+                    } while (dersSayisi <= 0 && !isDongudenCik);
 
 
                         fld_dersIsim.setEnabled(true);
@@ -1317,8 +1365,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(dersSayisi>0){
-
-                    vt.dersBilgileriGir(donem,fld_dersIsim.getText(),akts,vizeNotu,vizeEtkiOrani,finalNotu,finalEtkiOrani);
+                    String harfNotu="";
+                    harfNotu=ortalamaHesapla1.okulHarfNotlari.harfNotunuGetir(OrtalamaHesapla.derstenGecmeNotu100,AktifKullanici.aktifKullaniciOkul);
+                    vt.dersBilgileriGir(donem,fld_dersIsim.getText(),akts,vizeNotu,vizeEtkiOrani,finalNotu,finalEtkiOrani,harfNotu);
 
                     agacListeAyarla();
 
@@ -1337,8 +1386,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     ortalamaSonucuGizle();
                     btn_sistemeKayitEt.setVisible(false);
                     if(dersSayisi==0){
-                        int cevap = JOptionPane.showConfirmDialog(null,"Yeni ders ekleyecek misiniz ?");
-                        //
+                        tamEkranYap(false);
+                        int cevap = JOptionPane.showConfirmDialog(JP_Menu,"Yeni ders ekleyecek misiniz ?");
+                        tamEkranYap(false);
                         vt.gnoYnoGuncelle(AktifKullanici.aktifKullaniciID,donem,Float.parseFloat(fld_gno.getText()),Float.parseFloat(fld_yno.getText()));
 
                          switch (cevap){
@@ -1380,8 +1430,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                         }
                     }
                 }else {
-                   int ders_ekleme=JOptionPane.showConfirmDialog(null,"Yeni ders ekleyecek misiniz ?");
-                    System.out.println(ders_ekleme);
+                    tamEkranYap(false);
+                   int ders_ekleme=JOptionPane.showConfirmDialog(JP_Menu,"Yeni ders ekleyecek misiniz ?");
+                    tamEkranYap(true);
                 }
 
             }
@@ -1446,7 +1497,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
            boolean isDersVeNotSil =vt.dersVeNotSil();
            if (isDersVeNotSil){
-               JOptionPane.showMessageDialog(null,"Seçtiğiniz derse ait bilgiler sistemden silinmiştir.");
+               tamEkranYap(false);
+               JOptionPane.showMessageDialog(JP_Menu,"Seçtiğiniz derse ait bilgiler sistemden silinmiştir.");
+               tamEkranYap(true);
                vt.kisininKayitliDersleriniGetir();
                agacListeAyarla();
                cmbx_EnYuksekGonder();
@@ -1473,14 +1526,16 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     GuncellenicekBilgiler.guncelFinalEtkiO =Integer.parseInt(fld_yeniFinalEtkiO.getText());
 
                     vt.dersVeNotguncelle();
-
-                   JOptionPane.showMessageDialog(null,"Güncelleme İşlemi Başarıyla Gerçekleşti");
-
+                    tamEkranYap(false);
+                   JOptionPane.showMessageDialog(JP_Menu,"Güncelleme İşlemi Başarıyla Gerçekleşti");
+                    tamEkranYap(true);
 
                    tabbedPane1.setSelectedIndex(4);
                    tabbedPane1.setSelectedIndex(2);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Eksik Yeni Değerler Tespit Edildi !!");
+                    tamEkranYap(false);
+                    JOptionPane.showMessageDialog(JP_Menu,"Eksik Yeni Değerler Tespit Edildi !!");
+                    tamEkranYap(true);
                 }
             }
         });
@@ -1563,18 +1618,39 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                  eskiGecerliDonem = Integer.parseInt(fld_gnoGercerliDonem.getText());
 
                 if(fld_anlikGnoKayit.getText().isEmpty() || fld_anlikGnoKayit.getText().startsWith("0")){
-                    JOptionPane.showMessageDialog(null,"Kayıtlı Gno'nuz Yok Gno Ekle Kısmını Kullanınız");
+                    tamEkranYap(false);
+                    JOptionPane.showMessageDialog(JP_Menu,"Kayıtlı Gno'nuz Yok Gno Ekle Kısmını Kullanınız");
+                    tamEkranYap(true);
                 }else{
-                    String guncelGnoString = JOptionPane.showInputDialog(null,"Güncelleyeceğiniz Gno'yu Giriniz (ondalıklı kısım için . kullanınız)");
+                    tamEkranYap(false);
+                    String guncelGnoString = JOptionPane.showInputDialog(JP_Menu,"Güncelleyeceğiniz Gno'yu Giriniz (ondalıklı kısım için . kullanınız)");
+                    tamEkranYap(true);
                     float guncelGno=Float.parseFloat(guncelGnoString);
                      if(guncelGno<0.0 || guncelGno>4){
-                         JOptionPane.showMessageDialog(null,"Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
+                         tamEkranYap(false);
+                         JOptionPane.showMessageDialog(JP_Menu,"Gno'nuz 0.00-4.00 Arasında Olmalıdır !!");
+
                          guncelGnoString=  JOptionPane.showInputDialog(JP_Menu,"Şuanki Gno'nuz Nedir ?(!!ondalık kısım için . kullanınız!!) ");
+
                          guncelGno= Float.parseFloat(guncelGnoString);
+                         tamEkranYap(true);
                      }
 
                     fld_anlikGnoKayit.setText(guncelGnoString);
-                    fld_gnoGercerliDonem.setText(JOptionPane.showInputDialog(null,"Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)"));
+                    tamEkranYap(false);
+                     String gnoGecerliDonemSt = JOptionPane.showInputDialog(JP_Menu,"Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)");
+                    tamEkranYap(true);
+                     int gnoGecerliDonem =Integer.parseInt(gnoGecerliDonemSt);
+
+                     if (gnoGecerliDonem<=0 || 30<gnoGecerliDonem){
+                         tamEkranYap(false);
+                         JOptionPane.showMessageDialog(JP_Menu,"Gno'nuzun Geçerli Olduğu Son Dönem 1 - 30 Arasında Olmalıdır !!");
+                         gnoGecerliDonemSt=  JOptionPane.showInputDialog(JP_Menu,"Gno'nuzun Geçerli Olduğu Son Dönemi Giriniz(1-2-3)");
+                         tamEkranYap(true);
+                         gnoGecerliDonem= Integer.parseInt(gnoGecerliDonemSt);
+                    }
+
+                     fld_gnoGercerliDonem.setText(gnoGecerliDonemSt);
                     //tamEkranYap
                     //device.setFullScreenWindow(this);
                     tamEkranYap(true);
@@ -1719,16 +1795,24 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
                         if( vizeNotuOrtHesapla <0 || vizeNotuOrtHesapla >100){
                             isNotGirisindeHata=true;
+                            tamEkranYap(false);
                             JOptionPane.showInternalMessageDialog(null,(index+1)+". Dersinizin Notunda Hata\n!! Vize Notunuz 0-100 Aralığında Olmalılıdır !!");
+                            tamEkranYap(true);
                         }  if (finalNotuOrtHesapla < 0 || finalNotuOrtHesapla > 100) {
                             isNotGirisindeHata=true;
+                            tamEkranYap(false);
                             JOptionPane.showInternalMessageDialog(null,(index+1)+". Dersinizin Notunda Hata\n!! Final Notunuz 0-100 Aralığında Olmalılıdır !!");
+                            tamEkranYap(true);
                         } if ( (vizeEtkiOraniOrtHesapla + finalEtkiOraniOrtHesapla ) != 100) {
                             isNotGirisindeHata=true;
+                            tamEkranYap(false);
                             JOptionPane.showInternalMessageDialog(null,(index+1)+". Dersinizin Etki Oranında Hata\n!! Vize ve Final Etki Oranları Toplamı 100 'ü Vermelidir !!");
+                            tamEkranYap(true);
                         }  if (aktsOrtHesapla > 30 || aktsOrtHesapla <= 0) {
                             isNotGirisindeHata=true;
+                            tamEkranYap(false);
                             JOptionPane.showInternalMessageDialog(null,(index+1)+". Dersinizin Akts Değerinde Hata\n!! Akts Değeriniz 30 'dan Büyük, 0 'a Küçük-Eşit Olamaz !!");
+                            tamEkranYap(true);
                         }
                     }
 
@@ -1827,7 +1911,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                // if (SwingUtilities.isRightMouseButton(e)) {
                     // Sağ tıklama algılandığında yapılacak işlemler
                    // System.out.println("Right button clicked!");
-
+                  /*
                     if (!tree1.isSelectionEmpty()) {
                         // Sağ tık olayını dinlemek için MouseListener ekle
                         tree1.addMouseListener(new MouseAdapter() {
@@ -1846,11 +1930,12 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                             }
                         });
 
-                        System.out.println("tıklandıı");
+                       // System.out.println("tıklandıı");
 
                     } else {
-                        System.out.println("tıklanmadı");
+                       // System.out.println("tıklanmadı");
                     }
+                    */
                // }
             }
         });

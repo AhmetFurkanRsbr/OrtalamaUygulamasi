@@ -28,6 +28,7 @@ public class VeriTabaniIslemleri {
     //static float yeniYno=0.0f;
     //static float aktifYno=0.0f;
 
+
     public  VeriTabaniIslemleri(){
         try {
             msqlBaglan();
@@ -451,7 +452,7 @@ public class VeriTabaniIslemleri {
 
             dersinBilgileriAR.clear();
 
-            String sqlDersinBilgileriniGetir = "select ders_akts,vize_notu,final_notu,vize_etkiO,final_etkiO,dersten_gecme_durumu,dersten_gecme_notu100,dersten_gecme_notu4,ders_bilgileri.alindigi_donem from not_bilgileri inner join ders_bilgileri on ders_idf = ders_id inner join ders_ortalama_bilgileri on ders_ortalama_bilgileri.ders_idf = ders_bilgileri.ders_id  where ders_bilgileri.ders_isim = '"+dersIsmi+"' and not_bilgileri.kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+            String sqlDersinBilgileriniGetir = "select ders_akts,vize_notu,final_notu,vize_etkiO,final_etkiO,dersten_gecme_durumu,dersten_gecme_notu100,dersten_gecme_notu4,ders_bilgileri.alindigi_donem,ders_harf_notu from not_bilgileri inner join ders_bilgileri on ders_idf = ders_id inner join ders_ortalama_bilgileri on ders_ortalama_bilgileri.ders_idf = ders_bilgileri.ders_id  where ders_bilgileri.ders_isim = '"+dersIsmi+"' and not_bilgileri.kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
 
             Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet resultSetCekilenDersVerileri = stat3.executeQuery(sqlDersinBilgileriniGetir);
@@ -468,6 +469,7 @@ public class VeriTabaniIslemleri {
                 dersinBilgileriAR.add(resultSetCekilenDersVerileri.getFloat("dersten_gecme_notu100"));
                 dersinBilgileriAR.add(resultSetCekilenDersVerileri.getFloat("dersten_gecme_notu4"));
                 dersinBilgileriAR.add(resultSetCekilenDersVerileri.getString("dersten_gecme_durumu"));
+                dersinBilgileriAR.add(resultSetCekilenDersVerileri.getString("ders_harf_notu"));
 
 
                 //     System.out.println("Donemdeki "+getirilicekVeriIsmi+" : "+kisiDonemdekiIstenilenVeriAR.get(index));
@@ -579,7 +581,7 @@ public class VeriTabaniIslemleri {
             ResultSet resultSetCekilenDersID = stat3.executeQuery(sqlDersIDiAlma);
             while (resultSetCekilenDersID.next()) {
                 AnlikdersId = resultSetCekilenDersID.getInt(1);
-                System.out.println("BURDAKİ DERSıd : " + AnlikdersId);
+                //System.out.println("BURDAKİ DERSıd : " + AnlikdersId);
             }
             resultSetCekilenDersID.close();
         }catch (SQLException F){
@@ -774,6 +776,7 @@ public class VeriTabaniIslemleri {
                   StatGnoYnoGuncelle.executeUpdate();
                   System.out.println("Gno-Yno güncelleme başarıyla gerçekleşti");
               } catch (SQLException e) {
+
                   JOptionPane.showMessageDialog(null,"Gno-Yno güncellenirken oluşan sql hatası");
                   System.out.println("Gno-Yno güncellenirken oluşan sql hatası "+e.getMessage());
                   throw new RuntimeException(e);
@@ -879,7 +882,7 @@ public class VeriTabaniIslemleri {
 
     }
 
-    boolean dersBilgileriGir(int donem,String dersIsim,int akts,int vizeNotu,int vizeEtkiOrani,int finalNotu,int finalEtkiOrani){
+    boolean dersBilgileriGir(int donem,String dersIsim,int akts,int vizeNotu,int vizeEtkiOrani,int finalNotu,int finalEtkiOrani,String ders_harf_notu){
 
         int kisi_idf=0;
         int yeniDersId=0;
@@ -932,8 +935,8 @@ public class VeriTabaniIslemleri {
             System.out.println("ders bilgierli eklenirken oluşan hata"+e.getMessage());
         }
         try {
-            String sqlDersBilgisiGir =" insert into ders_ortalama_bilgileri(ders_ortalama_id,dersten_gecme_notu100,dersten_gecme_notu4,dersten_gecme_durumu,ders_idf,alindigi_donem,kisi_idf) VALUES (" +
-                    "?,?,?,?,?,?,?); ";
+            String sqlDersBilgisiGir =" insert into ders_ortalama_bilgileri(ders_ortalama_id,dersten_gecme_notu100,dersten_gecme_notu4,dersten_gecme_durumu,ders_idf,alindigi_donem,kisi_idf,ders_harf_notu) VALUES (" +
+                    "?,?,?,?,?,?,?,?); ";
 
             PreparedStatement parametreliStatDersOrtBilgi =baglan.prepareStatement(sqlDersBilgisiGir);
 
@@ -944,6 +947,7 @@ public class VeriTabaniIslemleri {
             parametreliStatDersOrtBilgi.setInt(5,yeniDersId);
             parametreliStatDersOrtBilgi.setInt(6,donem);
             parametreliStatDersOrtBilgi.setInt(7,kisi_idf);
+            parametreliStatDersOrtBilgi.setString(8,ders_harf_notu);
 
             parametreliStatDersOrtBilgi.executeUpdate();
 

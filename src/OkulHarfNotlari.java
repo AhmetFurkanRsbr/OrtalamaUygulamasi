@@ -5,6 +5,7 @@ public class OkulHarfNotlari {
     float harfinDortlukDonusumu;
     float []notAraliklariArray= new float[10];
     boolean isDonguBitir=false;
+    static String harfNotuStr="";
 
     enum Okullar{
         TopkapiHarfNotu,
@@ -23,7 +24,7 @@ public class OkulHarfNotlari {
         FD,
         FF
     }
-    kisiHarfNotu not;
+    static kisiHarfNotu not;
     enum TopkapiHarfNotu {
         AA,//100-90
         BA,//89-85
@@ -53,6 +54,7 @@ public class OkulHarfNotlari {
     public static void dersGecmeNotuGetir(float dersGecmeNotu){
        OkulHarfNotlari.dersGecmeNotu=dersGecmeNotu;
     }
+
 
 
     public  float dortlukSistemdeOrtalamaDonustur(float gecmeNotu,String kisininOkuluString) {
@@ -180,7 +182,16 @@ public class OkulHarfNotlari {
         }else {
                 System.out.println("HATALI Not girişi:"+gecmeNotu);
         }
+        harfNotuStr =String.valueOf(not);
+
 
         return harfinDortlukDonusumu;
+    }
+
+    public String harfNotunuGetir(float dersGecmeNotu,String kisininOkuluStr){
+
+       dortlukSistemdeOrtalamaDonustur(dersGecmeNotu,kisininOkuluStr);
+           harfNotuStr =String.valueOf(not);
+        return  harfNotuStr;
     }
 }
