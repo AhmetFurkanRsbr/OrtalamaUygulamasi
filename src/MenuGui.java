@@ -3,6 +3,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.foreign.ValueLayout;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -365,6 +366,13 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
     int kayitliDersBilgileriniGetir(int bilgisiGetirilicekDonem){
 
+        dersIsimleriOrtalamaDene.clear();
+        vizeNotlariOrtalamaDene.clear();
+        finalNotlariOrtalamaDene.clear();
+        vizeEtkiOranlariOrtalamaDene.clear();
+        finalEtkiOranlariOrtalamaDene.clear();
+        aktslerOrtalamaDene.clear();
+
         getirilenDonemdekiDersSayisi = vt.kisininDonemdekiDersSayisiniGetir(bilgisiGetirilicekDonem);
 
         kisiDonemdekiDersIsimleriAROrtDene = vt.kisininDonemdekiDersIsimleriniGetir(bilgisiGetirilicekDonem,getirilenDonemdekiDersSayisi,kisiDonemdekiDersIsimleriAROrtDene);
@@ -378,12 +386,14 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
         dersKutulariniGetirOrtDene(getirilenDonemdekiDersSayisi);
 
+
         dersSayisinaGoreDizileriOlustur(getirilenDonemdekiDersSayisi,"dersIsim");
         dersSayisinaGoreDizileriOlustur(getirilenDonemdekiDersSayisi,"vize");
         dersSayisinaGoreDizileriOlustur(getirilenDonemdekiDersSayisi,"final");
         dersSayisinaGoreDizileriOlustur(getirilenDonemdekiDersSayisi,"vizeEtki");
         dersSayisinaGoreDizileriOlustur(getirilenDonemdekiDersSayisi,"finalEtki");
         dersSayisinaGoreDizileriOlustur(getirilenDonemdekiDersSayisi,"akts");
+
 
         kayitliDersleriKutularaDoldurOrtDene(getirilenDonemdekiDersSayisi);
        return getirilenDonemdekiDersSayisi;
@@ -400,6 +410,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
             dersKutulariniGizleOrtDene();
             DersSayisi=kayitliDersBilgileriniGetir((int)spn_getirilecekDonem.getValue());
+
 
         }
 
@@ -580,6 +591,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         lbl_gno.setVisible(false);
         lbl_yno.setVisible(false);
         lbl_dersGecme100.setVisible(false);
+
 
     }
     void agacListeAyarla(){
@@ -905,9 +917,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
     }
     void kayitliDersleriKutularaDoldurOrtDene(int dersSayisi){
 
-
         for (int dersSayisiIndex=0;dersSayisiIndex<dersSayisi;dersSayisiIndex++) {
-
 
             dersIsimleriOrtalamaDene.get(dersSayisiIndex).setText(kisiDonemdekiDersIsimleriAROrtDene.get(dersSayisiIndex));
             vizeNotlariOrtalamaDene.get(dersSayisiIndex).setText(vizeNotlariOrtalamaDeneIntAR.get(dersSayisiIndex).toString());
