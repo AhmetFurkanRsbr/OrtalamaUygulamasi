@@ -17,6 +17,7 @@ public class YnoHesaplaOrtDeneSyf {
     int aktsToplamlariOrtDene=0;
     static float yno100lukOrtDene=0.00f;
     static float yno4lukOrtDene=0.00f;
+    static float gno4OrtDene=0.00f;
     float derstenGecmeNotu4lukHarfKarsiligi=0.00f;
 
   YnoHesaplaOrtDeneSyf(int dersSayisi,ArrayList vizeNotlariAr,ArrayList finalNotlariAr,ArrayList finalEtkiOranlariAr,ArrayList vizeEtkiOranlariAr,ArrayList aktslerAr,ArrayList<Component> ortDeneSayfasindakiComponentlerAr){
@@ -37,6 +38,7 @@ public class YnoHesaplaOrtDeneSyf {
         ortDeneSayfasindakiComponentler=ortDeneSayfasindakiComponentlerAr;
 
         ynoHesapla();
+        //gnoHesapla(eskiGnoOrtDene,eskiGnoGecerliDonemOrtDene);
   }
   void dizilereGerekliVerileriEkle(int dersSayisi,String birim){
 
@@ -174,6 +176,12 @@ public class YnoHesaplaOrtDeneSyf {
         }
         yno4lukOrtDene = ortalamaToplamlari4luk_OrtalamaDene / aktsToplamlariOrtDene;
         yno100lukOrtDene = ortalamaToplamlari100luk_OrtalamaDene / aktsToplamlariOrtDene;
+
+    }
+    public static void gnoHesapla(float eskiGno){
+
+      //gno4OrtDene= (yno4lukOrtDene+eskiGno)/(gnoGecerliDonem+1.00f);
+        gno4OrtDene= (yno4lukOrtDene+eskiGno)/2.00f;
 
     }
 

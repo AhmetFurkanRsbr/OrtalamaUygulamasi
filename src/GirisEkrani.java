@@ -19,7 +19,9 @@ public class GirisEkrani  extends JFrame{
             // VeriTabaniIslemleri veriTabaniIslemleri2 =new VeriTabaniIslemleri();
             veriTabaniIslemleri2.kullaniciGirisiDogruMu(kullaniciAdiGirisText,parolaGirisText);
             if(!veriTabaniIslemleri2.isKullaniciGirisiDogruMu){
+                tamEkranYap(false);
                 JOptionPane.showMessageDialog(this,"KULLANICI SİSTEMDE YOK");
+                tamEkranYap(true);
             }else {
                 tamEkranYap(false);
                 JOptionPane.showMessageDialog(this, "KULLANICI GİRİŞİ BAŞARILI");
