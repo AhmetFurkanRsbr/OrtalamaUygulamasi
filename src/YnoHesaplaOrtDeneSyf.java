@@ -9,6 +9,7 @@ public class YnoHesaplaOrtDeneSyf {
     ArrayList<JSpinner> aktslerAR=new ArrayList<>();
     ArrayList<JTextField> vizeEtkiOranlariAR =new ArrayList<>();
     ArrayList<JTextField> finalEtkiOranlariAR=new ArrayList<>();
+    ArrayList<JComboBox> harfNotlariAR=new ArrayList<>();
 
     static int dersSayisi=0;
     float dersGecmeNotuOrtDene=0.00f;
@@ -20,7 +21,7 @@ public class YnoHesaplaOrtDeneSyf {
     static float gno4OrtDene=0.00f;
     float derstenGecmeNotu4lukHarfKarsiligi=0.00f;
 
-  YnoHesaplaOrtDeneSyf(int dersSayisi,ArrayList vizeNotlariAr,ArrayList finalNotlariAr,ArrayList finalEtkiOranlariAr,ArrayList vizeEtkiOranlariAr,ArrayList aktslerAr,ArrayList<Component> ortDeneSayfasindakiComponentlerAr){
+  YnoHesaplaOrtDeneSyf(int dersSayisi,ArrayList vizeNotlariAr,ArrayList finalNotlariAr,ArrayList finalEtkiOranlariAr,ArrayList vizeEtkiOranlariAr,ArrayList aktslerAr,ArrayList<Component> ortDeneSayfasindakiComponentlerAr,ArrayList<JComboBox> harfNotlariAr,boolean isHarfNotuGiris){
 
        ortDeneSayfasindakiComponentler.clear();
        vizeNotlariAR.clear();
@@ -28,6 +29,7 @@ public class YnoHesaplaOrtDeneSyf {
        vizeEtkiOranlariAR.clear();
        finalEtkiOranlariAR.clear();
        aktslerAR.clear();
+       harfNotlariAR.clear();
 
       YnoHesaplaOrtDeneSyf.dersSayisi=dersSayisi;
         vizeNotlariAR=vizeNotlariAr;
@@ -36,14 +38,16 @@ public class YnoHesaplaOrtDeneSyf {
         finalEtkiOranlariAR=finalEtkiOranlariAr;
         aktslerAR=aktslerAr;
         ortDeneSayfasindakiComponentler=ortDeneSayfasindakiComponentlerAr;
+        harfNotlariAR=harfNotlariAr;
 
-        ynoHesapla();
+        ynoHesapla(isHarfNotuGiris);
         //gnoHesapla(eskiGnoOrtDene,eskiGnoGecerliDonemOrtDene);
   }
   void dizilereGerekliVerileriEkle(int dersSayisi,String birim){
 
         JTextField anlik;
         JSpinner anlik2;
+        JComboBox anlik3;
 
         int anlikIndex=1;
         int uzunluk=0;
@@ -75,6 +79,11 @@ public class YnoHesaplaOrtDeneSyf {
                 uzunluk=20;
                 dizi=finalEtkiOranlariAR;
                 break;
+            case "harfNotu":
+                ifade="cmbx_harf";
+                uzunluk=20;
+                dizi=harfNotlariAR;
+                break;
             default:
                 break;
         }
@@ -88,16 +97,17 @@ public class YnoHesaplaOrtDeneSyf {
                     dizi.add(anlik);
 
                 }
-            }catch (ClassCastException e){
-                anlik2= (JSpinner) anlikComponent;
+            }catch (ClassCastException e) {
+                try{
+                anlik2 = (JSpinner) anlikComponent;
 
-                if(anlikComponent.getName().toString().startsWith(ifade) &&  anlikComponent.getName().endsWith(String.valueOf(anlikIndex)) && anlikIndex<=dersSayisi){
-                    if(dersSayisi!=11 && anlikComponent.getName().endsWith("11")){
+                if (anlikComponent.getName().toString().startsWith(ifade) && anlikComponent.getName().endsWith(String.valueOf(anlikIndex)) && anlikIndex <= dersSayisi) {
+                    if (dersSayisi != 11 && anlikComponent.getName().endsWith("11")) {
                         //System.out.println("akts degeri-> "+anlik2.getValue().toString());
                         //System.out.println(anlikComponent.getName()+" eklendi");
                         dizi.add(anlik2);
                         //System.out.println("ders sayısı 11 iken eklendi");
-                    }else {
+                    } else {
                         //System.out.println("akts degeri-> "+anlik2.getValue().toString());
                         //System.out.println(anlikComponent.getName()+" eklendi");
                         dizi.add(anlik2);
@@ -107,12 +117,33 @@ public class YnoHesaplaOrtDeneSyf {
 
                 }
                 // System.out.println(e.getMessage());
+            }   catch (ClassCastException a){
+
+                    anlik3 = (JComboBox) anlikComponent;
+
+                    if (anlikComponent.getName().toString().startsWith(ifade) && anlikComponent.getName().endsWith(String.valueOf(anlikIndex)) && anlikIndex <= dersSayisi) {
+                        if (dersSayisi != 11 && anlikComponent.getName().endsWith("11")) {
+                            //System.out.println("akts degeri-> "+anlik2.getValue().toString());
+                            //System.out.println(anlikComponent.getName()+" eklendi");
+                            dizi.add(anlik3);
+                            //System.out.println("ders sayısı 11 iken eklendi");
+                        } else {
+                            //System.out.println("akts degeri-> "+anlik2.getValue().toString());
+                            //System.out.println(anlikComponent.getName()+" eklendi");
+                            dizi.add(anlik3);
+
+                            anlikIndex++;
+                        }
+
+                    }
+                }
+
             }
 
         }
 
     }
-    public void ynoHesapla(){
+    public void ynoHesapla(boolean isHarfNotuGirisi){
 
 
         vizeNotlariAR.clear();
@@ -120,13 +151,68 @@ public class YnoHesaplaOrtDeneSyf {
         vizeEtkiOranlariAR.clear();
         finalEtkiOranlariAR.clear();
         aktslerAR.clear();
+        harfNotlariAR.clear();
 
-
-        dizilereGerekliVerileriEkle(dersSayisi,"vize");
-        dizilereGerekliVerileriEkle(dersSayisi,"final");
         dizilereGerekliVerileriEkle(dersSayisi,"akts");
-        dizilereGerekliVerileriEkle(dersSayisi,"vizeEtki");
-        dizilereGerekliVerileriEkle(dersSayisi,"finalEtki");
+
+        if (!isHarfNotuGirisi){
+            dizilereGerekliVerileriEkle(dersSayisi,"vize");
+            dizilereGerekliVerileriEkle(dersSayisi,"final");
+            dizilereGerekliVerileriEkle(dersSayisi,"vizeEtki");
+            dizilereGerekliVerileriEkle(dersSayisi,"finalEtki");
+
+            for(int index=0;dersSayisi>index;index++) {
+
+                int vizeNot;
+                vizeNot = Integer.parseInt(vizeNotlariAR.get(index).getText());
+                int finalNot;
+                finalNot = Integer.parseInt(finalNotlariAR.get(index).getText());
+                float finalEtkiOran;
+                finalEtkiOran = (float) (Float.parseFloat(finalEtkiOranlariAR.get(index).getText()) /100.00);
+                float vizeEtkiOran;
+                vizeEtkiOran = (float) (Float.parseFloat(vizeEtkiOranlariAR.get(index).getText()) / 100.00);
+
+                       /*
+                        System.out.println("vizeNOt: "+vizeNot);
+                        System.out.println("finalNOt: "+finalNot);
+                        System.out.println("vizeEktiOran: "+vizeEtkiOran);
+                        System.out.println("finalEktiOran: "+finalEtkiOran);
+                         */
+
+                dersGecmeNotuOrtDene = (vizeNot * vizeEtkiOran ) +  (finalNot *  finalEtkiOran);
+                //System.out.println((index+1)+".ders geçme notu: "+dersGecmeNotuOrtDene);
+                OkulHarfNotlari okulHarfNotlari=new OkulHarfNotlari();
+                derstenGecmeNotu4lukHarfKarsiligi = okulHarfNotlari.dortlukSistemdeOrtalamaDonustur(dersGecmeNotuOrtDene,AktifKullanici.aktifKullaniciOkul);
+
+                ortalamaToplamlari4luk_OrtalamaDene+=(derstenGecmeNotu4lukHarfKarsiligi)*(Integer.parseInt(aktslerAR.get(index).getValue().toString()));
+                ortalamaToplamlari100luk_OrtalamaDene+=(dersGecmeNotuOrtDene)*(Integer.parseInt(aktslerAR.get(index).getValue().toString()));
+
+
+                aktsToplamlariOrtDene += Integer.parseInt(aktslerAR.get(index).getValue().toString());
+
+            }
+            yno4lukOrtDene = ortalamaToplamlari4luk_OrtalamaDene / aktsToplamlariOrtDene;
+            yno100lukOrtDene = ortalamaToplamlari100luk_OrtalamaDene / aktsToplamlariOrtDene;
+
+        }else{
+            dizilereGerekliVerileriEkle(dersSayisi,"harfNotu");
+            for(int index=0;dersSayisi>index;index++) {
+
+                dersGecmeNotuOrtDene = OkulHarfNotlari.harfNotunun4lukKarsiliginiVer(harfNotlariAR.get(index).getSelectedItem().toString(),AktifKullanici.aktifKullaniciOkul) ;
+                //System.out.println((index+1)+".ders geçme notu: "+dersGecmeNotuOrtDene);
+                OkulHarfNotlari okulHarfNotlari = new OkulHarfNotlari();
+               // derstenGecmeNotu4lukHarfKarsiligi = okulHarfNotlari.dortlukSistemdeOrtalamaDonustur(dersGecmeNotuOrtDene,AktifKullanici.aktifKullaniciOkul);
+
+                ortalamaToplamlari4luk_OrtalamaDene+=(dersGecmeNotuOrtDene)*(Integer.parseInt(aktslerAR.get(index).getValue().toString()));
+
+                aktsToplamlariOrtDene += Integer.parseInt(aktslerAR.get(index).getValue().toString());
+
+            }
+            yno4lukOrtDene = ortalamaToplamlari4luk_OrtalamaDene / aktsToplamlariOrtDene;
+        }
+
+
+
                 /*
                      System.out.println("vizeNotları eleman sayısı:"+vizeNotlariAR.size());
                      System.out.println("finalNotları eleman sayısı:"+finalNotlariAR.size());
@@ -144,38 +230,6 @@ public class YnoHesaplaOrtDeneSyf {
                     }
                 */
 
-        for(int index=0;dersSayisi>index;index++) {
-
-            int vizeNot;
-            vizeNot = Integer.parseInt(vizeNotlariAR.get(index).getText());
-            int finalNot;
-            finalNot = Integer.parseInt(finalNotlariAR.get(index).getText());
-            float finalEtkiOran;
-            finalEtkiOran = (float) (Float.parseFloat(finalEtkiOranlariAR.get(index).getText()) /100.00);
-            float vizeEtkiOran;
-            vizeEtkiOran = (float) (Float.parseFloat(vizeEtkiOranlariAR.get(index).getText()) / 100.00);
-
-                       /*
-                        System.out.println("vizeNOt: "+vizeNot);
-                        System.out.println("finalNOt: "+finalNot);
-                        System.out.println("vizeEktiOran: "+vizeEtkiOran);
-                        System.out.println("finalEktiOran: "+finalEtkiOran);
-                         */
-
-            dersGecmeNotuOrtDene = (vizeNot * vizeEtkiOran ) +  (finalNot *  finalEtkiOran);
-            //System.out.println((index+1)+".ders geçme notu: "+dersGecmeNotuOrtDene);
-            OkulHarfNotlari okulHarfNotlari=new OkulHarfNotlari();
-            derstenGecmeNotu4lukHarfKarsiligi = okulHarfNotlari.dortlukSistemdeOrtalamaDonustur(dersGecmeNotuOrtDene,AktifKullanici.aktifKullaniciOkul);
-
-            ortalamaToplamlari4luk_OrtalamaDene+=(derstenGecmeNotu4lukHarfKarsiligi)*(Integer.parseInt(aktslerAR.get(index).getValue().toString()));
-            ortalamaToplamlari100luk_OrtalamaDene+=(dersGecmeNotuOrtDene)*(Integer.parseInt(aktslerAR.get(index).getValue().toString()));
-
-
-            aktsToplamlariOrtDene += Integer.parseInt(aktslerAR.get(index).getValue().toString());
-
-        }
-        yno4lukOrtDene = ortalamaToplamlari4luk_OrtalamaDene / aktsToplamlariOrtDene;
-        yno100lukOrtDene = ortalamaToplamlari100luk_OrtalamaDene / aktsToplamlariOrtDene;
 
     }
     public static void gnoHesapla(float eskiGno){

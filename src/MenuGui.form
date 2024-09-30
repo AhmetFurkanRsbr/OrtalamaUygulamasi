@@ -594,7 +594,7 @@
               </component>
             </children>
           </grid>
-          <grid id="6ae10" binding="tab_dersBilgiGuncelle" layout-manager="GridLayoutManager" row-count="16" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="6ae10" binding="tab_dersBilgiGuncelle" layout-manager="GridLayoutManager" row-count="18" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Ders Bilgisi Güncelle"/>
@@ -613,12 +613,12 @@
               </component>
               <vspacer id="e5034">
                 <constraints>
-                  <grid row="15" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="17" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="77281" class="javax.swing.JButton" binding="btn_dersBilgiGuncelle">
                 <constraints>
-                  <grid row="14" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="16" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Ders Bilgisini Güncelle"/>
@@ -678,7 +678,7 @@
               </component>
               <component id="cd6cd" class="javax.swing.JLabel" binding="txt_eskiDrsAkts">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Akts"/>
@@ -686,7 +686,7 @@
               </component>
               <component id="c2550" class="javax.swing.JSpinner" binding="spn_eskiAkts">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <enabled value="false"/>
@@ -695,7 +695,7 @@
               </component>
               <component id="ade18" class="javax.swing.JLabel" binding="txt_yeniDrsAkts">
                 <constraints>
-                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Akts"/>
@@ -703,13 +703,13 @@
               </component>
               <component id="8b0f8" class="javax.swing.JSpinner" binding="spn_yeniAkts">
                 <constraints>
-                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="6" use-parent-layout="false"/>
+                  <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="6" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="aff61" class="javax.swing.JLabel" binding="txt_yeniDrsVize">
                 <constraints>
-                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                  <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Vize Notu"/>
@@ -717,7 +717,7 @@
               </component>
               <component id="157c3" class="javax.swing.JLabel" binding="txt_eskiDrsVize">
                 <constraints>
-                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Vize Notu"/>
@@ -725,7 +725,7 @@
               </component>
               <component id="75422" class="javax.swing.JTextField" binding="fld_yeniDrsVize">
                 <constraints>
-                  <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -734,46 +734,6 @@
                 </properties>
               </component>
               <component id="5f8b7" class="javax.swing.JTextField" binding="fld_eskiDrsVize">
-                <constraints>
-                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <disabledTextColor color="-15461147"/>
-                  <editable value="false"/>
-                  <enabled value="false"/>
-                  <horizontalAlignment value="0"/>
-                </properties>
-              </component>
-              <component id="19636" class="javax.swing.JLabel" binding="txt_yeniDrsFinal">
-                <constraints>
-                  <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Yeni Final Notu"/>
-                </properties>
-              </component>
-              <component id="56042" class="javax.swing.JLabel" binding="txt_eskiDrsFinal">
-                <constraints>
-                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Eski Final Notu"/>
-                </properties>
-              </component>
-              <component id="a474c" class="javax.swing.JTextField" binding="fld_yeniDrsFinal">
-                <constraints>
-                  <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <horizontalAlignment value="0"/>
-                  <text value=""/>
-                </properties>
-              </component>
-              <component id="d824d" class="javax.swing.JTextField" binding="fld_eskiFinal">
                 <constraints>
                   <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -786,9 +746,49 @@
                   <horizontalAlignment value="0"/>
                 </properties>
               </component>
-              <component id="70950" class="javax.swing.JLabel" binding="txt_yeniVizeEtki">
+              <component id="19636" class="javax.swing.JLabel" binding="txt_yeniDrsFinal">
                 <constraints>
                   <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Yeni Final Notu"/>
+                </properties>
+              </component>
+              <component id="56042" class="javax.swing.JLabel" binding="txt_eskiDrsFinal">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Eski Final Notu"/>
+                </properties>
+              </component>
+              <component id="a474c" class="javax.swing.JTextField" binding="fld_yeniDrsFinal">
+                <constraints>
+                  <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="d824d" class="javax.swing.JTextField" binding="fld_eskiFinal">
+                <constraints>
+                  <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <disabledTextColor color="-15461147"/>
+                  <editable value="false"/>
+                  <enabled value="false"/>
+                  <horizontalAlignment value="0"/>
+                </properties>
+              </component>
+              <component id="70950" class="javax.swing.JLabel" binding="txt_yeniVizeEtki">
+                <constraints>
+                  <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Vize Etki Oranı"/>
@@ -796,7 +796,7 @@
               </component>
               <component id="6231" class="javax.swing.JLabel" binding="txt_eskiVizeEtki">
                 <constraints>
-                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Vize Etki Oranı"/>
@@ -804,7 +804,7 @@
               </component>
               <component id="1ba3f" class="javax.swing.JTextField" binding="fld_yeniVizeEtkiO">
                 <constraints>
-                  <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -814,7 +814,7 @@
               </component>
               <component id="f48f9" class="javax.swing.JTextField" binding="fld_eskiVizeEtkiO">
                 <constraints>
-                  <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false">
+                  <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -828,7 +828,7 @@
               </component>
               <component id="b3b3d" class="javax.swing.JLabel" binding="txt_yeniFinalEtki">
                 <constraints>
-                  <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                  <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Yeni Final Etki Oranı"/>
@@ -836,7 +836,7 @@
               </component>
               <component id="9509" class="javax.swing.JLabel" binding="txt_eskiFinalEtki">
                 <constraints>
-                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                  <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Eski Final Etki Oranı"/>
@@ -844,7 +844,7 @@
               </component>
               <component id="c460b" class="javax.swing.JTextField" binding="fld_yeniFinalEtkiO">
                 <constraints>
-                  <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -854,7 +854,7 @@
               </component>
               <component id="90ec2" class="javax.swing.JTextField" binding="fld_EskiFinalEtkiOranı">
                 <constraints>
-                  <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false">
+                  <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="4" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -864,6 +864,37 @@
                   <enabled value="false"/>
                   <horizontalAlignment value="0"/>
                 </properties>
+              </component>
+              <component id="bb4fe" class="javax.swing.JLabel" binding="txt_eskiDonem">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Eski Alındığı Dönem"/>
+                </properties>
+              </component>
+              <component id="f419f" class="javax.swing.JSpinner" binding="spn_eskiDonem">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <enabled value="false"/>
+                  <foreground color="-15461147"/>
+                </properties>
+              </component>
+              <component id="bb3b4" class="javax.swing.JLabel" binding="txt_yeniDonem">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Yeni Alındığı Dönem"/>
+                </properties>
+              </component>
+              <component id="7d4ae" class="javax.swing.JSpinner" binding="spn_yeniDonem">
+                <constraints>
+                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="6" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
               </component>
             </children>
           </grid>
@@ -1517,7 +1548,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="7098" binding="tab_ortalamaDene" layout-manager="GridLayoutManager" row-count="24" column-count="41" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="7098" binding="tab_ortalamaDene" layout-manager="GridLayoutManager" row-count="27" column-count="45" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints/>
                 <properties/>
@@ -1527,33 +1558,33 @@
                 <children>
                   <vspacer id="abb01">
                     <constraints>
-                      <grid row="23" column="0" row-span="1" col-span="40" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <grid row="26" column="0" row-span="1" col-span="44" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
                   <vspacer id="cee21">
                     <constraints>
-                      <grid row="0" column="19" row-span="1" col-span="21" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="23" row-span="1" col-span="21" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
                   <vspacer id="f5884">
                     <constraints>
-                      <grid row="22" column="0" row-span="1" col-span="40" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <grid row="25" column="0" row-span="1" col-span="44" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
                   <vspacer id="f0942">
                     <constraints>
-                      <grid row="20" column="0" row-span="1" col-span="40" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <grid row="23" column="0" row-span="1" col-span="44" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
                   <hspacer id="37c78">
                     <constraints>
-                      <grid row="0" column="40" row-span="8" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="44" row-span="8" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </hspacer>
-                  <grid id="a1b3e" binding="jp_checkboxlar" layout-manager="GridLayoutManager" row-count="7" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="a1b3e" binding="jp_checkboxlar" layout-manager="GridLayoutManager" row-count="7" column-count="13" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="19" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="21" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -1593,7 +1624,7 @@
                       </vspacer>
                       <hspacer id="7de1b">
                         <constraints>
-                          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="7" row-span="1" col-span="6" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </hspacer>
                       <hspacer id="4f72b">
@@ -1634,11 +1665,68 @@
                           <text value="Dersleri Getir"/>
                         </properties>
                       </component>
+                      <component id="3f69a" class="javax.swing.JCheckBox" binding="chckbx_harfNotuGirisi">
+                        <constraints>
+                          <grid row="1" column="7" row-span="1" col-span="6" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="42" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <foreground color="-1769426"/>
+                          <text value="Harf Notu İle Not Girişi Yapacağım"/>
+                        </properties>
+                      </component>
+                      <component id="411ee" class="javax.swing.JCheckBox" binding="chckbx_100lukNotGirisi">
+                        <constraints>
+                          <grid row="2" column="7" row-span="1" col-span="6" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="42" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <enabled value="false"/>
+                          <foreground color="-1769454"/>
+                          <selected value="true"/>
+                          <text value="100 lük Notlar İle Not Girişi Yapacağım"/>
+                        </properties>
+                      </component>
+                      <component id="29c4c" class="javax.swing.JTextField" binding="fld_eskiGnoOrtDene">
+                        <constraints>
+                          <grid row="6" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="75" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <foreground color="-1737887"/>
+                          <horizontalAlignment value="0"/>
+                          <name value="numberVeNoktaFld_eskiGnoOrtDene"/>
+                          <text value="0.00"/>
+                          <visible value="true"/>
+                        </properties>
+                      </component>
+                      <component id="b3eb9" class="javax.swing.JLabel" binding="lbl_eskiGnoOrtDene">
+                        <constraints>
+                          <grid row="6" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Eski Gno :"/>
+                        </properties>
+                      </component>
+                      <hspacer id="ef78f">
+                        <constraints>
+                          <grid row="6" column="8" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="2d201">
+                        <constraints>
+                          <grid row="6" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="1c7f0">
+                        <constraints>
+                          <grid row="6" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
                     </children>
                   </grid>
                   <component id="fe6d0" class="javax.swing.JLabel" binding="txt_akts">
                     <constraints>
-                      <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="8" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Akts"/>
@@ -1646,7 +1734,7 @@
                   </component>
                   <component id="61c7f" class="javax.swing.JLabel" binding="txt_vizeNotu">
                     <constraints>
-                      <grid row="8" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
+                      <grid row="8" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="7" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Vize Notu"/>
@@ -1654,7 +1742,7 @@
                   </component>
                   <component id="dd9dc" class="javax.swing.JLabel" binding="txt_finalNotu">
                     <constraints>
-                      <grid row="8" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
+                      <grid row="8" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Final Notu"/>
@@ -1662,7 +1750,7 @@
                   </component>
                   <component id="f79af" class="javax.swing.JLabel" binding="txt_finaltkiOrani">
                     <constraints>
-                      <grid row="8" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                      <grid row="8" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Final Etki Oranı"/>
@@ -1670,7 +1758,7 @@
                   </component>
                   <component id="b2d85" class="javax.swing.JTextField" binding="fld_vize1">
                     <constraints>
-                      <grid row="9" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="10" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1681,7 +1769,7 @@
                   </component>
                   <component id="59cbe" class="javax.swing.JSpinner" binding="spn_aktsDers1">
                     <constraints>
-                      <grid row="9" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="10" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts1"/>
@@ -1689,7 +1777,7 @@
                   </component>
                   <component id="b7949" class="javax.swing.JTextField" binding="fld_final1">
                     <constraints>
-                      <grid row="9" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="10" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1700,7 +1788,7 @@
                   </component>
                   <component id="c8e25" class="javax.swing.JTextField" binding="fld_vizeEtki1">
                     <constraints>
-                      <grid row="9" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="10" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1711,7 +1799,7 @@
                   </component>
                   <component id="e8580" class="javax.swing.JTextField" binding="fld_finalEtki1">
                     <constraints>
-                      <grid row="9" column="12" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="10" column="13" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1722,7 +1810,7 @@
                   </component>
                   <component id="80c5b" class="javax.swing.JSpinner" binding="spn_aktsDers2">
                     <constraints>
-                      <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="11" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts2"/>
@@ -1730,7 +1818,7 @@
                   </component>
                   <component id="7d37f" class="javax.swing.JSpinner" binding="spn_aktsDers3">
                     <constraints>
-                      <grid row="11" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="12" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts3"/>
@@ -1738,7 +1826,7 @@
                   </component>
                   <component id="dfd40" class="javax.swing.JSpinner" binding="spn_aktsDers4">
                     <constraints>
-                      <grid row="12" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="13" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts4"/>
@@ -1746,7 +1834,7 @@
                   </component>
                   <component id="95182" class="javax.swing.JSpinner" binding="spn_aktsDers5">
                     <constraints>
-                      <grid row="13" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="14" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts5"/>
@@ -1754,7 +1842,7 @@
                   </component>
                   <component id="e1144" class="javax.swing.JSpinner" binding="spn_aktsDers6">
                     <constraints>
-                      <grid row="14" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="15" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts6"/>
@@ -1762,7 +1850,7 @@
                   </component>
                   <component id="fd52" class="javax.swing.JSpinner" binding="spn_aktsDers7">
                     <constraints>
-                      <grid row="15" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="16" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts7"/>
@@ -1770,7 +1858,7 @@
                   </component>
                   <component id="edbfa" class="javax.swing.JSpinner" binding="spn_aktsDers8">
                     <constraints>
-                      <grid row="16" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="17" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts8"/>
@@ -1778,23 +1866,15 @@
                   </component>
                   <component id="c9ea3" class="javax.swing.JSpinner" binding="spn_aktsDers9">
                     <constraints>
-                      <grid row="17" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="18" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts9"/>
                     </properties>
                   </component>
-                  <component id="414c1" class="javax.swing.JSpinner" binding="spn_aktsDers10">
-                    <constraints>
-                      <grid row="18" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="spn_ortalamaDeneAkts10"/>
-                    </properties>
-                  </component>
                   <component id="e2f76" class="javax.swing.JSpinner" binding="spn_aktsDers11">
                     <constraints>
-                      <grid row="19" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="22" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <name value="spn_ortalamaDeneAkts11"/>
@@ -1802,7 +1882,7 @@
                   </component>
                   <component id="2f280" class="javax.swing.JTextField" binding="fld_vize2">
                     <constraints>
-                      <grid row="10" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="11" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1813,7 +1893,7 @@
                   </component>
                   <component id="bbf72" class="javax.swing.JTextField" binding="fld_vize3">
                     <constraints>
-                      <grid row="11" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="12" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1824,7 +1904,7 @@
                   </component>
                   <component id="33d7b" class="javax.swing.JTextField" binding="fld_vize4">
                     <constraints>
-                      <grid row="12" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="13" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1835,7 +1915,7 @@
                   </component>
                   <component id="8b1d1" class="javax.swing.JTextField" binding="fld_vize5">
                     <constraints>
-                      <grid row="13" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="14" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1846,7 +1926,7 @@
                   </component>
                   <component id="ba3a6" class="javax.swing.JTextField" binding="fld_vize6">
                     <constraints>
-                      <grid row="14" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="15" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1857,7 +1937,7 @@
                   </component>
                   <component id="50ac6" class="javax.swing.JTextField" binding="fld_vize7">
                     <constraints>
-                      <grid row="15" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="16" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1868,7 +1948,7 @@
                   </component>
                   <component id="608b1" class="javax.swing.JTextField" binding="fld_vize8">
                     <constraints>
-                      <grid row="16" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="17" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1879,7 +1959,7 @@
                   </component>
                   <component id="d482c" class="javax.swing.JTextField" binding="fld_vize9">
                     <constraints>
-                      <grid row="17" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="18" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1888,20 +1968,9 @@
                       <name value="numberFld_vize9"/>
                     </properties>
                   </component>
-                  <component id="941ed" class="javax.swing.JTextField" binding="fld_vize10">
-                    <constraints>
-                      <grid row="18" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <horizontalAlignment value="0"/>
-                      <name value="numberFld_vize10"/>
-                    </properties>
-                  </component>
                   <component id="167d2" class="javax.swing.JTextField" binding="fld_vize11">
                     <constraints>
-                      <grid row="19" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="22" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1911,7 +1980,7 @@
                   </component>
                   <component id="c6ae9" class="javax.swing.JTextField" binding="fld_final2">
                     <constraints>
-                      <grid row="10" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="11" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1922,7 +1991,7 @@
                   </component>
                   <component id="1eeb7" class="javax.swing.JTextField" binding="fld_final3">
                     <constraints>
-                      <grid row="11" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="12" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1933,7 +2002,7 @@
                   </component>
                   <component id="e8fd8" class="javax.swing.JTextField" binding="fld_final4">
                     <constraints>
-                      <grid row="12" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="13" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1944,7 +2013,7 @@
                   </component>
                   <component id="d6bad" class="javax.swing.JTextField" binding="fld_final5">
                     <constraints>
-                      <grid row="13" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="14" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1955,7 +2024,7 @@
                   </component>
                   <component id="d5426" class="javax.swing.JTextField" binding="fld_final6">
                     <constraints>
-                      <grid row="14" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="15" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1966,7 +2035,7 @@
                   </component>
                   <component id="26451" class="javax.swing.JTextField" binding="fld_final7">
                     <constraints>
-                      <grid row="15" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="16" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1977,7 +2046,7 @@
                   </component>
                   <component id="ca388" class="javax.swing.JTextField" binding="fld_final8">
                     <constraints>
-                      <grid row="16" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="17" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1988,7 +2057,7 @@
                   </component>
                   <component id="2e39c" class="javax.swing.JTextField" binding="fld_final9">
                     <constraints>
-                      <grid row="17" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="18" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -1997,20 +2066,9 @@
                       <name value="numberFld_final9"/>
                     </properties>
                   </component>
-                  <component id="1e837" class="javax.swing.JTextField" binding="fld_final10">
-                    <constraints>
-                      <grid row="18" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <horizontalAlignment value="0"/>
-                      <name value="numberFld_final10"/>
-                    </properties>
-                  </component>
                   <component id="9b998" class="javax.swing.JTextField" binding="fld_final11">
                     <constraints>
-                      <grid row="19" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="22" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2021,7 +2079,7 @@
                   </component>
                   <component id="72be4" class="javax.swing.JTextField" binding="fld_vizeEtki2">
                     <constraints>
-                      <grid row="10" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="11" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2032,7 +2090,7 @@
                   </component>
                   <component id="e340e" class="javax.swing.JTextField" binding="fld_vizeEtki3">
                     <constraints>
-                      <grid row="11" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="12" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2043,7 +2101,7 @@
                   </component>
                   <component id="fdf3c" class="javax.swing.JTextField" binding="fld_vizeEtki4">
                     <constraints>
-                      <grid row="12" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="13" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2054,7 +2112,7 @@
                   </component>
                   <component id="18116" class="javax.swing.JTextField" binding="fld_vizeEtki5">
                     <constraints>
-                      <grid row="13" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="14" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2065,7 +2123,7 @@
                   </component>
                   <component id="2a746" class="javax.swing.JTextField" binding="fld_vizeEtki6">
                     <constraints>
-                      <grid row="14" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="15" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2076,7 +2134,7 @@
                   </component>
                   <component id="32497" class="javax.swing.JTextField" binding="fld_vizeEtki7">
                     <constraints>
-                      <grid row="15" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="16" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2087,7 +2145,7 @@
                   </component>
                   <component id="5556f" class="javax.swing.JTextField" binding="fld_vizeEtki8">
                     <constraints>
-                      <grid row="16" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="17" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2098,7 +2156,7 @@
                   </component>
                   <component id="91e9" class="javax.swing.JTextField" binding="fld_vizeEtki9">
                     <constraints>
-                      <grid row="17" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="18" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2107,20 +2165,9 @@
                       <name value="numberFld_vizeEtki9"/>
                     </properties>
                   </component>
-                  <component id="61124" class="javax.swing.JTextField" binding="fld_vizeEtki10">
-                    <constraints>
-                      <grid row="18" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <horizontalAlignment value="0"/>
-                      <name value="numberFld_vizeEtki10"/>
-                    </properties>
-                  </component>
                   <component id="1d74c" class="javax.swing.JTextField" binding="fld_vizeEtki11">
                     <constraints>
-                      <grid row="19" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="22" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2131,7 +2178,7 @@
                   </component>
                   <component id="9dbf2" class="javax.swing.JTextField" binding="fld_finalEtki2">
                     <constraints>
-                      <grid row="10" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="11" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2143,7 +2190,7 @@
                   </component>
                   <component id="f2a4b" class="javax.swing.JTextField" binding="fld_finalEtki3">
                     <constraints>
-                      <grid row="11" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="12" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2154,7 +2201,7 @@
                   </component>
                   <component id="b8d7d" class="javax.swing.JTextField" binding="fld_finalEtki4">
                     <constraints>
-                      <grid row="12" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="13" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2165,7 +2212,7 @@
                   </component>
                   <component id="6dd59" class="javax.swing.JTextField" binding="fld_finalEtki5">
                     <constraints>
-                      <grid row="13" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="14" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2176,7 +2223,7 @@
                   </component>
                   <component id="8e480" class="javax.swing.JTextField" binding="fld_finalEtki6">
                     <constraints>
-                      <grid row="14" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="15" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2187,7 +2234,7 @@
                   </component>
                   <component id="94d94" class="javax.swing.JTextField" binding="fld_finalEtki7">
                     <constraints>
-                      <grid row="15" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="16" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2198,7 +2245,7 @@
                   </component>
                   <component id="afa7a" class="javax.swing.JTextField" binding="fld_finalEtki8">
                     <constraints>
-                      <grid row="16" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="17" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2209,7 +2256,7 @@
                   </component>
                   <component id="168c8" class="javax.swing.JTextField" binding="fld_finalEtki9">
                     <constraints>
-                      <grid row="17" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="18" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2218,20 +2265,9 @@
                       <name value="numberFld_finalEtki9"/>
                     </properties>
                   </component>
-                  <component id="303f6" class="javax.swing.JTextField" binding="fld_finalEtki10">
-                    <constraints>
-                      <grid row="18" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <horizontalAlignment value="0"/>
-                      <name value="numberFld_finalEtki10"/>
-                    </properties>
-                  </component>
                   <component id="f6058" class="javax.swing.JTextField" binding="fld_finalEtki11">
                     <constraints>
-                      <grid row="19" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="22" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2242,7 +2278,7 @@
                   </component>
                   <component id="e6c4f" class="javax.swing.JButton" binding="btn_hesaplaOrtalamaDene">
                     <constraints>
-                      <grid row="21" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="24" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Hesapla"/>
@@ -2250,15 +2286,15 @@
                   </component>
                   <component id="e7984" class="javax.swing.JLabel" binding="txt_dersIsim">
                     <constraints>
-                      <grid row="8" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="5" use-parent-layout="false"/>
+                      <grid row="8" column="5" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="5" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Ders Ismi"/>
+                      <text value="Ders İsmi"/>
                     </properties>
                   </component>
                   <component id="51416" class="javax.swing.JLabel" binding="txt_vizeEtkiOrani">
                     <constraints>
-                      <grid row="8" column="10" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
+                      <grid row="8" column="11" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Vize Etki Oranı"/>
@@ -2266,7 +2302,7 @@
                   </component>
                   <component id="4fc12" class="javax.swing.JTextField" binding="txt_dersIsim3">
                     <constraints>
-                      <grid row="11" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="12" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2277,7 +2313,7 @@
                   </component>
                   <component id="2152c" class="javax.swing.JTextField" binding="txt_dersIsim4">
                     <constraints>
-                      <grid row="12" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="13" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2288,7 +2324,7 @@
                   </component>
                   <component id="4b0fb" class="javax.swing.JTextField" binding="txt_dersIsim5">
                     <constraints>
-                      <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="14" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2299,7 +2335,7 @@
                   </component>
                   <component id="70b4e" class="javax.swing.JTextField" binding="txt_dersIsim6">
                     <constraints>
-                      <grid row="14" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="15" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2310,7 +2346,7 @@
                   </component>
                   <component id="7a2f0" class="javax.swing.JTextField" binding="txt_dersIsim7">
                     <constraints>
-                      <grid row="15" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="16" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2321,7 +2357,7 @@
                   </component>
                   <component id="87ea2" class="javax.swing.JTextField" binding="txt_dersIsim8">
                     <constraints>
-                      <grid row="16" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="17" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2332,7 +2368,7 @@
                   </component>
                   <component id="99eda" class="javax.swing.JTextField" binding="txt_dersIsim9">
                     <constraints>
-                      <grid row="17" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="18" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2341,31 +2377,9 @@
                       <name value="txt_ders9"/>
                     </properties>
                   </component>
-                  <component id="1760d" class="javax.swing.JTextField" binding="txt_dersIsim10">
-                    <constraints>
-                      <grid row="18" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <horizontalAlignment value="0"/>
-                      <name value="txt_ders10"/>
-                    </properties>
-                  </component>
-                  <component id="bb6a2" class="javax.swing.JTextField" binding="txt_dersIsim11">
-                    <constraints>
-                      <grid row="19" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <horizontalAlignment value="0"/>
-                      <name value="txt_ders11"/>
-                    </properties>
-                  </component>
                   <component id="d1785" class="javax.swing.JTextField" binding="txt_dersIsim2">
                     <constraints>
-                      <grid row="10" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="11" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2376,7 +2390,7 @@
                   </component>
                   <component id="7d735" class="javax.swing.JTextField" binding="txt_dersIsim1">
                     <constraints>
-                      <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                      <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -2385,41 +2399,212 @@
                       <name value="txt_ders1"/>
                     </properties>
                   </component>
-                  <component id="d8148" class="javax.swing.JTextField" binding="fld_eskiGnoOrtDene">
+                  <component id="937aa" class="javax.swing.JLabel" binding="txt_harfNotuOrtDene">
                     <constraints>
-                      <grid row="1" column="35" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="75" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <foreground color="-1737887"/>
-                      <horizontalAlignment value="0"/>
-                      <name value="numberVeNoktaFld_eskiGnoOrtDene"/>
-                      <text value="0.00"/>
-                    </properties>
-                  </component>
-                  <component id="f1f04" class="javax.swing.JLabel" binding="lbl_eskiGnoOrtDene">
-                    <constraints>
-                      <grid row="1" column="34" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Eski Gno :"/>
-                    </properties>
-                  </component>
-                  <component id="937aa" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="8" column="16" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="8" column="17" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Dersten Geçme Harf Notu"/>
                     </properties>
                   </component>
-                  <component id="fbc5e" class="javax.swing.JComboBox">
+                  <component id="fbc5e" class="javax.swing.JComboBox" binding="cmbx_harfNotu1">
                     <constraints>
-                      <grid row="9" column="16" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="10" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="15" height="15"/>
+                      </grid>
                     </constraints>
                     <properties>
                       <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu1"/>
+                    </properties>
+                  </component>
+                  <component id="1d16c" class="javax.swing.JComboBox" binding="cmbx_harfNotu2">
+                    <constraints>
+                      <grid row="11" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu2"/>
+                    </properties>
+                  </component>
+                  <component id="61cdf" class="javax.swing.JComboBox" binding="cmbx_harfNotu3">
+                    <constraints>
+                      <grid row="12" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu3"/>
+                    </properties>
+                  </component>
+                  <component id="98fd3" class="javax.swing.JComboBox" binding="cmbx_harfNotu4">
+                    <constraints>
+                      <grid row="13" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu4"/>
+                    </properties>
+                  </component>
+                  <component id="b278d" class="javax.swing.JComboBox" binding="cmbx_harfNotu5">
+                    <constraints>
+                      <grid row="14" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu5"/>
+                    </properties>
+                  </component>
+                  <component id="1adbb" class="javax.swing.JComboBox" binding="cmbx_harfNotu6">
+                    <constraints>
+                      <grid row="15" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu6"/>
+                    </properties>
+                  </component>
+                  <component id="dace" class="javax.swing.JComboBox" binding="cmbx_harfNotu7">
+                    <constraints>
+                      <grid row="16" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu7"/>
+                    </properties>
+                  </component>
+                  <component id="2773a" class="javax.swing.JComboBox" binding="cmbx_harfNotu8">
+                    <constraints>
+                      <grid row="17" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu8"/>
+                    </properties>
+                  </component>
+                  <component id="d9743" class="javax.swing.JComboBox" binding="cmbx_harfNotu9">
+                    <constraints>
+                      <grid row="18" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu9"/>
+                    </properties>
+                  </component>
+                  <component id="8c903" class="javax.swing.JComboBox" binding="cmbx_harfNotu11">
+                    <constraints>
+                      <grid row="21" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu11"/>
+                    </properties>
+                  </component>
+                  <hspacer id="af9d3">
+                    <constraints>
+                      <grid row="14" column="22" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="19796">
+                    <constraints>
+                      <grid row="15" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="ed9c1">
+                    <constraints>
+                      <grid row="8" column="19" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="f1dc4">
+                    <constraints>
+                      <grid row="9" column="19" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="4dc14">
+                    <constraints>
+                      <grid row="8" column="20" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="518aa" class="javax.swing.JTextField" binding="txt_dersIsim11">
+                    <constraints>
+                      <grid row="20" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders11"/>
+                    </properties>
+                  </component>
+                  <component id="41ba8" class="javax.swing.JTextField" binding="txt_dersIsim10">
+                    <constraints>
+                      <grid row="19" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="txt_ders10"/>
+                    </properties>
+                  </component>
+                  <component id="db22f" class="javax.swing.JSpinner" binding="spn_aktsDers10">
+                    <constraints>
+                      <grid row="19" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <name value="spn_ortalamaDeneAkts10"/>
+                    </properties>
+                  </component>
+                  <component id="4ecd6" class="javax.swing.JTextField" binding="fld_vize10">
+                    <constraints>
+                      <grid row="19" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vize10"/>
+                    </properties>
+                  </component>
+                  <component id="3d964" class="javax.swing.JTextField" binding="fld_final10">
+                    <constraints>
+                      <grid row="19" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_final10"/>
+                    </properties>
+                  </component>
+                  <component id="13574" class="javax.swing.JTextField" binding="fld_vizeEtki10">
+                    <constraints>
+                      <grid row="19" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_vizeEtki10"/>
+                    </properties>
+                  </component>
+                  <component id="78076" class="javax.swing.JTextField" binding="fld_finalEtki10">
+                    <constraints>
+                      <grid row="19" column="13" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <name value="numberFld_finalEtki10"/>
+                    </properties>
+                  </component>
+                  <component id="27f55" class="javax.swing.JComboBox" binding="cmbx_harfNotu10">
+                    <constraints>
+                      <grid row="19" column="17" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <maximumRowCount value="8"/>
+                      <name value="cmbx_harfNotu10"/>
                     </properties>
                   </component>
                 </children>

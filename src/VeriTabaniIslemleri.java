@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class VeriTabaniIslemleri {
     static int enYuksekOrtalamaId=0;
@@ -16,6 +17,8 @@ public class VeriTabaniIslemleri {
     boolean kisininKayitliDersGetirmeDurumu=false;
     boolean isGecerliDonemdeYnoKayitYok=true;
     String []cekilenDers = new String[50];
+    int []cekilenDersDonem = new int[50];
+    HashSet<Integer> cekilenDersDonem1 = new HashSet();
     boolean dersSilmeDurumu=false;
     static int AnlikdersId;
     boolean silinecekKullanicininBilgileriniCekmeDurumu=false;
@@ -483,7 +486,36 @@ public class VeriTabaniIslemleri {
 
        return dersinBilgileriAR;
     }
+    ArrayList<String> kisininDonemdekiDonemdekiHarfNotlariniGetir(int sorgulanicakDonem,int dersSayisi,ArrayList<String> donemdekiHarfNotlariAR){
+        donemdekiHarfNotlariAR.clear();
+        if (!baglanmaDurumu){
+            try {
+                msqlBaglan();
+                baglanmaDurumu=true;
+            } catch (SQLException e) {
+                baglanmaDurumu=false;
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            String sqlDonemdekiHarfNotlariGetir="select ders_harf_notu from ders_ortalama_bilgileri where alindigi_donem = "+sorgulanicakDonem+" and kisi_idf = "+AktifKullanici.aktifKullaniciID+";";
+            Statement stat3 =  baglan.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet resultSetCekilenDonemHarfNotlari = stat3.executeQuery(sqlDonemdekiHarfNotlariGetir);
 
+
+            while (resultSetCekilenDonemHarfNotlari.next()){
+
+                donemdekiHarfNotlariAR.add(resultSetCekilenDonemHarfNotlari.getString(1));
+
+            }
+            resultSetCekilenDonemHarfNotlari.close();
+
+        }catch (SQLException e){
+            System.out.println("Donemdeki Harf Notları Bulunurken oluşan sql hatası : "+e.getMessage());
+        }
+
+         return  donemdekiHarfNotlariAR;
+    }
 
    ArrayList<Integer> kisininDonemdekiDersVerisiniGetir(int sorgulanicakDonem,int dersSayisi,ArrayList<Integer> kisiDonemdekiIstenilenVeriAR,String istenilenVeriIsmi){
 
@@ -619,14 +651,17 @@ public class VeriTabaniIslemleri {
               //  System.out.println("Ders sayınız: " + kisininKayitliDersSayisi);
 
 
-                String sqlKullaniciKayitliDersAlma = "SELECT ders_isim FROM ders_bilgileri WHERE kisi_idf = '" + AktifKullanici.aktifKullaniciID + "'";
+                String sqlKullaniciKayitliDersAlma = "SELECT ders_isim,alindigi_donem FROM ders_bilgileri WHERE kisi_idf = '" + AktifKullanici.aktifKullaniciID + "'";
                 ResultSet resultSetCekilenDers = statement.executeQuery(sqlKullaniciKayitliDersAlma);
                 for(int k=0;k<cekilenDers.length;k++){
                     cekilenDers[k]="";
+                    cekilenDersDonem[k]=0;
                 }
                 int i = 0;
                 while (resultSetCekilenDers.next()) {
                     cekilenDers[i] = resultSetCekilenDers.getString("ders_isim");
+                    //cekilenDersDonem[i] = resultSetCekilenDers.getInt("alindigi_donem");
+                    cekilenDersDonem1.add(resultSetCekilenDers.getInt("alindigi_donem"));
                     i++;
                 }
                 resultSetCekilenDers.close();
@@ -978,11 +1013,12 @@ public class VeriTabaniIslemleri {
         try {
             statement = baglan.createStatement();
 
-            String sqlGuncellenicekDersAkts = "SELECT ders_akts from ders_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and ders_isim = '"+dersIsim+"';";
+            String sqlGuncellenicekDersAkts = "SELECT ders_akts,alindigi_donem from ders_bilgileri where kisi_idf ="+AktifKullanici.aktifKullaniciID +" and ders_isim = '"+dersIsim+"';";
             ResultSet resultSetGCekilenDersAkts = statement.executeQuery(sqlGuncellenicekDersAkts);
 
             if (resultSetGCekilenDersAkts.next()) {
-                GuncellenicekBilgiler.guncellenicekDersAkts = resultSetGCekilenDersAkts.getInt(1);
+                GuncellenicekBilgiler.guncellenicekDersAkts = resultSetGCekilenDersAkts.getInt("ders_akts");
+                GuncellenicekBilgiler.guncellenicekDonem = resultSetGCekilenDersAkts.getInt("alindigi_donem");
             }
             resultSetGCekilenDersAkts.close();
 
@@ -1172,7 +1208,7 @@ boolean dersVeNotguncelle(){
                 String sqlNotGuncelle = "UPDATE not_bilgileri SET vize_notu = ?, final_notu = ?, vize_etkiO = ? , final_etkiO = ?" +
                 " WHERE ders_idf = ? AND kisi_idf = ?";
 
-                String sqlDersGuncelle = "UPDATE ders_bilgileri SET ders_akts = ? WHERE ders_isim = ?";
+                String sqlDersGuncelle = "UPDATE ders_bilgileri SET ders_akts = ? ,alindigi_donem = ? WHERE ders_isim = ?";
 
         PreparedStatement parametreliStatNotGuncelleme = baglan.prepareStatement(sqlNotGuncelle);
         parametreliStatNotGuncelleme.setInt(1,GuncellenicekBilgiler.guncelVizeNotu);
@@ -1186,7 +1222,8 @@ boolean dersVeNotguncelle(){
 
         PreparedStatement preparedStatementDersGuncelleme =baglan.prepareStatement(sqlDersGuncelle);
         preparedStatementDersGuncelleme.setInt(1,GuncellenicekBilgiler.guncelDersAkts);
-        preparedStatementDersGuncelleme.setString(2,GuncellenicekBilgiler.guncellenicekDersIsmi);
+        preparedStatementDersGuncelleme.setInt(2,GuncellenicekBilgiler.guncelDonem);
+        preparedStatementDersGuncelleme.setString(3,GuncellenicekBilgiler.guncellenicekDersIsmi);
 
         preparedStatementDersGuncelleme.executeUpdate();
 

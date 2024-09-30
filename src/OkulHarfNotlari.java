@@ -1,3 +1,7 @@
+import java.util.Arrays;
+
+import static java.lang.Enum.*;
+
 public class OkulHarfNotlari {
 
     static int index=0;
@@ -6,10 +10,12 @@ public class OkulHarfNotlari {
     float []notAraliklariArray= new float[10];
     boolean isDonguBitir=false;
     static String harfNotuStr="";
+    static String[] okulununHarfNotlari=new String[14];
+
 
     enum Okullar{
         TopkapiHarfNotu,
-        TekirdagNamikKemalHarfNotu
+        TekirdagNamikKemalHarfNotu,
     }
     Okullar kisininOkulu;
 
@@ -25,28 +31,45 @@ public class OkulHarfNotlari {
         FF
     }
     static kisiHarfNotu not;
-    enum TopkapiHarfNotu {
-        AA,//100-90
-        BA,//89-85
-        BB,//84-80
-        CB,//79-70
-        CC,//69-60
-        DC,//59-55
-        DD,//54-50
-        FD,//49-40
-        FF//39-0
+   public enum TopkapiHarfNotu {
+        AA(90,100),//100-90
+        BA(85,89),//89-85
+        BB(80,84),//84-80
+        CB(70,79),//79-70
+        CC(60,69),//69-60
+        DC(55,59),//59-55
+        DD(50,54),//54-50
+        FD(40,49),//49-40
+        FF(0,39);//39-0
+
+       private int minNot;
+       private int maxNot;
+
+
+       TopkapiHarfNotu(int minNot, int maxNot) {
+           this.minNot = minNot;
+           this.maxNot = maxNot;
+       }
     }
     //TopkapiHarfNotu not;
 
     enum TekirdagNamikKemalHarfNotu{
-        AA,//100-90
-        BA,//89-80
-        BB,//79-70
-        CB,//69-65
-        CC,//64-60
-        DD,//59-50
-        FD,//49-30
-        FF//29-0
+        AA(90,100),//100-90
+        BA(80,89),//89-80
+        BB(70,79),//79-70
+        CB(65,69),//69-65
+        CC(60,64),//64-60
+        DD(50,59),//59-50
+        FD(30,49),//49-30
+        FF(0,29);//29-0
+        private int minNot;
+        private int maxNot;
+
+
+        TekirdagNamikKemalHarfNotu(int minNot, int maxNot) {
+            this.minNot = minNot;
+            this.maxNot = maxNot;
+        }
     }
     //TekirdagNamikKemalHarfNotu not2;
 
@@ -55,7 +78,38 @@ public class OkulHarfNotlari {
        OkulHarfNotlari.dersGecmeNotu=dersGecmeNotu;
     }
 
+public static int okulununHarfNotlariniAktar(String kisininOkuluString){
 
+              for (int k=0;k<14;k++){
+                  okulununHarfNotlari[k]="";
+              }
+
+             int indexK=0;
+             int okuldakiHarfSayisi=0;
+             switch (kisininOkuluString){
+
+                case "İstanbul Topkapı Üniversitesi":
+                    for (TopkapiHarfNotu not : TopkapiHarfNotu.values()) {
+                        okulununHarfNotlari[indexK] = not.name(); // Enum ismini alır
+                        indexK++;
+                    }
+                    okuldakiHarfSayisi=indexK;
+
+                break;
+
+
+                case "Tekirdağ Namık Kemal Üniversitesi":
+
+                    for (TekirdagNamikKemalHarfNotu not : TekirdagNamikKemalHarfNotu.values()) {
+                        okulununHarfNotlari[indexK] = not.name(); // Enum ismini alır
+                        indexK++;
+                    }
+                    okuldakiHarfSayisi=indexK;
+
+                break;
+             }
+     return okuldakiHarfSayisi;
+}
 
     public  float dortlukSistemdeOrtalamaDonustur(float gecmeNotu,String kisininOkuluString) {
         System.out.println("okulunuz: " + kisininOkuluString);
@@ -193,5 +247,43 @@ public class OkulHarfNotlari {
        dortlukSistemdeOrtalamaDonustur(dersGecmeNotu,kisininOkuluStr);
            harfNotuStr =String.valueOf(not);
         return  harfNotuStr;
+    }
+
+    public static float harfNotunun4lukKarsiliginiVer(String harfNotuStr,String okulu){
+        int indexK=0;
+        int okuldakiHarfSayisi=0;
+        float []harfNotu4lukKarsiligi={4,3.5f,3,2.5f,2,1.5f,1,0.5f,0};
+       switch (okulu){
+
+            case "İstanbul Topkapı Üniversitesi":
+                for (TopkapiHarfNotu not : TopkapiHarfNotu.values()) {
+                    okulununHarfNotlari[indexK] = not.name(); // Enum ismini alır
+                    indexK++;
+                }
+                okuldakiHarfSayisi=indexK;
+
+                break;
+
+            case "Tekirdağ Namık Kemal Üniversitesi":
+
+                for (TekirdagNamikKemalHarfNotu not : TekirdagNamikKemalHarfNotu.values()) {
+                    okulununHarfNotlari[indexK] = not.name(); // Enum ismini alır
+                    indexK++;
+                }
+                okuldakiHarfSayisi=indexK;
+
+                break;
+        }
+        for (int m=0;m<okuldakiHarfSayisi;m++){
+         if (okulununHarfNotlari[m].equals(harfNotuStr)){
+           dersGecmeNotu=harfNotu4lukKarsiligi[m];
+           if(harfNotuStr.equals("FF")){
+               dersGecmeNotu=0;
+           }
+
+         }
+        }
+
+       return dersGecmeNotu;
     }
 }

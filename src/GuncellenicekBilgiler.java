@@ -3,6 +3,7 @@ public class GuncellenicekBilgiler {
     //ders bilgileri
     static String guncellenicekDersIsmi;
     static int guncellenicekDersAkts;
+    static int guncellenicekDonem;
     //not bilgileri
     static int guncellenicekVizeNotu;
     static int guncellenicekFinalNotu;
@@ -12,6 +13,7 @@ public class GuncellenicekBilgiler {
 
     static String guncelDersIsmi;
     static int guncelDersAkts;
+    static int guncelDonem;
     static int guncelVizeNotu;
     static int guncelFinalNotu;
     static  int guncelVizeEtkiO;
