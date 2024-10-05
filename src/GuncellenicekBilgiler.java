@@ -9,7 +9,7 @@ public class GuncellenicekBilgiler {
     static int guncellenicekFinalNotu;
     static  int guncellenicekVizeEtkiO;
     static  int guncellenicekFinalEtkiO;
-
+    static  String guncellenicekHarfNotu;
 
     static String guncelDersIsmi;
     static int guncelDersAkts;
@@ -18,6 +18,8 @@ public class GuncellenicekBilgiler {
     static int guncelFinalNotu;
     static  int guncelVizeEtkiO;
     static  int guncelFinalEtkiO;
+    static  String guncelHarfNotu;
+    static  String gunceldersGecmeDurumu;
 
 
     //kisi bilgileri

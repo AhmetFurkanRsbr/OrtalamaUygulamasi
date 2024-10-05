@@ -265,6 +265,7 @@ public class MenuGui extends JFrame{
     private JSpinner spn_eskiDonem;
     private JLabel txt_eskiDonem;
     private JLabel txt_yeniDonem;
+
     ArrayList<Component> temizlenecekComponent = new ArrayList<>();
     ArrayList<JTextField> dersIsimleriOrtalamaDene=new ArrayList<>();
     ArrayList<JTextField> vizeNotlariOrtalamaDene=new ArrayList<>();
@@ -397,6 +398,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                             tamEkranYap(true);
 
                         } else {
+
                             fld_gnoGercerliDonem.setText(gnoGecerliDonemSt);
                             tamEkranYap(true);
                             vt.sistemeGnoEkle(AktifKullanici.aktifKullaniciID, fld_anlikGnoKayit.getText(), fld_gnoGercerliDonem.getText());
@@ -1392,21 +1394,24 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
 
      void kayitEkraniDersBilgileriniDoldur(ArrayList dersinBilgileri){
 
-         fld_verildigiDonemKayit.setText(dersinBilgileri.get(0).toString());
-         fld_aktsKayit.setText(dersinBilgileri.get(1).toString());
-         fld_vizeNotKayit.setText(dersinBilgileri.get(2).toString());
-         fld_finalNotKayit.setText(dersinBilgileri.get(3).toString());
-         fld_vizeEtkiKayit.setText(dersinBilgileri.get(4).toString());
-         fld_finalEtkiKayit.setText(dersinBilgileri.get(5).toString());
-         fld_dersOrt100Kayit.setText(dersinBilgileri.get(6).toString());
-         fld_derstenGecme4Kayit.setText(dersinBilgileri.get(7).toString());
-         fld_derstenGecmeDurumuKayit.setText(dersinBilgileri.get(8).toString());
-         fld_harfNotuKayit.setText("");
+         if(dersinBilgileri.isEmpty()){
+             kayitEkraniGizle();
+         }else {
+             fld_verildigiDonemKayit.setText(dersinBilgileri.get(0).toString());
+             fld_aktsKayit.setText(dersinBilgileri.get(1).toString());
+             fld_vizeNotKayit.setText(dersinBilgileri.get(2).toString());
+             fld_finalNotKayit.setText(dersinBilgileri.get(3).toString());
+             fld_vizeEtkiKayit.setText(dersinBilgileri.get(4).toString());
+             fld_finalEtkiKayit.setText(dersinBilgileri.get(5).toString());
+             fld_dersOrt100Kayit.setText(dersinBilgileri.get(6).toString());
+             fld_derstenGecme4Kayit.setText(dersinBilgileri.get(7).toString());
+             fld_derstenGecmeDurumuKayit.setText(dersinBilgileri.get(8).toString());
+             fld_harfNotuKayit.setText("");
 
-         if(!dersinBilgileri.get(9).toString().isEmpty()){
-             fld_harfNotuKayit.setText(dersinBilgileri.get(9).toString());
+             if (!dersinBilgileri.get(9).toString().isEmpty()) {
+                 fld_harfNotuKayit.setText(dersinBilgileri.get(9).toString());
+             }
          }
-
      }
 
 
@@ -1434,12 +1439,15 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
         txt_harfNotuOrtDene.setVisible(false);
         spinnerLimitle();
         lbl_aktifKullanici.setText(AktifKullanici.aktifKullaniciKullaniciAdi);
-        String anlikGnoString =String.valueOf(vt.gnoVarsaGetir(AktifKullanici.aktifKullaniciID));
-        fld_anlikGnoKayit.setText(anlikGnoString);
-        fld_gnoGercerliDonem.setText(String.valueOf(VeriTabaniIslemleri.gecerliDonem));
+        //String anlikGnoString =String.valueOf(vt.gnoVarsaGetir(AktifKullanici.aktifKullaniciID));
+        //fld_anlikGnoKayit.setText(anlikGnoString);
+        //fld_gnoGercerliDonem.setText(String.valueOf(VeriTabaniIslemleri.gecerliDonem));
         kayitEkraniGizle();
         agacListeAyarla();
-
+       // vt.donemlereGoreKayitEkraniGnoHesapla(vt.cekilenDersDonem1.size(),vt.cekilenDersDonem);
+        fld_anlikGnoKayit.setText(String.valueOf(vt.donemlereGoreKayitEkraniGnoHesapla(vt.cekilenDersDonem1.size(),vt.cekilenDersDonem)));
+        gnoGecerliDonemSt=String.valueOf(vt.cekilenDersDonem[vt.cekilenDersDonem1.size()-1]);
+        fld_gnoGercerliDonem.setText(gnoGecerliDonemSt);
         silinecekSayfasindakileriGizle();
         guncellenicekSayfasindakileriGizle();
         cmbx_silinecekDersGonder();
@@ -1610,6 +1618,8 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 case "Not Kaydet":
                     kayitEkraniGizle();
                     ortalamaSonucuGizle();
+                    spn_donem.setValue(1);
+
                     boolean isDongudenCik=false;
                     do {
                         tamEkranYap(false);
@@ -1630,15 +1640,17 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                                 } else if (dersSayisiString.isEmpty() || dersSayisiString==null) {
                                     System.out.println("Kaç ders girilecği sorusuna cancel cevabı verildi : " + e2.getMessage());
                                     dersSayisi=0;
-                                    dispose();
-                                    new MenuGui();
+                                    //dispose();
+                                    tabbedPane1.setSelectedIndex(0);
+                                    //new MenuGui();
                                     isDongudenCik=true;
                                 }
                             }catch (NullPointerException m){
                                 System.out.println("Kaç ders girilecği sorusuna cancel cevabı verildi : " + m.getMessage());
                                 dersSayisi=0;
-                                dispose();
-                                new MenuGui();
+                                //dispose();
+                                tabbedPane1.setSelectedIndex(0);
+                                //new MenuGui();
                                 isDongudenCik=true;
                             }
                         }
@@ -1664,6 +1676,9 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                 case "Kayıtlı Notlar":
                     agacListeAyarla();
                     kayitEkraniGizle();
+                    fld_anlikGnoKayit.setText(String.valueOf(vt.donemlereGoreKayitEkraniGnoHesapla(vt.cekilenDersDonem1.size(),vt.cekilenDersDonem)));
+                    gnoGecerliDonemSt=String.valueOf(vt.cekilenDersDonem[vt.cekilenDersDonem1.size()-1]);
+                    fld_gnoGercerliDonem.setText(gnoGecerliDonemSt);
                     ortalamaSonucuGizle();
                     revalidate();
                     repaint();
@@ -1723,7 +1738,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     fld_final.setText("");
                     fld_vizeEtki.setText("");
                     spn_Akts.setValue(1);
-                    spn_donem.setValue(1);
+                    //spn_donem.setValue(1);
                     dersSayisi-=1;
                     dersSayisiString=String.valueOf(dersSayisi);
                     fld_kalanDersSayisi.setText(dersSayisiString);
@@ -1873,7 +1888,27 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                     GuncellenicekBilgiler.guncelVizeEtkiO = Integer.parseInt(fld_yeniVizeEtkiO.getText());
                     GuncellenicekBilgiler.guncelFinalEtkiO =Integer.parseInt(fld_yeniFinalEtkiO.getText());
 
+
+                    ArrayList dersinBilgileri2 = new ArrayList();
+                    dersinBilgileri2.clear();
+
                     vt.dersVeNotguncelle();
+
+                    dersinBilgileri2 = vt.dersinBilgileriniGetir(GuncellenicekBilgiler.guncelDersIsmi,dersinBilgileri2);
+
+                    Float vizeNot=(float)dersinBilgileri2.get(2);
+                    Float finalNot=(float)dersinBilgileri2.get(3);
+                    int vizeEtkiO=(int)dersinBilgileri2.get(4);
+                    int finalEtkiO=(int)dersinBilgileri2.get(5);
+
+                    ortalamaHesapla1.dersOrtalamasiHesapla(vizeNot.intValue(),finalNot.intValue(),(int)dersinBilgileri2.get(1),vizeEtkiO,finalEtkiO);
+
+                    OkulHarfNotlari okulHarfNotlari = new OkulHarfNotlari();
+                    GuncellenicekBilgiler.guncelHarfNotu = okulHarfNotlari.harfNotunuGetir(OrtalamaHesapla.derstenGecmeNotu100,AktifKullanici.aktifKullaniciOkul);
+                    GuncellenicekBilgiler.gunceldersGecmeDurumu = OrtalamaHesapla.dersGecmeDurumuString;
+
+                    vt.dersOrtBilgileriGuncelle(OrtalamaHesapla.dortlukDersGecmeNotu,OrtalamaHesapla.derstenGecmeNotu100);
+
                     tamEkranYap(false);
                    JOptionPane.showMessageDialog(JP_Menu,"Güncelleme İşlemi Başarıyla Gerçekleşti");
                     tamEkranYap(true);
@@ -2334,6 +2369,7 @@ SilinenVerileriKaydirma silVerKaydir =new SilinenVerileriKaydirma();
                             // Ders ismi ile yapılacak işlemler...
                         } else {
                             System.out.println("Bu bir ders değil, alt öğeleri var.");
+                            kayitEkraniGizle();
                         }
                     }
 

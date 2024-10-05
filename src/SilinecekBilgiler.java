@@ -7,6 +7,7 @@ public class SilinecekBilgiler {
     static  int silinecekVizeEtkiO;
     static  int silinecekFinalEtkiO;
     static int silinecekNotId;
+    static  String silinecekharfNotu;
 
     static int silinecekKisiId=AktifKullanici.aktifKullaniciID;
 
