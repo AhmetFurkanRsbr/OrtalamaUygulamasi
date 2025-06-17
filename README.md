@@ -31,4 +31,11 @@
 
 ![Ekran görüntüsü 2025-06-18 001103](https://github.com/user-attachments/assets/b2648aba-b4d5-4f57-8e20-4f4e4bb378e6)
 
+![Ekran görüntüsü 2025-06-18 005856](https://github.com/user-attachments/assets/f5de6b4c-59e4-430f-ba3f-c18de633bf9b)
+
+![Ekran görüntüsü 2025-06-18 005835](https://github.com/user-attachments/assets/75f24cd3-5e4c-4542-91ef-c0891d71e725)
+
+![Ekran görüntüsü 2025-06-18 005825](https://github.com/user-attachments/assets/548f956e-440a-4001-b249-20eec214896e)
+
+
 - - - -
